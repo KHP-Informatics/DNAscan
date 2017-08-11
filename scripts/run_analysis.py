@@ -114,13 +114,13 @@ if format:
         
         if paired == 1 :
             
-            os.system("%shisat -p %s -x %s -1 %s -2 %s | %ssamtools view -Sb -  |%ssamtools sort -T %stemp.sorted -o %ssorted.bam ; %ssamtools index %ssorted.bam" %(path_hisat,num_cpu,path_hisat_index,input_file,input_file2,path_samtools,path_samtools,out,out,path_samtools,out))
+            os.system("%shisat2 -p %s -x %s -1 %s -2 %s | %ssamtools view -Sb -  |%ssamtools sort -T %stemp.sorted -o %ssorted.bam ; %ssamtools index %ssorted.bam" %(path_hisat,num_cpu,path_hisat_index,input_file,input_file2,path_samtools,path_samtools,out,out,path_samtools,out))
 
             input_file = "%ssorted.bam" %(out)
             
         if paired == "0" :
             
-            os.system("%shisat -p %s -x %s -U %s | %ssamtools view -Sb -  |%ssamtools sort -T %stemp.sorted -o %ssorted.bam ; %ssamtools index %ssorted.bam" %(path_hisat,num_cpu,path_hisat_index,input_file,path_samtools,path_samtools,out,out,path_samtools,out))
+            os.system("%shisat2 -p %s -x %s -U %s | %ssamtools view -Sb -  |%ssamtools sort -T %stemp.sorted -o %ssorted.bam ; %ssamtools index %ssorted.bam" %(path_hisat,num_cpu,path_hisat_index,input_file,path_samtools,path_samtools,out,out,path_samtools,out))
 
             input_file = "%ssorted.bam" %(out)
             
@@ -192,7 +192,7 @@ if virus == True or bacteria == True:
     
     if virus == True :
         
-        os.system("%shisat -p %s -x %s -U %suniligned_reads.fastq.gz | %ssamtools view -hSb -  | %ssamtools sort -T %stemp.file -o %soutput_virus.bam -" %(path_hisat,num_cpu,path_virus_index,out,path_samtools,path_samtools,out,out))
+        os.system("%shisat2 -p %s -x %s -U %suniligned_reads.fastq.gz | %ssamtools view -hSb -  | %ssamtools sort -T %stemp.file -o %soutput_virus.bam -" %(path_hisat,num_cpu,path_virus_index,out,path_samtools,path_samtools,out,out))
         
         os.system("%ssamtools index %soutput_virus.bam; %ssamtools idxstats %soutput_virus.bam > %svirus_stats.txt" %(path_samtools,out,path_samtools,out))
         
@@ -201,7 +201,7 @@ if virus == True or bacteria == True:
     
     if bateria == True:
     
-        os.system("%shisat -p %s -x %s -U %suniligned_reads.fastq.gz | %ssamtools view -hSb -  | %ssamtools sort -T %stemp.file -o %soutput_bacteria.bam -" %(path_hisat,num_cpu,path_bacteria_index,out,path_samtools,path_samtools,out,out))
+        os.system("%shisat2 -p %s -x %s -U %suniligned_reads.fastq.gz | %ssamtools view -hSb -  | %ssamtools sort -T %stemp.file -o %soutput_bacteria.bam -" %(path_hisat,num_cpu,path_bacteria_index,out,path_samtools,path_samtools,out,out))
 
         os.system("%ssamtools index %soutput_bacteria.bam; %ssamtools idxstats %soutput_bacteria.bam > %sbacteria_stats.txt" %(path_samtools,out,path_samtools,out))
 
