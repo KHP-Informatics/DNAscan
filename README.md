@@ -10,7 +10,14 @@
 
 - description: Aims etc etc
 - get the code: git clone   
-- dependencies (software, hardware)  
+- dependencies (software, hardware) :
+  3)  ExpansionHunter 2.0.9 
+  2)  FreeBayes 1.0.2-33
+  3)  Manta 1.0.3
+  4)  Hisat2 2.1.0
+  5)  Python >= 2.7
+  6)  Annovar "Version: $Date: 2016-02-01 00:11:18 -0800 (Mon,  1 Feb 2016)"
+  7)  Samtools >= 1.3
 - test 
 
 ## Core Contributors
