@@ -19,6 +19,7 @@
   6)  Annovar "Version: $Date: 2016-02-01 00:11:18 -0800 (Mon,  1 Feb 2016)"
   7)  Samtools >= 1.3
 - test 
+  python run_analysis.py -format input_file_fomat -reference hg19 -in input_file -out out_dir -SV -BED
 
 ## Core Contributors
 - [Dr Alfredo Iacoangeli](alfredo.iacoangeli@kcl.ac.uk), UK
