@@ -102,7 +102,7 @@ bacteria=args.bacteria
 
 virus=args.virus
 
-
+# freebayes does support multithreading so I am planning to make it parallel throw the use of python libraries (not yet done). To this purpose I split the bed file into n bed files
 if BED==True:
     
     os.system("%sbedtools makewindows -n %s -i winnum -b %s | awk \'{print $1\"\t\"$2\"\t\"$3 >> \"%stemp\"$4\".bed\"}\'" %(path_bedtools, num_cpu,path_bed,out))
@@ -207,16 +207,15 @@ if virus == True or bacteria == True:
 
         os.system("awk \'{printf $1}\' %sbacteria_stats.txt > %sbacteria_list.txt ; for i in $(cat %sbacteria_list.txt); do printf \"$i \"; %ssamtools depth %soutput_bacteria.bam| head | grep $i | awk \'$3>0 {print $0}\'| wc -l; done > %sbacteria_coverage_stats.txt" %(out,out,out,path_samtools,out,out))
 
+
+
+
+
+#the following part generates the patient readable output
+
 file=open('%s/annovar.vcf.hg19_multianno.vcf'  %(out), 'r')
 
 file_lines=file.readlines()
-
-
-
-
-
-
-
 
 a={}
 b={}
