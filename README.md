@@ -10,16 +10,16 @@
 
 - description: Aims etc etc
 - get the code: git clone   
-- dependencies (software, hardware) :
-  3)  ExpansionHunter 2.0.9 
-  2)  FreeBayes 1.0.2-33
-  3)  Manta 1.0.3
-  4)  Hisat2 2.1.0
-  5)  Python >= 2.7
-  6)  Annovar "Version: $Date: 2016-02-01 00:11:18 -0800 (Mon,  1 Feb 2016)"
-  7)  Samtools >= 1.3
-- test 
-  python run_analysis.py -format input_file_fomat -reference hg19 -in input_file -out out_dir -SV -BED
+- dependencies (software, hardware) :<br />
+  3)  ExpansionHunter 2.0.9 <br />
+  2)  FreeBayes 1.0.2-33<br />
+  3)  Manta 1.0.3<br />
+  4)  Hisat2 2.1.0<br />
+  5)  Python >= 2.7<br />
+  6)  Annovar "Version: $Date: 2016-02-01 00:11:18 -0800 (Mon,  1 Feb 2016)"<br />
+  7)  Samtools >= 1.3<br />
+- test <br />
+  python run_analysis.py -format input_file_fomat -reference hg19 -in input_file -out out_dir -SV -BED<br />
 
 ## Core Contributors
 - [Dr Alfredo Iacoangeli](alfredo.iacoangeli@kcl.ac.uk), UK
