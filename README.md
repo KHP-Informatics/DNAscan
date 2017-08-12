@@ -11,7 +11,7 @@
 - description: Aims etc etc
 - get the code: git clone   
 - dependencies (software, hardware) :<br />
-  3)  ExpansionHunter 2.0.9 <br />
+  1)  ExpansionHunter 2.0.9 <br />
   2)  FreeBayes 1.0.2-33<br />
   3)  Manta 1.0.3<br />
   4)  Hisat2 2.1.0<br />
