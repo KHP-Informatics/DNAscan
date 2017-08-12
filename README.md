@@ -18,6 +18,7 @@
   5)  Python >= 2.7<br />
   6)  Annovar "Version: $Date: 2016-02-01 00:11:18 -0800 (Mon,  1 Feb 2016)"<br />
   7)  Samtools >= 1.3<br />
+  8)  Bedtools2 2.25<br />
 - test <br />
   python run_analysis.py -format input_file_fomat -reference hg19 -in input_file -out out_dir -SV -BED<br />
 
