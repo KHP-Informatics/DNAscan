@@ -69,6 +69,8 @@ parser.add_argument('-virus', action="store_true", dest="virus", help='perform v
 
 parser.add_argument('-bacteria', action="store_true", dest="bacteria", help='perform bacteria scanning? True or False? ', default=False) 
 
+parser.add_argument('-rmdup', action="store_true", dest="rmdup", help='Do you want to remove the duplicated reads? True or False? ', default=False) 
+
 
 
 
@@ -112,17 +114,17 @@ if BED==True:
 if format:
     if format=="fastq" and "freebayes.vcf" not in os.listdir(out):
         
-        if paired == 1 :
-            
+       
             os.system("%shisat2 -p %s -x %s -1 %s -2 %s | %ssamtools view -Sb -  |%ssamtools sort -T %stemp.sorted -o %ssorted.bam ; %ssamtools index %ssorted.bam" %(path_hisat,num_cpu,path_hisat_index,input_file,input_file2,path_samtools,path_samtools,out,out,path_samtools,out))
 
             input_file = "%ssorted.bam" %(out)
-            
-        if paired == "0" :
+           
             
             os.system("%shisat2 -p %s -x %s -U %s | %ssamtools view -Sb -  |%ssamtools sort -T %stemp.sorted -o %ssorted.bam ; %ssamtools index %ssorted.bam" %(path_hisat,num_cpu,path_hisat_index,input_file,path_samtools,path_samtools,out,out,path_samtools,out))
 
             input_file = "%ssorted.bam" %(out)
+            
+    
             
     if format=="sam" and "freebayes.vcf" not in os.listdir(out):
         
@@ -132,7 +134,20 @@ if format:
             input_file = "%ssorted.bam" %(out)
 
 
-
+if rmdup == True:
+    
+    
+    if paired == 1 :
+            
+        flag=""
+            
+    if paired == "0" :
+            
+        flag="-s"
+        
+    os.system("%ssamtools rmdup %s %ssorted.bam %stemp_rmdup.bam" %(path_samtools,flag,out,out))
+        
+    os.system("mv %stemp_rmdup.bam %ssorted.bam" %(out,out))
 
 if "freebayes.vcf" not in os.listdir(out):
     
