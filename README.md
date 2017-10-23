@@ -67,6 +67,38 @@ Tools needed for a container based deplyment
 * Docker-compose 1.4.2
 * Singularity 2.2 
 
+#### How to install dependencies
+
+For a fast and easy deployment of most dependencies we recomend the use of the Miniconda2 package.
+To download and install the latest Miniconda2 package, which contains the conda package manager:
+
+```bash
+wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
+chmod +x Miniconda2-latest-Linux-x86_64.sh
+./Miniconda2-latest-Linux-x86_64.sh -b -p /path/to/Miniconda2/installation/directory
+```
+
+In the file /path_to_your_home_dir/.bashrc add the following line:
+
+```bash
+export PATH=/path/to/Miniconda2/installation/directory/Miniconda2/bin:$PATH 
+```
+Bioconda is a repository of binary bioinformatics tools which makes it very easy to install many open source software. 
+To install the needed dependencies with Bioconda:
+
+```bash
+conda config --add channels conda-forge
+conda config --add channels defaults
+conda config --add channels r
+conda config --add channels bioconda
+```
+
+And then, if you want to install samtools for example:
+
+```bash
+conda install samtools
+```
+
 
 - test <br />
   python run_analysis.py -format input_file_fomat -reference hg19 -in input_file -out out_dir -SV -BED<br />
