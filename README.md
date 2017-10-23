@@ -69,6 +69,8 @@ Tools needed for a container based deplyment
 
 #### How to install dependencies
 
+##### Using Bioconda
+
 For a fast and easy deployment of most dependencies we recomend the use of the Miniconda2 package.
 To download and install the latest Miniconda2 package, which contains the conda package manager:
 
@@ -98,7 +100,9 @@ And then, if you want to install samtools for example:
 ```bash
 conda install samtools
 ```
+##### Download Annovar
 
+The latest version of ANNOVAR (2017Jul16) can be downloaded [here](http://www.openbioinformatics.org/annovar/annovar_download_form.php) (registration required).
 
 - test <br />
   python run_analysis.py -format input_file_fomat -reference hg19 -in input_file -out out_dir -SV -BED<br />
