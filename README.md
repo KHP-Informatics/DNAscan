@@ -36,36 +36,36 @@ git clone https://github.com/snewhouse/DNA-NGS_scan.git
 #### List of dependencies
 
 Fast mode pipeline (ideal if focusing on SNVs):
-*Samtools 1.3
-*HISAT2 2.1.0
-*Freebayes 1.0.2
-*Python 3.5
-*Vcftools 0.1.13 
-*Bedtools2 2.25
-*Manta 1.0.3 (optional, needed only if interested in structural variants)
-*ExpansionHunter 2.0.9 (optional, needed only if interested in known motif expansions)
-*Bcftools 1.5 (optional, needed only if interested in performing custome variant filtering)
-*Annovar "Version: $Date: 2016-02-01 00:11:18 -0800 (Mon, 1 Feb 2016)" (optional, needed only if interested in performing variant annotation)
+* Samtools 1.3
+* HISAT2 2.1.0
+* Freebayes 1.0.2
+* Python 3.5
+* Vcftools 0.1.13 
+* Bedtools2 2.25
+* Manta 1.0.3 (optional, needed only if interested in structural variants)
+* ExpansionHunter 2.0.9 (optional, needed only if interested in known motif expansions)
+* Bcftools 1.5 (optional, needed only if interested in performing custome variant filtering)
+* Annovar "Version: $Date: 2016-02-01 00:11:18 -0800 (Mon, 1 Feb 2016)" (optional, needed only if interested in performing variant annotation)
 
 Normal mode pipeline (better performance on indels and SVs):
-*BWA 0.7.15 
+* BWA 0.7.15 
 
 Intensive mode pipeline (top performance on indels):
-*Genome Analysis Toolkit 3.5 
+* Genome Analysis Toolkit 3.5 
 
 Tools needed for generating graphical reports 
-*RTG Tools 3.6.2 
-*Multiqc 1.2 
+* RTG Tools 3.6.2 
+* Multiqc 1.2 
 
 Tools needed to allow an on-the-fly result interpretation 
-*Gene.IoBio platform 2.1 
-*Vcf.IoBio platform 
-*Bam.IoBio platform
+* Gene.IoBio platform 2.1 
+* Vcf.IoBio platform 
+* Bam.IoBio platform
 
 Tools needed for a container based deplyment 
-*Docker 1.7.1
-*Docker-compose 1.4.2
-*singularity 2.2 
+* Docker 1.7.1
+* Docker-compose 1.4.2
+* Singularity 2.2 
 
 
 - test <br />
