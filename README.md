@@ -111,6 +111,39 @@ And then, if you want to install samtools for example:
 ```bash
 conda install samtools
 ```
+
+##### Download iobio services
+
+###### Gene.iobio
+
+Gene.iobio be found at the Tony Di Sera (https://github.com/tonydisera) github repo. Please use git:
+
+```bash
+mkdir /path/to/your/iobio/
+cd /path/to/your/iobio/
+git clone https://github.com/tonydisera/gene.iobio.git
+```
+
+###### Vcf.iobio
+
+Bam.iobio be found at the Tony Di Sera (https://github.com/tonydisera) github repo. Please use git:
+
+```bash
+mkdir /path/to/your/iobio/
+cd /path/to/your/iobio/
+git clone https://github.com/tonydisera/vcf.iobio.io.git
+```
+
+###### Bam.iobio
+
+Bam.iobio be found at the Chase Miller (https://github.com/chmille4) github repo. Please use git:
+
+```bash
+mkdir /path/to/your/iobio/
+cd /path/to/your/iobio/
+https://github.com/chmille4/bam.iobio.io.git
+```
+
 ##### Download Annovar
 
 The latest version of ANNOVAR (2017Jul16) can be downloaded [here](http://www.openbioinformatics.org/annovar/annovar_download_form.php) (registration required).
