@@ -104,6 +104,30 @@ conda install samtools
 
 The latest version of ANNOVAR (2017Jul16) can be downloaded [here](http://www.openbioinformatics.org/annovar/annovar_download_form.php) (registration required).
 
+##### Docker setup
+
+###### ubuntu
+
+[LINK](https://store.docker.com/editions/community/docker-ce-server-ubuntu)
+
+###### MAC
+
+[LINK](https://store.docker.com/editions/community/docker-ce-desktop-mac)
+
+###### Windows
+
+[LINK](https://store.docker.com/editions/community/docker-ce-desktop-windows)
+
+##### Singularity setup
+
+###### Linux
+
+[LINK](http://singularity.lbl.gov/install-linux)
+
+###### MAC
+
+[LINK](http://singularity.lbl.gov/install-mac)
+
 - test <br />
   python run_analysis.py -format input_file_fomat -reference hg19 -in input_file -out out_dir -SV -BED<br />
 
