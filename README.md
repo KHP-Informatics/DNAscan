@@ -12,8 +12,19 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 [Alfredo Iacoangeli et al. DNA: a fast, computationally and memory efficient bioinformatics pipeline for analysis of DNA next-generation-sequencing data. Bioinformatics, 2017](https://docs.google.com/document/d/1a_ueKKppMb1AwInsW4UL2XtmtBuztbbRbhSguTieYg4/edit?usp=sharing)
 
+## Obtaining
 
 **Version:** 0.1-alpha
+
+Please make sure all dependencies are installed before running DNAscan. Instrutions about how to install all dependencies are available in the following chapter.
+
+To download DNAscan please use git to download the most recent development tree:
+
+```bash
+git clone https://github.com/snewhouse/DNA-NGS_scan.git
+```
+
+
 
 ## Documentation
 
