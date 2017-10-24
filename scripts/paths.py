@@ -4,6 +4,16 @@
 
 import os.path
 
+RG_ID = "4"
+
+RG_LB = "lib1"
+
+RG_PL = "illumina"
+
+RG_PU = "unit1"
+
+RG_SM = "20"
+
 path_iobio = "iobio/"
 
 path_hisat = "/users/k1513213/brc_scratch/annotation_unility_project/hisat2-2.1.0/"
