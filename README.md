@@ -43,6 +43,20 @@ $ ./docker2singularity.sh  [-m \"/mount_point1 /mount_point2\"] docker_image_nam
 ```
 ### How to download the reference genome
 
+#### hg38
+
+```bash 
+mkdir /path/to/wherever/hg38
+
+cd /path/to/wherever/hg38
+
+wget http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
+
+gzip -d hg38.fa.gz
+
+samtools faidx hg38.fa
+```
+
 #### hg19
 ```bash 
 mkdir /path/to/wherever/hg19
@@ -59,6 +73,40 @@ rm chr*
 
 samtools faidx hg19.fa
 ```
+### How to download the NCBI microbes DBs
+
+#### Virus
+
+#### Bacteria
+
+#### Fungi
+
+### How to index the reference genome
+
+#### HISAT2
+```bash
+./path/to/hisat/hisat-build /path/to/reference/file/reference_genome.fa index_base
+```
+E.g. If the reference genome is the file hg19.fa, located in /home/dataset/ and the hisat2-build binary is located in /home/bin/, the command line would be: 
+
+```bash
+./home/bin/hisat-build /home/dataset/hg19.fa hg19
+```
+
+
+
+#### BWA 
+```bash
+./path/to/bwa/bwa index /path/to/reference/file/reference_genome.fa
+```
+
+E.g. If the reference genome is the file hg19.fa, located in /home/dataset/ and the bwa binary is located in /home/bin/, the command line would be: 
+
+```bash
+./home/bin/bwa index /home/dataset/hg19.fa
+```
+
+
 
 ### Dependencies
 
