@@ -74,6 +74,9 @@ path_virus_index = "/users/k1513213/brc_scratch/annotation_unility_project/hisat
 #Otherwise the index can be created running "./$path_hisat/hisat-build $path_reference index_base"
 path_virus_bacteria_index = ""
 
+#The index can be created running "./$path_hisat/hisat-build $path_custom_reference index_base"
+path_custom_microbes_index = ""
+
 path_bwa = ""
 
 path_bcftools = ""
