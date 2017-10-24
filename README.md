@@ -77,11 +77,62 @@ samtools faidx hg19.fa
 
 #### Virus
 
+Copy and paste in your command line the following commands to download the whole NCBI database of complete viral genome
+
+```bash 
+mkdir /path/to/wherever/virus_db
+
+cd /path/to/wherever/virus_db
+
+wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz
+
+wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.2.1.genomic.fna.gz
+
+gzip -d viral.1.1.genomic.fna.gz
+
+gzip -d viral.2.1.genomic.fna.gz
+
+cat viral.1.1.genomic.fna >> virus_db.fa
+
+cat viral.2.1.genomic.fna >> virus_db.fa
+
+rm viral.1.1.genomic.fna viral.2.1.genomic.fna 
+```
+
+
 #### Bacteria
+
+Copy and paste in your command line the following commands to download the whole NCBI database of complete bacterial genome (this might take a long time)
+
+```bash 
+mkdir /path/to/wherever/bacteria_db
+
+cd /path/to/wherever/bacteria_db
+
+wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/bacteria/bacteria.*.1.genomic.fna.gz
+
+for i in $(ls | grep -e genomic.fna.gz -e bacteria); do gzip -d $i ; rm $i ; done 
+
+for i in $(ls | grep -e genomic.fna -e bacteria); do cat $i >> bacteria_db.fa ; rm $i ; done  
+```
 
 #### Fungi
 
-### How to index the reference genome
+Copy and paste in your command line the following commands to download the whole NCBI database of complete bacterial genome (this might take a long time)
+
+```bash 
+mkdir /path/to/wherever/fungi_db
+
+cd /path/to/wherever/fungi_db
+
+wget ftp://ftp.ncbi.nlm.nih.gov/refseq/release/bacteria/fungi.*.1.genomic.fna.gz
+
+for i in $(ls | grep -e genomic.fna.gz -e fungi); do gzip -d $i ; done 
+
+for i in $(ls | grep -e genomic.fna -e fungi); do cat $i >> fungi_db.fa ; rm $i ; done  
+```
+
+### How to index the reference genome (or a microbes DB)
 
 #### HISAT2
 ```bash
