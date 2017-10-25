@@ -265,6 +265,32 @@ https://github.com/chmille4/bam.iobio.io.git
 
 The latest version of ANNOVAR (2017Jul16) can be downloaded [here](http://www.openbioinformatics.org/annovar/annovar_download_form.php) (registration required).
 
+After you have downloaded Annovar:
+
+```bash
+tar xvfz annovar.latest.tar.gz
+```
+Now let's download the data bases needed for the DNAscan annotation step (assuming you want to work with hg19):
+
+```bash
+cd annovar
+
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/
+
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar exac03 humandb/
+
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar dbnsfp30a humandb/
+
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar clinvar_20170130 humandb/
+
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp147 humandb/
+
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd humandb/
+
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd humandb/
+
+```
+
 ##### Docker setup
 
 ###### ubuntu
