@@ -263,6 +263,8 @@ https://github.com/chmille4/bam.iobio.io.git
 
 ##### Download Annovar
 
+A more complete documentation about how to set up and use annovar can be found [here](http://annovar.openbioinformatics.org/en/latest/). However, in the following, some brief instructions about how to get annovar and the nececcary databases to use DNAscan annotation.
+
 The latest version of ANNOVAR (2017Jul16) can be downloaded [here](http://www.openbioinformatics.org/annovar/annovar_download_form.php) (registration required).
 
 After you have downloaded Annovar:
