@@ -1,10 +1,11 @@
 #!/bin/bash
 
-#Usage: bash set_up_DNAscan.sh $1
-#Example: bash set_up_DNASCAN.sh /home/local/ 
+#Usage: bash set_up_DNAscan.sh $path_to_setup_dir $path_to_DNASCAN_dir
+#Example: bash set_up_DNASCAN.sh /home/local/ /home/DNA-NGS_scan
 
 INSTALL_DIR=$1
 
+DNASCAN_DIR=$2
 
 apt-get -y update
 
@@ -69,9 +70,7 @@ conda install -y fastqc
 conda install -y expansionhunter
 
 
-mkdir dnasca
-
-cd dnascan
+cd $DNASCAN_DIR
 
 mkdir hg19
 
@@ -115,6 +114,8 @@ export PATH=$INSTALL_DIR/manta/bin:$PATH
 
 echo export PATH=$INSTALL_DIR/manta/bin:$PATH >> ~/.bashrc
 
+cd $DNASCAN_DIR
+
 cd iobio
 
 git clone git clone https://github.com/tonydisera/gene.iobio.git
@@ -125,7 +126,7 @@ git clone https://github.com/chmille4/bam.iobio.io.git
 
 cd ..
 
-cd $INSTALL_DIR
+cd $DNASCAN_DIR
 
 sed "s|path_reference = \"\"|path_reference = \"$INSTALL_DIR\/hg19\/hg19.fa\"|" scripts/paths.py > scripts/paths.py_temp
 
