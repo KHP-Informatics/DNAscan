@@ -136,12 +136,12 @@ for i in $(ls | grep -e genomic.fna -e fungi); do cat $i >> fungi_db.fa ; rm $i 
 
 #### HISAT2
 ```bash
-./path/to/hisat/hisat-build /path/to/reference/file/reference_genome.fa index_base
+./path/to/hisat/hisat2-build /path/to/reference/file/reference_genome.fa index_base
 ```
 E.g. If the reference genome is the file hg19.fa, located in /home/dataset/ and the hisat2-build binary is located in /home/bin/, the command line would be: 
 
 ```bash
-./home/bin/hisat-build /home/dataset/hg19.fa hg19
+./home/bin/hisat2-build /home/dataset/hg19.fa hg19
 ```
 
 
