@@ -115,6 +115,16 @@ export PATH=$INSTALL_DIR/manta/bin:$PATH
 
 echo export PATH=$INSTALL_DIR/manta/bin:$PATH >> ~/.bashrc
 
+cd iobio
+
+git clone git clone https://github.com/tonydisera/gene.iobio.git
+
+git clone git clone https://github.com/tonydisera/vcf.iobio.io.git
+
+git clone https://github.com/chmille4/bam.iobio.io.git
+
+cd ..
+
 cd $INSTALL_DIR
 
 sed "s|path_reference = \"\"|path_reference = \"$INSTALL_DIR\/hg19\/hg19.fa\"|" scripts/paths.py > scripts/paths.py_temp
