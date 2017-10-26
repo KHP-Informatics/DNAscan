@@ -1,3 +1,5 @@
+![alt text](https://github.com/snewhouse/DNA-NGS_scan/blob/master/DNAscan_logo.001.jpeg)
+
 # DNA-NGS-scan
 
 ## Introduction
