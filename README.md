@@ -23,7 +23,7 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 **Version:** 0.1-alpha
 
-Please make sure all dependencies are installed before running DNAscan. Instrutions about how to install all dependencies are available in the following chapter.
+Please make sure all dependencies are installed before running DNAscan. Instrutions about how to install all dependencies are available in the following chapter. However a bash script to set up all dependencies is available in scripts.
 
 To download DNAscan please use git to download the most recent development tree:
 
@@ -31,6 +31,40 @@ To download DNAscan please use git to download the most recent development tree:
 git clone https://github.com/snewhouse/DNA-NGS_scan.git
 ```
 
+Once you have downloaded DNAscan, you can set up all available dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts:
+
+```bash
+
+bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory
+
+```
+
+You can easly set up your running deployment od DNAscan using docker. For instructutions about how to install docker see following sections.
+
+After installing docker run an Ubuntu image:
+
+
+```bash
+
+docker run -it ubuntu /bin/bash
+
+```
+
+Then install git and download this repository and run the install_dependencies.sh script:
+
+```bash
+
+apt-get update
+
+apt-get install git
+
+git clone https://github.com/snewhouse/DNA-NGS_scan.git
+
+cd DNA-NGS_scan
+
+bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory
+
+```
 
 ### Docker/Singularity 
 
