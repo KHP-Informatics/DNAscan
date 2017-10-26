@@ -21,7 +21,7 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 ### Obtaining
 
-**Version:** 0.1-alpha
+**Version:** 1.0
 
 Please make sure all dependencies are installed before running DNAscan. Instrutions about how to install all dependencies are available in the following chapter. However a bash script to set up all dependencies is available in scripts.
 
@@ -31,7 +31,7 @@ To download DNAscan please use git to download the most recent development tree:
 git clone https://github.com/snewhouse/DNA-NGS_scan.git
 ```
 
-Once you have downloaded DNAscan, you can set up all available dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts. This script will install all softaware dependencies as well as hg19 reference genome and update paths.py:
+Once you have downloaded DNAscan, you can set up all available dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts. This script will install all softaware dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py:
 
 ```bash
 
