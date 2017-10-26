@@ -72,6 +72,7 @@ source ~/.bashrc
 ### Usage
 
 IMPORTANT: DNAscan.py is the main script performing the analyses. It must be in the same folder as paths.py. Before running DNAscan please modify paths.py to match your dependencies deplyment.
+IMPORTANT2: All paths in DNAscan end with "/"
 
 Its basic use requires the following options:
 
@@ -129,8 +130,17 @@ Finally, a set of optional arguments can be used to customise the analysis:
 Let's assume we have human paired end whole exome sequening data in two fastq files and want to perform snvs/indels calling vs hg19, annotation and explore the results using the iobio services. The DNAscan command line would be:
 
  ```bash
-python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in -reference hg19 -variantcalling -annotation -iobio -out /path/to/outdir
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2  data2.fq.gz -reference hg19 -variantcalling -annotation -iobio -out /path/to/outdir
 ```
+Using the sequencing data provided in the data folder:
+
+ ```bash
+ cd /path/to/DNAscan_main_dir
+ 
+python3 scripts/DNAscan.py -format fastq -in data/test_data.1.fq.gz -in2 data/test_data.2.fq.gz -reference hg19 -variantcalling -annotation -iobio -out outdir/
+```
+IMPORTANT: All paths in DNAscan end with "/"
+
 
 
 
