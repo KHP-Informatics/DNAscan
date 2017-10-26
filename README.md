@@ -31,11 +31,13 @@ To download DNAscan please use git to download the most recent development tree:
 git clone https://github.com/snewhouse/DNA-NGS_scan.git
 ```
 
-Once you have downloaded DNAscan, you can set up all available dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts:
+Once you have downloaded DNAscan, you can set up all available dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts. This script will install all softaware dependencies as well as hg19 reference genome and update paths.py:
 
 ```bash
 
 bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory
+
+source ~/.bashrc
 
 ```
 
@@ -63,6 +65,8 @@ git clone https://github.com/snewhouse/DNA-NGS_scan.git
 cd DNA-NGS_scan
 
 bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory
+
+source ~/.bashrc
 
 ```
 
