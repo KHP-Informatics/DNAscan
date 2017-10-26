@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #Usage: bash set_up_DNAscan.sh $1
@@ -115,4 +114,14 @@ make -j4 install
 export PATH=$INSTALL_DIR/manta/bin:$PATH
 
 echo export PATH=$INSTALL_DIR/manta/bin:$PATH >> ~/.bashrc
+
+cd $INSTALL_DIR
+
+sed "s|path_reference = \"\"|path_reference = \"$INSTALL_DIR\/hg19\/hg19.fa\"|" scripts/paths.py > scripts/paths.py_temp
+
+sed "s|path_hisat_index = \"\"|path_hisat_index = \"$INSTALL_DIR\/hg19\/hg19\"|" scripts/paths.py_temp > scripts/paths.py
+
+sed "s|path_bwa_index = \"\"|path_bwa_index = \"$INSTALL_DIR\/hg19\/hg19.fa\"|" scripts/paths.py > scripts/paths.py_temp
+
+mv scripts/paths.py_temp  scripts/paths.py
 
