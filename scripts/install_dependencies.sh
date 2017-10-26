@@ -1,14 +1,14 @@
 #!/bin/bash
 
-#Usage: bash install_dependencies.sh $1
-#Example: bash install_dependencies.sh /home/local/ 
+#Usage: bash set_up_DNAscan.sh $1
+#Example: bash set_up_DNASCAN.sh /home/local/ 
 
 INSTALL_DIR = $1
 
 
-apt-get update
+apt-get -y update
 
-apt-get git vim
+apt-get -y vim
 
 sudo apt-get -y python3
 
@@ -36,17 +36,17 @@ conda config --add channels r
 
 conda config --add channels bioconda
 
-conda install samtools
+conda install -y samtools
 
-conda install freebayes
+conda install -y freebayes
 
-conda install bedtools
+conda install -y bedtools
 
-conda install vcftools
+conda install -y vcftools
 
-conda install bcftools
+conda install -y  bcftools
 
-conda install gatk
+conda install -y gatk
 
 wget https://software.broadinstitute.org/gatk/download/auth?package=GATK
 
@@ -54,19 +54,18 @@ mv auth\?package\=GATK GenomeAnalysisTK-3.8.tar.bz2
 
 gatk-register GenomeAnalysisTK-3.8.tar.bz2 ($INSTALL_DIR/Miniconda2/opt/gatk-3.8/GenomeAnalysisTK.jar)
 
-conda install hisat2
+conda install -y hisat2
 
-conda install bwa
+conda install -y bwa
 
-conda install rtg-tools
+conda install -y rtg-tools
 
-conda install multiqc
+conda install -y multiqc
 
-conda install fastqc
+conda install -y fastqc
 
-conda install expansionhunter
+conda install -y expansionhunter
 
-conda install manta=1.0.3
 
 mkdir dnasca
 
@@ -86,7 +85,7 @@ samtools faidx hg19.fa
 
 apt-get update -qq
 
-apt-get install -qq bzip2 gcc g++ make python zlib1g-dev
+apt-get install -y -qq bzip2 gcc g++ make python zlib1g-dev
 
 cd $INSTALL_DIR
 
