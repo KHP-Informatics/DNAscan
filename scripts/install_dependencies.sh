@@ -116,11 +116,13 @@ echo export PATH=$INSTALL_DIR/manta/bin:$PATH >> ~/.bashrc
 
 cd $DNASCAN_DIR
 
+mkdir iobio
+
 cd iobio
 
-git clone git clone https://github.com/tonydisera/gene.iobio.git
+git clone https://github.com/tonydisera/gene.iobio.git
 
-git clone git clone https://github.com/tonydisera/vcf.iobio.io.git
+git clone https://github.com/tonydisera/vcf.iobio.io.git
 
 git clone https://github.com/chmille4/bam.iobio.io.git
 
