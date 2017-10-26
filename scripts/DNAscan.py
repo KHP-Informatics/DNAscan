@@ -257,7 +257,7 @@ else :
     
     #If bed file is not provided, it generates one starting from the reference genome index. The pipeline uses a bed file to split the analyses in several subprocesses
     
-    os.system( "cat %s.fai | awk '{print $1\"\t0\t\"$2} > %sreference.bed'" %( path_reference , out) )
+    os.system( "cat %s.fai | awk '{print $1\"\t0\t\"$2}' > %sreference.bed" %( path_reference , out) )
     
     path_bed = "%sreference.bed" %(out)
     
