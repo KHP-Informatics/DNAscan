@@ -208,7 +208,7 @@ Fast mode pipeline (ideal if focusing on SNVs):
 * Python 3.5
 * Vcftools 0.1.13 
 * Bedtools2 2.25
-* Manta 1.0.3 (optional, needed only if interested in structural variants)
+* Manta 1.2.0 (optional, needed only if interested in structural variants)
 * ExpansionHunter 2.0.9 (optional, needed only if interested in known motif expansions)
 * Bcftools 1.5 (optional, needed only if interested in performing custome variant filtering)
 * Annovar "Version: $Date: 2016-02-01 00:11:18 -0800 (Mon, 1 Feb 2016)" (optional, needed only if interested in performing variant annotation)
