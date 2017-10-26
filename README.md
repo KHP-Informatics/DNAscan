@@ -64,7 +64,7 @@ git clone https://github.com/snewhouse/DNA-NGS_scan.git
 
 cd DNA-NGS_scan
 
-bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory
+bash scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory
 
 source ~/.bashrc
 
