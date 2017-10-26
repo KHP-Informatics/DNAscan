@@ -110,6 +110,7 @@ Also, one of the three analysis modes can be chosen with the -mode option:
 -mode  MODE            options are fast, normal, intensive [string] (default = "fast")
 
 ```
+Fast mode uses Hisat2 and Freebayes to quickly align and call variants. It is ideal if you are focusing your analysis on single nucleotyde variants. Normal mode performs an alignment refinement using BWA on selected reads. This step improves the alignment of soft-clipped reads and reads containing small indels. It is suggested if your focus is on structural variants. Intensive mode adds to the pipeline a further indel calling using GATK Haplotype Caller which improves the performance on small indels. If your analysis focus on the discovery of non human material (e.g. viruses or bacteria) in your sequencing data, fast mode is recomended for known microbes discovery while normal mode improves the discovery or divergent microbes. A detailed description of the 3 modes can be found in the [DNAscan paper](link).  
 
 Finally, a set of optional arguments can be used to customise the analysis:
 
