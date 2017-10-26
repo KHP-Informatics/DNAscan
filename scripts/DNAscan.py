@@ -139,8 +139,6 @@ parser.add_argument( '-iobio' , action = "store_true" , dest = "iobio" , help = 
 
 parser.add_argument( '-alignment', action = "store_true" , dest = "alignment" , help = 'if this flag is set the alignment stage will be performed (Default = "False")' , default = False ) 
 
-parser.add_argument( '-out', action = "store" , dest = "out" , help = 'path to the output folder. It has to end in /" e.g. /home/user/local/test_folder/' )
-
 parser.add_argument( '-expansion' , action = "store_true" , dest = "expansion" , help = 'if this flag is set DNAscan will look for the expansions described in the jason folder described in paths.py  (Default = "False") ' , default = False ) 
 
 parser.add_argument( '-SV' , action = "store_true" , dest = "SV" , help = 'if this flag is set the structural variant calling stage will be performed (Default = "False") ' , default = False ) 
@@ -173,6 +171,7 @@ parser.add_argument( '-debug' , action = "store_true" , dest = "debug" , help = 
 
 requiredNamed = parser.add_argument_group('required named arguments')
 
+requiredNamed.add_argument( '-out', required=True ,  action = "store" , dest = "out" , help = 'path to the output folder. It has to end in /" e.g. /home/user/local/test_folder/' )
 
 requiredNamed.add_argument( '-format' , required=True , action = "store" , dest = "format" , default = "fastq" , help = 'options are bam, sam, fastq, vcf [string] ' )
 
