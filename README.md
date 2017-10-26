@@ -31,8 +31,7 @@ To download DNAscan please use git to download the most recent development tree:
 git clone https://github.com/snewhouse/DNA-NGS_scan.git
 ```
 
-Once you have downloaded DNAscan, you can set up all available dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts. This script will install all softaware dependencies (except Annovar) as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. If you want your results being anotated you need to download Annovar. Since downloading Annovar requires registration, please use this [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php) and provide the location where Annovar is downloaded and uncompressed to the install_dependencies.sh script.
-:
+Once you have downloaded DNAscan, you can set up all available dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts. This script will install all softaware dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. If you want your results being anotated you need to download Annovar. Since downloading Annovar requires registration, please register before using DNAscan [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php) 
 
 ```bash
 
