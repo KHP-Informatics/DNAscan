@@ -78,6 +78,8 @@ mkdir hg19
 
 cd hg19
 
+wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/chromFa.tar.gz
+
 tar -zxvf chromFa.tar.gz
 
 for i in chr1.fa chr2.fa chr3.fa chr4.fa chr5.fa chr6.fa chr7.fa chr8.fa chr9.fa chr10.fa chr11.fa chr12.fa chr13.fa chr14.fa chr15.fa chr16.fa chr17.fa chr18.fa chr19.fa chr20.fa chr21.fa chr22.fa chrY.fa chrX.fa chrM.fa; do cat $i >> hg19.fa ; rm $i ; done
@@ -85,6 +87,10 @@ for i in chr1.fa chr2.fa chr3.fa chr4.fa chr5.fa chr6.fa chr7.fa chr8.fa chr9.fa
 rm chr*
 
 samtools faidx hg19.fa
+
+nohup bwa index hg19.fa &
+
+nohup hisat2-build hg19.fa hg19 &
 
 apt-get update -qq
 
@@ -109,5 +115,4 @@ make -j4 install
 export PATH=$INSTALL_DIR/manta/bin:$PATH
 
 echo export PATH=$INSTALL_DIR/manta/bin:$PATH >> ~/.bashrc
-
 
