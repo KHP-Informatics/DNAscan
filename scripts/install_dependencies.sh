@@ -128,11 +128,34 @@ cd ..
 
 cd $DNASCAN_DIR
 
+mkdir annovar/humandb
+
+annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/
+
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar exac03 humandb/
+
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar dbnsfp30a humandb/
+
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar clinvar_20170130 humandb/
+
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp147 humandb/
+
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd humandb/
+
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd humandb/
+
+
+
+
 sed "s|path_reference = \"\"|path_reference = \"$INSTALL_DIR\/hg19\/hg19.fa\"|" scripts/paths.py > scripts/paths.py_temp
 
 sed "s|path_hisat_index = \"\"|path_hisat_index = \"$INSTALL_DIR\/hg19\/hg19\"|" scripts/paths.py_temp > scripts/paths.py
 
 sed "s|path_bwa_index = \"\"|path_bwa_index = \"$INSTALL_DIR\/hg19\/hg19.fa\"|" scripts/paths.py > scripts/paths.py_temp
+
+sed "s|path_annovar = \"\"|path_annovar = \"$DNASCAN_DIR\/annovar\/\"|" scripts/paths.py_temp > scripts/paths.py
+
+sed "s|path_annovar_db = \"\"|path_path_annovar_db = \"$DNASCAN_DIR\/annovar\/humandb\/\"|" scripts/paths.py > scripts/paths.py_temp
 
 mv scripts/paths.py_temp  scripts/paths.py
 
