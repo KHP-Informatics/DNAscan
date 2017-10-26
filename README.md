@@ -35,7 +35,7 @@ Once you have downloaded DNAscan, you can set up all available dependencies runn
 
 ```bash
 
-bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory
+bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory
 
 source ~/.bashrc
 
