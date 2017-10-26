@@ -132,19 +132,20 @@ cd $DNASCAN_DIR
 
 mkdir annovar/humandb
 
-annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/
+chmod +x annovar/*
 
-#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar exac03 humandb/
+annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene annovar/humandb/
 
-#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar dbnsfp30a humandb/
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar exac03 annovar/humandb/
 
-#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar clinvar_20170130 humandb/
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar dbnsfp30a annovar/humandb/
 
-#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp147 humandb/
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar clinvar_20170130 annovar/humandb/
 
-#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd humandb/
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp147 annovar/humandb/
 
-#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd humandb/
+#annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd annovar/humandb/
+
 
 
 
