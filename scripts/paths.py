@@ -48,7 +48,7 @@ path_gatk = ""
 
 num_cpu = "1"
 
-path_bed = ""
+path_bed = "data/test_data.bed"
 
 #path_bed="/users/k1513213/brc_scratch/indels_project/gene_list_positions_sorted_no_overlap.bed"
 
