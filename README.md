@@ -144,7 +144,7 @@ python3 scripts/DNAscan.py -format fastq -in data/test_data.1.fq.gz -in2 data/te
 IMPORTANT: All paths in DNAscan end with "/"
 
 
-```
+
 ### How to download the reference genome
 
 #### hg38
@@ -405,6 +405,7 @@ annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd humandb/
 
 ```bash 
 $ ./docker2singularity.sh  [-m \"/mount_point1 /mount_point2\"] docker_image_name
+```
 
 ##### Docker setup
 
