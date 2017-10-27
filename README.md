@@ -50,9 +50,12 @@ After installing docker run an Ubuntu image:
 
 ```bash
 
-docker run -it ubuntu /bin/bash
+docker run -v /path/to/your/data_folder:/container/path/where/you/want/your/data -p 8080:8080 -it ubuntu /bin/bash 
 
 ```
+The -v option adds your data folder (assuming you have some data to run DNAscan on) and -p mirrows the container port 8080 to your host port 8080. This will be necessary if you want to use the iobio services.
+
+IMPORTANT: to detach from the container without stopping it use Ctrl+p, Ctrl+q
 
 Then install git and download this repository and run the install_dependencies.sh script:
 
@@ -71,6 +74,22 @@ bash scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/
 source ~/.bashrc
 
 ```
+If you want to add data to the container while this is already running you can use the docker cp command. First detach from the container without stopping it using Ctrl+p, Ctrl+q, then cp your data inside the container:
+
+```bash
+docker cp [OPTIONS] /path/to/your/data CONTAINER_ID:/container/path/where/you/want/your/data
+```
+and execute a bash shell inside your container:
+
+```bash
+docker exec -it CONTAINER_ID /bin/bash
+```
+The container ID can be found using the ps command:
+
+```bash
+docker ps 
+```
+
 ### Usage
 
 IMPORTANT: DNAscan.py is the main script performing the analyses. It must be in the same folder as paths.py. Before running DNAscan please modify paths.py to match your dependencies deplyment.
