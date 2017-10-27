@@ -14,7 +14,7 @@ RG_PU = "unit1"
 
 RG_SM = "20"
 
-path_iobio = ""
+path_iobio = "iobio/"
 
 path_hisat = ""
 
