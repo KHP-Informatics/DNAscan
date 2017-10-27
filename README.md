@@ -58,6 +58,7 @@ docker run -v /path/to/your/data_folder:/container/path/where/you/want/your/data
 The -v option adds your data folder (assuming you have some data to run DNAscan on) and -p mirrows the container port 8080 to your host port 8080. This will be necessary if you want to use the iobio services.
 
 IMPORTANT: to detach from the container without stopping it use Ctrl+p, Ctrl+q
+IMPORTANT: when running DNAscan inside a docker container, if you want to use the iobio services (and for example upload your results into the gene.iobio platform), these would not be visible by your browser unless in the folder where they are is mirrowed on the host system. Considering the previous command to run an ubuntu image, the easiest way to do this would be using the folder where you imported the data inside the container (container/path/where/you/want/your/data) as out dir when running DNAsca. In this way the DNAscan results can could be found in /path/to/your/data_folder on the host system.
 
 Then install git and download this repository and run the install_dependencies.sh script:
 
