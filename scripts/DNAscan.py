@@ -1519,7 +1519,7 @@ if iobio:
         "cd %s ; nohup python3 -m http.server %s  &" %
         (path_iobio, port_num))
 
-    print("\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file:\nhttp://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num, port_num, port_num), end='', flush=True)
+    print("\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file:\n\nhttp://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num, port_num, port_num), end='', flush=True)
     
     
     for i in a.keys() :
