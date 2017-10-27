@@ -1057,7 +1057,7 @@ if annotation:
 
         print("WARNING: The presence of annovar.log in logs is telling you that annotation was already peformed, please remove annovar.log if you wish to perform this stage anyway\n")
         
-        variant_results_file = "%sresults/%s_sorted.vcf.gz" % (out, sample_name)
+        variant_results_file = "%sresults/%s_annotated.vcf.gz" % (out, sample_name)
    
     else:
     
