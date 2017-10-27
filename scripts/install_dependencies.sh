@@ -158,7 +158,7 @@ sed "s|path_bwa_index = \"\"|path_bwa_index = \"$INSTALL_DIR\/hg19\/hg19.fa\"|" 
 
 sed "s|path_annovar = \"\"|path_annovar = \"$DNASCAN_DIR\/annovar\/\"|" scripts/paths.py_temp > scripts/paths.py
 
-sed "s|path_annovar_db = \"\"|path_path_annovar_db = \"$DNASCAN_DIR\/annovar\/humandb\/\"|" scripts/paths.py > scripts/paths.py_temp
+sed "s|path_annovar_db = \"\"|path_annovar_db = \"$DNASCAN_DIR\/annovar\/humandb\/\"|" scripts/paths.py > scripts/paths.py_temp
 
 mv scripts/paths.py_temp  scripts/paths.py
 
