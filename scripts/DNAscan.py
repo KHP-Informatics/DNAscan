@@ -1516,7 +1516,7 @@ if results_report:
 if iobio:
 
     os.system(
-        "pushd %s ; nohup python3.5 -m SimpleHTTPServer %s  &" %
+        "pushd %s ; nohup python3 -m http.server %s  &" %
         (path_iobio, port_num))
 
     print("Iobio serces have been started at http://localhost:%s\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file:\nhttp://localhost:%s/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num, port_num, port_num), end='', flush=True)
@@ -1524,7 +1524,7 @@ if iobio:
     
     for i in a.keys() :
     	
-	print('%s', %(i.split(',')[0]), end='', flush=True)
+	print('%s,', %(i.split(',')[0]), end='', flush=True)
 
 	
         
