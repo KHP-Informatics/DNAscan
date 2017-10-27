@@ -19,7 +19,8 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 ### Minimum requierements
 
 - Ubuntu >= 14.04
-- 4.2 Gb of RAM
+- RAM: at least 4.2 Gb for the fast mode. 8 Gb for the other modes. 
+- Scratch space: If you are performing the alignment stage and your input data is in fastq.gz format we recommend at 3 times the sice of your input data. E.g. your fastq.gz files are 100Gb, thus you would need 300Gb of free space. If you dont wish to performe alignment a proportion data-to-analyse:free-space of 1:1 would be enough. E.g. Input data is a 50Gb bam file, you would need only 50Gb free space on drive. 
 
 ### Obtaining
 
