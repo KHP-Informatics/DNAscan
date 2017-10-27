@@ -1475,7 +1475,7 @@ if results_report:
 
         out_file_all = open('%sreports/output_all_variants.txt' % (out), 'w')
 
-        vcf = open('%s/annovar.vcf.hg19_multianno.vcf' % (out), 'r')
+        vcf = open('%stemp.vcf' % (out), 'r')
 
         vcf_lines = vcf.readlines()
 
