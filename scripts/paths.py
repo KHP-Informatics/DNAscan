@@ -46,7 +46,7 @@ path_vcftools = ""
 
 path_gatk = ""
 
-num_cpu = ""
+num_cpu = "1"
 
 path_bed = ""
 
