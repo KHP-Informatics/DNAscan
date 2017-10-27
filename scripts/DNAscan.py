@@ -1409,11 +1409,11 @@ if results_report:
         c = {}
 
         os.system(
-            "cat %s/annovar.vcf.hg19_multianno.vcf | grep  nonsynonymous > %s/nonsynonymous.vcf" %
+            "cat %stemp.vcf | grep  nonsynonymous > %s/nonsynonymous.vcf" %
             (out, out))
 
         os.system(
-            "cat %s/annovar.vcf.hg19_multianno.vcf | grep CLINSIG=pathogenic > %s/deleterious.vcf" %
+            "cat %stemp.vcf | grep CLINSIG=pathogenic > %s/deleterious.vcf" %
             (out, out))
 
         file_nonsyn = open('%snonsynonymous.vcf' % (out), 'r')
