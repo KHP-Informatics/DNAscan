@@ -7,11 +7,11 @@ INSTALL_DIR=$1
 
 DNASCAN_DIR=$2
 
-apt-get -y update
+apt-get install -y update
 
-apt-get -y vim
+apt-get install -y vim
 
-apt-get -y python3
+apt-get install -y python3
 
 apt-get install -y wget bzip2
 
