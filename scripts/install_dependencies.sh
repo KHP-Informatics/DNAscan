@@ -148,8 +148,6 @@ cd ..
 
 cd $DNASCAN_DIR
 
-mkdir $INSTALL_DIR/humandb
-
 sed "s|path_reference = \"\"|path_reference = \"$DNASCAN_DIR\/hg19\/hg19.fa\"|" scripts/paths.py > scripts/paths.py_temp
 
 sed "s|path_hisat_index = \"\"|path_hisat_index = \"$DNASCAN_DIR\/hg19\/hg19\"|" scripts/paths.py_temp > scripts/paths.py
