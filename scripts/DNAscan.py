@@ -1386,13 +1386,19 @@ if alignment_report or calls_report or sequencing_report:
 
 
 if results_report:
+	
+  if "annovar.log" not in os.listdir(out + "logs"):
+
+        print("WARNING: The absence of annovar.log in logs is telling you that annotation was not peformed, please perform annotation using the -annotation flag if you wish to perform this stage \n")
+           
+  else:
 
     if "results_report.log" in os.listdir(out + "logs"):
 
         print("WARNING: The presence of results_report.log in logs is telling you that the results report was already produced, please remove results_report.log if you wish to perform this stage anyway\n")
 
     else:
-
+	
         os.system(
             "zcat %s > %stemp.vcf" %
         
@@ -1519,12 +1525,17 @@ if iobio:
         "cd %s ; nohup python3 -m http.server %s  >/dev/null 2>&1 &" %
         (path_iobio, port_num))
 
-    print("\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file:\n\nhttp://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num, port_num, port_num), end='', flush=True)
+    print("\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file:\n\n" %(port_num, port_num), end='', flush=True)
     
-    
-    for i in a.keys() :
+    if "results_report.log" in os.listdir(out + "logs"):
     	
-	print('%s,', %(i.split(',')[0]), end='', flush=True)
-
+	print("http://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num))
 	
+	for i in a.keys() :
+    	
+		print('%s,', %(i.split(',')[0]), end='', flush=True)
+     
+    else:
+		
+	print("http://localhost:%s/gene.iobio/" %(port_num))
         
