@@ -21,7 +21,8 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 - Ubuntu >= 14.04
 - RAM: at least 4.2 Gb for the fast mode. 8 Gb for the other modes. 
-- Scratch space: If you are performing the alignment stage and your input data is in fastq.gz format we recommend at 3 times the sice of your input data. E.g. your fastq.gz files are 100Gb, thus you would need 300Gb of free space. If you dont wish to performe alignment a proportion data-to-analyse:free-space of 1:1 would be enough. E.g. Input data is a 50Gb bam file, you would need only 50Gb free space on drive. 
+- Space required by the installation: we reccomend at least 10Gb of free space for the whole DNAscan deplyment, including the dependencies. An extra 400Gb would be required if you wish to perform the annotation stage. This uses annovar databases which need to be dowloaded, such as CADD, Clinvar, dbSNP, etc
+- Scratch space for usage: If you are performing the alignment stage and your input data is in fastq.gz format we recommend at 3 times the sice of your input data. E.g. your fastq.gz files are 100Gb, thus you would need 300Gb of free space. If you dont wish to performe alignment a proportion data-to-analyse:free-space of 1:1 would be enough. E.g. Input data is a 50Gb bam file, you would need only 50Gb free space on drive. 
 
 ### Obtaining
 
@@ -52,10 +53,11 @@ After installing docker run an Ubuntu image:
 
 ```bash
 
-docker run -v /path/to/your/data_folder:/container/path/where/you/want/your/data -p 8080:8080 -it ubuntu /bin/bash 
+docker run -v /path/to/your/data_folder:/container/path/where/you/want/your/data [-p 8080:8080] -it [--storage-opt size=500G] ubuntu /bin/bash 
 
 ```
-The -v option adds your data folder (assuming you have some data to run DNAscan on) and -p mirrows the container port 8080 to your host port 8080. This will be necessary if you want to use the iobio services.
+The -v option adds your data folder (assuming you have some data to run DNAscan on), -p mirrows the container port 8080 to your host port 8080. This will be necessary if you want to use the iobio services.
+The --storage-opt size=NG option defines the maximum size of the container, setting it to N gigabytes. This number would depend on you plans. If you want to perform annotation, the databases used by DNAscan (clinvar,CADD,etc) are about 350G. We recomend N = 500 if you want to install the whole pipeline (including annotation). To this number you should add what needed for your analysis, e.g. if you are planning to download data, the size of you data to analyse etc. A workaround to this is to use the mirrowed host folder as outdir for your analysis. This folder does not have such size limit.  
 
 IMPORTANT: to detach from the container without stopping it use Ctrl+p, Ctrl+q
 IMPORTANT: when running DNAscan inside a docker container, if you want to use the iobio services (and for example upload your results into the gene.iobio platform), these would not be visible by your browser unless in the folder where they are is mirrowed on the host system. Considering the previous command to run an ubuntu image, the easiest way to do this would be using the folder where you imported the data inside the container (container/path/where/you/want/your/data) as out dir when running DNAsca. In this way the DNAscan results can could be found in /path/to/your/data_folder on the host system.
@@ -72,6 +74,7 @@ git clone https://github.com/snewhouse/DNA-NGS_scan.git
 
 cd DNA-NGS_scan
 
+#if you are not interested in performing annotation, please # the annovar lines in the install_dependencies.sh script. This would avoid the download of about 350G od databses
 bash scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory 
 
 source ~/.bashrc
