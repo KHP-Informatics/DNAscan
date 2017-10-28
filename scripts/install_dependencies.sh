@@ -162,3 +162,7 @@ sed "s|path_annovar_db = \"\"|path_annovar_db = \"$DNASCAN_DIR\/annovar\/humandb
 
 mv scripts/paths.py_temp  scripts/paths.py
 
+echo "###########################################IMPORTANT######################################################"
+echo "Hisat2-build and bwa-index are still creating their indexes. Please wait untill they complete their task."
+echo "You can check whether or not they are still running using the 'top' command"
+echo "##########################################################################################################"
