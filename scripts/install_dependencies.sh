@@ -23,6 +23,8 @@ cd $DNASCAN_DIR
 
 chmod +x annovar/*
 
+nohup annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd $INSTALL_DIR/humandb/ &
+
 annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene $INSTALL_DIR/humandb/
 
 annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar exac03 $INSTALL_DIR/humandb/
@@ -32,8 +34,6 @@ annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar dbnsfp30a 
 annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar clinvar_20170130 $INSTALL_DIR/humandb/
 
 annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp147 $INSTALL_DIR/humandb/
-
-nohup annovar/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd $INSTALL_DIR/humandb/ &
 
 cd $INSTALL_DIR
 
