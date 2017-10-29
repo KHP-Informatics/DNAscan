@@ -44,6 +44,8 @@ path_java = ""
 
 path_vcftools = ""
 
+path_scripts = "scripts/"
+
 path_gatk = ""
 
 num_cpu = "1"
