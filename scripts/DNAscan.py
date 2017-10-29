@@ -1529,13 +1529,13 @@ if iobio:
     
     if "results_report.log" in os.listdir(out + "logs"):
     	
-	print("http://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num))
+        print("http://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num))
 	
-	for i in a.keys() :
+        for i in a.keys() :
     	
-		print('%s,', %(i.split(',')[0]), end='', flush=True)
+            print('%s,' %(i.split(',')[0]), end='', flush=True)
      
     else:
 		
-	print("http://localhost:%s/gene.iobio/" %(port_num))
+        print("http://localhost:%s/gene.iobio/" %(port_num))
         
