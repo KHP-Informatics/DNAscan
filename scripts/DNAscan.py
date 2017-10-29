@@ -1529,7 +1529,7 @@ if iobio:
     
     if "annovar.log" in os.listdir(out + "logs"):
     	
-        print("http://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num))
+        print("http://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num) , end='', flush=True)
 	
         a = {}
 	
@@ -1552,7 +1552,7 @@ if iobio:
 	
         for i in a.keys() :
     	
-            print('%s,' %(i.split(',')[0]), end='', flush=True)
+            print('%s,' %(i.split(',')[0]))
      
     else:
 		
