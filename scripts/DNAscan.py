@@ -1542,7 +1542,7 @@ if iobio:
 
         file_lines = file.readlines()
 	
-	for i in file_lines:
+        for i in file_lines:
 
             check = re.search(r'(^chr)|(^[0-9,X,Y,M]+\t)', i, flags=0)
 
