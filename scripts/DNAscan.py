@@ -1552,8 +1552,9 @@ if iobio:
 	
         for i in a.keys() :
     	
-            print('%s,' %(i.split(',')[0]))
-     
+            print('%s,' %(i.split(',')[0]), end='', flush=True)
+        print(' \n\n')     
+    
     else:
 		
         print("http://localhost:%s/gene.iobio/" %(port_num))
