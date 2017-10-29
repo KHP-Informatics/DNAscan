@@ -126,6 +126,8 @@ RG_PU = paths.RG_PU
 
 RG_SM = paths.RG_SM
 
+path_scripts = paths.path_scripts
+
 
 # 3. Define options variables from command line
 
@@ -875,8 +877,8 @@ if variantcalling:
                          sample_name))
 
                     os.system(
-                        "%svcf-sort  %s%s.vcf | bgzip -c > %s%s_sorted.vcf.gz" %
-                        (path_vcftools, out, sample_name, out, sample_name))
+                        "perl %svcf-sort.pl  %s%s.vcf | bgzip -c > %s%s_sorted.vcf.gz" %
+                        (path_scripts, out, sample_name, out, sample_name))
                     
                     variant_results_file = "%s%s_sorted.vcf.gz" %(out, sample_name)
 
