@@ -158,7 +158,7 @@ sed "s|path_annovar = \"\"|path_annovar = \"$DNASCAN_DIR\/annovar\/\"|" scripts/
 
 sed "s|path_annovar_db = \"\"|path_annovar_db = \"$INSTALL_DIR\/humandb\/\"|" scripts/paths.py > scripts/paths.py_temp
 
-sed "s|path_gatk = \"\"|path_gatk = \"$INSTALL_DIR\/Miniconda2\/opt\/gatk-3.8\/GenomeAnalysisTK.jar\"|" scripts/paths.py_temp >  scripts/paths.py
+sed "s|path_gatk = \"\"|path_gatk = \"$INSTALL_DIR\/Miniconda2\/opt\/gatk-3.8\/\"|" scripts/paths.py_temp >  scripts/paths.py
 
 
 echo "###########################################IMPORTANT######################################################"
