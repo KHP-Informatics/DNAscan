@@ -21,7 +21,10 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 - Ubuntu >= 14.04
 - RAM: at least 4.2 Gb for the fast mode. 8 Gb for the other modes. 
-- Space required by the installation: we reccomend at least 10Gb of free space for the whole DNAscan deplyment, including the dependencies. An extra 400Gb would be required if you wish to perform the annotation stage. This uses annovar databases which need to be dowloaded, such as CADD, Clinvar, dbSNP, etc
+- Space required by the installation: 
+  - By the dependencies and DNscan: we reccomend at least 10Gb of free space for the whole DNAscan deplyment, including the dependencies. 
+  - An extra 400Gb would be required if you wish to perform the annotation stage. This uses annovar databases which need to be dowloaded, such as CADD, Clinvar, dbSNP, etc
+  - 8Gb for the reference human genome and the hisat2 index. An extra 5.5Gb for the bwa index are required if you want to use         the normal or intensive modes   
 - Scratch space for usage: If you are performing the alignment stage and your input data is in fastq.gz format we recommend at 3 times the sice of your input data. E.g. your fastq.gz files are 100Gb, thus you would need 300Gb of free space. If you dont wish to performe alignment a proportion data-to-analyse:free-space of 1:1 would be enough. E.g. Input data is a 50Gb bam file, you would need only 50Gb free space on drive. 
 
 ### Obtaining
