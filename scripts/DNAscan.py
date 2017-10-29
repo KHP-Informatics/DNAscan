@@ -1527,9 +1527,28 @@ if iobio:
 
     print("\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file:\n\n" %(port_num, port_num), end='', flush=True)
     
-    if "results_report.log" in os.listdir(out + "logs"):
+    if "annovar.log" in os.listdir(out + "logs"):
     	
         print("http://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num))
+	
+        a = {}
+	
+        os.system(
+            "zcat %s > %stemp.vcf" %
+        
+            (variant_results_file, out))
+
+        file = open('%stemp.vcf' % (out), 'r')
+
+        file_lines = file.readlines()
+	
+	for i in file_lines:
+
+            check = re.search(r'(^chr)|(^[0-9,X,Y,M]+\t)', i, flags=0)
+
+            if check:
+
+                a[i.split('Gene.refGene=')[1].split(';')[0]] = []
 	
         for i in a.keys() :
     	
