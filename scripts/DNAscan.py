@@ -1062,7 +1062,8 @@ if annotation:
         variant_results_file = "%sresults/%s_annotated.vcf.gz" % (out, sample_name)
    
     else:
-    
+	
+	
         os.system(
             "%stable_annovar.pl  --thread %s --vcfinput %s %s -buildver %s -remove -protocol refGene,dbnsfp30a,clinvar_20170130,avsnp147,cadd -operation g,f,f,f,f -nastring . --outfile %s/annovar.vcf" %
             (path_annovar,
@@ -1087,6 +1088,8 @@ if annotation:
              out,
              sample_name))
         
+        os.system("mv %s* %sresults/" %(variant_results_file, out))	
+	
         variant_results_file = "%sresults/%s_annotated.vcf.gz" % (out, sample_name)
         
         os.system("touch  %slogs/annovar.log" % (out))
