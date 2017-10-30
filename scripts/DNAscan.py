@@ -710,7 +710,7 @@ if format == "sam" and "sam2bam.log" not in os.listdir(out + "logs"):
 
     os.system("touch  %slogs/sam2bam.log" % (out))
 
-if format == "bam"
+if format == "bam" :
 
     bam_file = "%s" % (input_file)
 
