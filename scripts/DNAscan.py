@@ -1536,7 +1536,7 @@ if iobio:
 
     os.system("touch  %slogs/iobio.log" % (out))
 	
-    print("\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file:\n\n" %(port_num, port_num), end='', flush=True)
+    print("\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file (../%sresults/%s_sorted.vcf.gz):\n\n" %(port_num, port_num, out, sample_name), end='', flush=True)
     
     if "annovar.log" in os.listdir(out + "logs"):
     	
