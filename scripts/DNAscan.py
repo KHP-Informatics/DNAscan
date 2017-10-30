@@ -1167,7 +1167,7 @@ if virus or bacteria or custom_microbes:
 
                 virus_results.write(
                     "%s\t%s\t%s\t%s\n" %
-                    (virus_stats_file_lines[i].split('|')[1],
+                    (virus_stats_file_lines[i].split('\t')[0],
                      virus_stats_file_lines[i].split('\t')[1],
                      virus_stats_file_lines[i].split('\t')[2],
                      virus_coverage_stats_lines[i].split(' ')[1].strip()))
