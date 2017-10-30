@@ -171,8 +171,21 @@ python3 scripts/DNAscan.py -format fastq -in data/test_data.1.fq.gz -in2 data/te
 ```
 IMPORTANT: All paths in DNAscan end with "/"
 
+### Output
 
+DNAscan output tree:
 
+```bash
+
+./$out_dir-| # this is the folder given to DNAsca using the -out flag. Will contain the aligned sequecing data ($sample_name.bam) as well as some temporanery files
+           |
+           |-results # will contain the output of the analyses. E.g. $sample_name_sorted.vcf.gz , $sample_name_SV.vcf.gz, virus_results.txt, etc  
+           |
+           |-reports # If any report flags is used, this folder will contain the reports. E.g. $sample_name_vcfstats.txt if the -calls_report flag is used
+           |
+           |-logs #logs files are generated in this folder
+           
+           
 ### How to download the reference genome
 
 #### hg38
