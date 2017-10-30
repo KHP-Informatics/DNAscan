@@ -1,17 +1,3 @@
-
-Table of Contents
-=================
-
-   * [DNA-NGS-scan](#dna-ngs-scan)
-      * [Introduction](#introduction)
-      * [Documentation](#documentation)
-      * [Citation](#citation)
-      * [Core Contributors](#core-contributors)
-         * [Contributors](#contributors)
-      * [Contributing](#contributing)
-      * [Licence](#licence)
-
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 ![alt text](docs/figs/DNAscan_logo.001.jpeg)
 
 # DNA-NGS-scan
