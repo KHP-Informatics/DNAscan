@@ -1324,10 +1324,10 @@ if alignment_report:
     else:
 
         os.system(
-            "%ssamtools flagstat -@ %s %s > %sreport/%s_flagstat.log" %
+            "%ssamtools flagstat -@ %s %s > %sreport/%s_flagstat.txt" %
             (path_samtools, num_cpu, bam_file, out, sample_name))
 
-        os.system("%ssamtools stats -@ %s %s > %sreport/%s_stats.log" %
+        os.system("%ssamtools stats -@ %s %s > %sreport/%s_stats.txt" %
                   (path_samtools, num_cpu, bam_file, out, sample_name))
 
         os.system("touch  %slogs/alignment_report.log" % (out))
@@ -1364,7 +1364,7 @@ if calls_report:
     else:
 
         os.system(
-            "%srtg vcfstats %s > %sreport/%s_vcfstats.log" %
+            "%srtg vcfstats %s > %sreport/%s_vcfstats.txt" %
             (path_rtg, out, variant_results_file, out, sample_name))
 
         os.system("touch  %slogs/calls_report.log" % (out))
@@ -1469,7 +1469,7 @@ if results_report:
 
                 c[i.split('Gene.refGene=')[1].split(';')[0]].append(i)
 
-        out_file = open('%sreports/output.txt' % (out), 'w')
+        out_file = open('%sreports/%s_variants_per_gene.txt' % (out, sample_name), 'w')
 
         for i in a.keys():
 
@@ -1482,7 +1482,7 @@ if results_report:
 
         out_file.close()
 
-        out_file_all = open('%sreports/output_all_variants.txt' % (out), 'w')
+        out_file_all = open('%sreports/%s_all_variants.txt' % (out, sample_name), 'w')
 
         vcf = open('%stemp.vcf' % (out), 'r')
 
