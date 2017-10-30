@@ -5,8 +5,6 @@ Table of Contents
    * [DNA-NGS-scan](#dna-ngs-scan)
       * [Introduction](#introduction)
       * [Documentation](#documentation)
-            * [<strong><a href="docs/installation.md">Installation</a></strong>](#installation)
-            * [<strong><a href="docs/usage.md">Usage</a></strong>](#usage)
       * [Citation](#citation)
       * [Core Contributors](#core-contributors)
          * [Contributors](#contributors)
@@ -28,9 +26,9 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 ## Documentation
 
-
-#### **[Installation](docs/installation.md)**
-#### **[Usage](docs/usage.md)**
+1.[Installation](docs/installation.md)  
+2.[Usage](docs/usage.md)  
+3.[]()
 
 
 ## Citation

@@ -12,9 +12,9 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 ## Documentation
 
-
-#### **[Installation](docs/installation.md)**
-#### **[Usage](docs/usage.md)**
+1.[Installation](docs/installation.md)  
+2.[Usage](docs/usage.md)  
+3.[]()
 
 
 ## Citation
