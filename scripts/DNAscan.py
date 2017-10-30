@@ -1522,11 +1522,19 @@ if results_report:
 # 21. Starting iobio services
 
 if iobio:
+  if "iobio.log" in os.listdir(out + "logs"):
+
+      print("WARNING: The presence of iobio.log in logs is telling you that the iobio services were already started, please remove iobio.log if you wish to start them again\n")
+
+  else:	
+  
 
     os.system(
         "cd %s ; nohup python3 -m http.server %s  >/dev/null 2>&1 &" %
         (path_iobio, port_num))
 
+    os.system("touch  %slogs/iobio.log" % (out))
+	
     print("\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file:\n\n" %(port_num, port_num), end='', flush=True)
     
     if "annovar.log" in os.listdir(out + "logs"):
