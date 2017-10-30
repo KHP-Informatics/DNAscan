@@ -1361,14 +1361,12 @@ if calls_report:
         print("WARNING: The presence of calls_report.log in logs is telling you that the calls report was already produced, please remove calls_report.log if you wish to perform this stage anyway\n")
 
     
+    else:
+
         os.system(
             "%srtg vcfstats %s > %sreport/%s_vcfstats.log" %
             (path_rtg, out, variant_results_file, out, sample_name))
 
-                
-                
-       
-       
         os.system("touch  %slogs/calls_report.log" % (out))
 
 
