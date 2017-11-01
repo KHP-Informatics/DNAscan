@@ -1,3 +1,38 @@
+
+Table of Contents
+=================
+
+         * [Minimum requierements](#minimum-requierements)
+         * [Obtaining](#obtaining)
+         * [Dependencies](#dependencies)
+            * [List of dependencies](#list-of-dependencies)
+            * [How to install dependencies](#how-to-install-dependencies)
+               * [Using Bioconda](#using-bioconda)
+               * [Download iobio services](#download-iobio-services)
+                  * [Gene.iobio](#geneiobio)
+                  * [Vcf.iobio](#vcfiobio)
+                  * [Bam.iobio](#bamiobio)
+               * [Download Annovar](#download-annovar)
+         * [Docker/Singularity](#dockersingularity)
+               * [Docker setup](#docker-setup)
+                  * [ubuntu](#ubuntu)
+                  * [MAC](#mac)
+                  * [Windows](#windows)
+               * [Singularity setup](#singularity-setup)
+                  * [Linux](#linux)
+                  * [MAC](#mac-1)
+         * [How to download the reference genome](#how-to-download-the-reference-genome)
+            * [hg38](#hg38)
+            * [hg19](#hg19)
+         * [How to download the NCBI microbes DBs](#how-to-download-the-ncbi-microbes-dbs)
+            * [Virus](#virus)
+            * [Bacteria](#bacteria)
+            * [Fungi](#fungi)
+         * [How to index the reference genome (or a microbes DB)](#how-to-index-the-reference-genome-or-a-microbes-db)
+            * [HISAT2](#hisat2)
+            * [BWA](#bwa)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 [TOC]
 
 ### Minimum requierements
