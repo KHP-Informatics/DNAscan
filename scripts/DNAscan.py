@@ -1100,9 +1100,11 @@ if annotation:
         
 else :
     
-    os.system("mv %s* %sresults/" %(variant_results_file, out))
+    if variant_results_file :
+
+        os.system("mv %s* %sresults/" %(variant_results_file, out))
     
-    variant_results_file = "%sresults/%s_sorted.vcf.gz" % (out, sample_name)
+        variant_results_file = "%sresults/%s_sorted.vcf.gz" % (out, sample_name)
     
 
 
