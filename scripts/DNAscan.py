@@ -388,6 +388,8 @@ custom_microbes = args.custom_microbes
 
 RG = args.RG
 
+variant_results_file = ""
+
 # 5. Create working dir tree
 
 os.system(
