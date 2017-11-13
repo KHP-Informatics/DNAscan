@@ -67,14 +67,6 @@ conda install -y bcftools
 
 conda install -y gatk
 
-wget https://software.broadinstitute.org/gatk/download/auth?package=GATK
-
-mv auth\?package\=GATK GenomeAnalysisTK-3.8.tar.bz2
-
-gatk-register GenomeAnalysisTK-3.8.tar.bz2 
-
-#($INSTALL_DIR/Miniconda2/opt/gatk-3.8/GenomeAnalysisTK.jar)
-
 conda install -y hisat2
 
 conda install -y bwa
