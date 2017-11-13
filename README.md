@@ -39,17 +39,17 @@ To download DNAscan please use git to download the most recent development tree:
 git clone https://github.com/snewhouse/DNA-NGS_scan.git
 ```
 
-Once you have downloaded DNAscan, you can set up all available dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts. This script will install all softaware dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. If you want your results being anotated you need to download Annovar. Since downloading Annovar requires registration, please register before using DNAscan [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php) 
+Once you have downloaded DNAscan, you can set up all needed dependencies (except annovar) running the install_dependencies.sh script available in DNA-NGS_scan/scripts. Before running install_dependencies.sh please install Annovar by registering at the following [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php). Install_dependencies.sh will install all softaware dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. If you want your results being anotated you need to download Annovar. 
 
 ```bash
 
-bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory 
+bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory /path/to/annovar/directory
 
 source ~/.bashrc
 
 ```
 
-You can easly set up your running deployment od DNAscan using docker. For instructutions about how to install docker see following sections.
+You can easly set up your running deployment of DNAscan using docker. For instructutions about how to install docker see following sections.
 
 After installing docker run an Ubuntu image:
 
