@@ -31,7 +31,7 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 **Version:** 1.0
 
-Please make sure all dependencies are installed before running DNAscan. Instrutions about how to install all dependencies are available in the following chapter. However a bash script to set up all dependencies is available in scripts.
+Please make sure all dependencies are installed before running DNAscan. Instrutions about how to install all dependencies are available in the following chapter. However a bash script to set up all dependencies (Annovar and GATK need a manual registration and download step) is available in scripts.
 
 To download DNAscan please use git to download the most recent development tree:
 
@@ -39,7 +39,7 @@ To download DNAscan please use git to download the most recent development tree:
 git clone https://github.com/snewhouse/DNA-NGS_scan.git
 ```
 
-Once you have downloaded DNAscan, you can set up all needed dependencies (except annovar) running the install_dependencies.sh script available in DNA-NGS_scan/scripts. Before running install_dependencies.sh please install Annovar by registering at the following [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php). Install_dependencies.sh will install all softaware dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. If you want your results being anotated you need to download Annovar. 
+Once you have downloaded DNAscan, you can set up all needed dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts. Before running install_dependencies.sh please install Annovar by registering at the following [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php) and download GATK 3.8 at the following [link](https://software.broadinstitute.org/gatk/download/). Install_dependencies.sh will install all softaware dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. 
 
 ```bash
 
@@ -51,6 +51,8 @@ source ~/.bashrc
 
 You can easly set up your running deployment of DNAscan using docker. For instructutions about how to install docker see following sections.
 
+IMPORTANT: if you want to use the intensive mode or the annotation step of DNAscan you need to register and download both Annovar and GATK 3.8. Remember to mirrow into the container the volder where you have deplyed these using the -v flag of copying them inside the container using the docker cp command as descripbed below
+
 After installing docker run an Ubuntu image:
 
 
@@ -60,10 +62,10 @@ docker run -v /path/to/your/data_folder:/container/path/where/you/want/your/data
 
 ```
 The -v option adds your data folder (assuming you have some data to run DNAscan on), -p mirrows the container port 8080 to your host port 8080. This will be necessary if you want to use the iobio services.
-The --storage-opt size=NG option defines the maximum size of the container, setting it to N gigabytes. This number would depend on you plans. If you want to perform annotation, the databases used by DNAscan (clinvar,CADD,etc) are about 350G. We recomend N = 500 if you want to install the whole pipeline (including annotation). To this number you should add what needed for your analysis, e.g. if you are planning to download data, the size of you data to analyse etc. A workaround to this is to use the mirrowed host folder as outdir for your analysis. This folder does not have such size limit.  
+The --storage-opt size=NG option defines the maximum size of the container, setting it to N gigabytes. This number would depend on you plans. If you want to perform annotation, the databases used by DNAscan (clinvar,CADD,etc) are about 350G. We recomend N = 500 if you want to install the whole pipeline (including annotation). To this number you should add what needed for your analysis, e.g. if you are planning to download data, the size of you data to analyse etc. A workaround to this is to use the mirrowed host folder as outdir for your analysis. This folder does not have such size limit. 
 
 IMPORTANT: to detach from the container without stopping it use Ctrl+p, Ctrl+q
-IMPORTANT: when running DNAscan inside a docker container, if you want to use the iobio services (and for example upload your results into the gene.iobio platform), these would not be visible by your browser unless in the folder where they are is mirrowed on the host system. Considering the previous command to run an ubuntu image, the easiest way to do this would be using the folder where you imported the data inside the container (container/path/where/you/want/your/data) as out dir when running DNAsca. In this way the DNAscan results can could be found in /path/to/your/data_folder on the host system.
+IMPORTANT: when running DNAscan inside a docker container, if you want to use the iobio services (and for example upload your results into the gene.iobio platform), these would not be visible by your browser unless they are in the folder which is mirrowed on the host system. Considering the previous command to run an ubuntu image, the easiest way to do this would be using the folder where you imported the data inside the container (/container/path/where/you/want/your/data) as out dir when running DNAsca. In this way the DNAscan results can be found in /path/to/your/data_folder on the host system.
 
 Then install git and download this repository and run the install_dependencies.sh script:
 
@@ -77,7 +79,7 @@ git clone https://github.com/snewhouse/DNA-NGS_scan.git
 
 cd DNA-NGS_scan
 
-#if you are not interested in performing annotation, please # the annovar lines in the install_dependencies.sh script. This would avoid the download of about 350G od databses
+#if you are not interested in performing annotation, please # the annovar lines in the install_dependencies.sh script. This would avoid the download of about 350G of databsses
 bash scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory 
 
 source ~/.bashrc
