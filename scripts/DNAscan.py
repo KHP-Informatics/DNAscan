@@ -774,7 +774,16 @@ if variantcalling:
 
                 # 10.1.2 GATK hc indel calling on selected positions (from
                 # previous step 10.1.1)
-
+                counter = 1
+                os.system("touch %smpileup_positions.bed" %(out)) 		
+                while counter < int(num_cpu) + 1:
+                    
+                    os.system("cat %smpileup_positions%s.bed >> %smpileup_positions.bed" %(out, str(counter), out))
+		
+                    counter += 1
+		
+                os.system("%sbedtools sort -i %smpileup_positions.bed > %stemp_sorted.bed ; mv  %stemp_sorted.bed %smpileup_positions.bed" %(path_bedtools, out, out, out, out))
+		
                 counter = 1
 
                 ps = []
@@ -807,7 +816,7 @@ if variantcalling:
                     (path_bedtools, out, out))
 
                 os.system(
-                    "%svcftools  --vcf %sgatk_indels_sorted_merged.vcf --minGQ 20 --minDP 2 --keep-only-indels --recode --recode-INFO-all --out %sindels_only" %
+                    "%svcftools  --vcf %sgatk_indels_sorted_merged.vcf --minGQ 20 --minDP 2  --recode --recode-INFO-all --out %sindels_only" %
                     (path_vcftools, out, out))
 
                 if not debug:
@@ -864,8 +873,8 @@ if variantcalling:
                     
                     
                     os.system(
-                        "%svcftools  --vcf %sfreebayes.vcf --minGQ 20 --minDP 2 --remove-indels --recode --recode-INFO-all --out %sSNPs_only" %
-                        (path_vcftools, out, out))
+                        "%svcftools  --vcf %sfreebayes.vcf --minGQ 20 --minDP 2 --exclude-bed %smpileup_positions.bed  --recode --recode-INFO-all --out %sSNPs_only" %
+                        (path_vcftools, out, out, out))
 
                     os.system(
                         "bgzip  %sSNPs_only.recode.vcf ; bgzip %sindels_only.recode.vcf " %
