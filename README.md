@@ -8,12 +8,12 @@ DNAscan is a fast and efficient bioinformatics pipeline that allows for the anal
 
 ![alt text](https://github.com/snewhouse/DNA-NGS_scan/raw/master/DNA_scan_paper-5.jp2)
 
-Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and optionally variant files. The pipeline firstly perform an alignment step (details in the left panel), followed by a customizable data analysis protocol (details in the right panel). Finally, results are annotated and a user friendly report is generated. Right panel: detailed description of the post alignment analysis pipeline (intensive mode). Aligned reads are used by the variant calling pipeline (Freebayes + GATK HC + Bcftools), both aligned and unaligned reads are used by Manta and ExpensionHunter (for which know repeat description files have to be provided)  to look for structural variants. The unaligned reads are mapped to a database of known viral genomes (NCBI database) to screen for the presence of their genetic material in the input sequencing data. Left panel: Alignment stage description. Raw reads are aligned with HISAT2. Resulting soft/hard-clipped reads and unaligned reads are realigned with BWA mem and then merged with the others using samtools.
+Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and optionally variant files. The pipeline firstly perform an alignment step (details in the left panel), followed by a customizable data analysis protocol (details in the right panel). Finally, results are annotated and a user friendly report is generated. Right panel: detailed description of the post alignment analysis pipeline (intensive mode). Aligned reads are used by the variant calling pipeline (Freebayes + GATK HC + Bcftools), both aligned and unaligned reads are used by Manta and ExpensionHunter (for which known repeat description files have to be provided)  to look for structural variants. The unaligned reads are mapped to a database of known viral genomes (NCBI database) to screen for the presence of their genetic material in the input sequencing data. Left panel: Alignment stage description. Raw reads are aligned with HISAT2. Resulting soft/hard-clipped reads and unaligned reads are realigned with BWA mem and then merged with the others using samtools.
 
 
 ## Citation
 
-[Alfredo Iacoangeli et al. DNA: a fast, computationally and memory efficient bioinformatics pipeline for analysis of DNA next-generation-sequencing data. Bioinformatics, 2017](https://docs.google.com/document/d/1a_ueKKppMb1AwInsW4UL2XtmtBuztbbRbhSguTieYg4/edit?usp=sharing)
+[Alfredo Iacoangeli et al. DNAscan: a fast, computationally and memory efficient bioinformatics pipeline for analysis of DNA next-generation-sequencing data. Bioinformatics, 2017](https://docs.google.com/document/d/1a_ueKKppMb1AwInsW4UL2XtmtBuztbbRbhSguTieYg4/edit?usp=sharing)
 
 ## Documentation
 
@@ -22,10 +22,10 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 - Ubuntu >= 14.04
 - RAM: at least 4.2 Gb for the fast mode. 8 Gb for the other modes. 
 - Space required by the installation: 
-  - By the dependencies and DNscan: we reccomend at least 10Gb of free space for the whole DNAscan deplyment, including the dependencies. 
+  - By the dependencies and DNAscan: we reccomend at least 10Gb of free space for the whole DNAscan deplyment, including the dependencies. 
   - 8Gb for the reference human genome and the hisat2 index. An extra 5.5Gb for the bwa index are required if you want to use         the normal or intensive modes   
   - An extra 400Gb would be required if you wish to perform the annotation stage. This uses annovar databases which need to be dowloaded, such as CADD, Clinvar, dbSNP, etc
-- Scratch space for usage: If you are performing the alignment stage and your input data is in fastq.gz format we recommend at 3 times the sice of your input data. E.g. your fastq.gz files are 100Gb, thus you would need 300Gb of free space. If you dont wish to performe alignment a proportion data-to-analyse:free-space of 1:1 would be enough. E.g. Input data is a 50Gb bam file, you would need only 50Gb free space on drive. 
+- Scratch space for usage: If you are performing the alignment stage and your input data is in fastq.gz format we recommend at 3 times the size of your input data. E.g. your fastq.gz files are 100Gb, thus you would need 300Gb of free space. If you don't wish to performe the alignment a proportion data-to-analyse:free-space of 1:1 would be enough. E.g. Input data is a 50Gb bam file, you would need only 50Gb free space. 
 
 ### Obtaining
 
@@ -33,25 +33,25 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 Please make sure all dependencies are installed before running DNAscan. Instrutions about how to install all dependencies are available in the following chapter. However a bash script to set up all dependencies (Annovar and GATK need a manual registration and download step) is available in scripts.
 
-To download DNAscan please use git to download the most recent development tree:
+To obtain DNAscan please use git to download the most recent development tree:
 
 ```bash
 git clone https://github.com/snewhouse/DNA-NGS_scan.git
 ```
 
-Once you have downloaded DNAscan, you can set up all needed dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts. Before running install_dependencies.sh please install Annovar by registering at the following [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php) and download GATK 3.8 at the following [link](https://software.broadinstitute.org/gatk/download/). Install_dependencies.sh will install all softaware dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. 
+Once you have downloaded DNAscan, you can set up all needed dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts. Before running install_dependencies.sh please install Annovar by registering at the following [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php) and download GATK 3.8 at the following [link](https://software.broadinstitute.org/gatk/download/). Install_dependencies.sh will install all software dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. 
 
 ```bash
 
-bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory /path/to/annovar/directory
+bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory /path/to/annovar/directory /path/to/GATK3.8/download
 
 source ~/.bashrc
 
 ```
 
-You can easly set up your running deployment of DNAscan using docker. For instructutions about how to install docker see following sections.
+You can easily set up your running deployment of DNAscan using docker. For instructutions about how to install docker see following sections.
 
-IMPORTANT: if you want to use the intensive mode or the annotation step of DNAscan you need to register and download both Annovar and GATK 3.8. Remember to mirrow into the container the volder where you have deplyed these using the -v flag of copying them inside the container using the docker cp command as descripbed below
+IMPORTANT: if you want to use the intensive mode or the annotation step of DNAscan you need to register and download both Annovar and GATK 3.8. Remember to mirrow into the container the folder where you have deployed these using the -v flag of copying them inside the container using the docker cp command as descripbed below
 
 After installing docker run an Ubuntu image:
 
@@ -62,12 +62,12 @@ docker run -v /path/to/your/data_folder:/container/path/where/you/want/your/data
 
 ```
 The -v option adds your data folder (assuming you have some data to run DNAscan on), -p mirrows the container port 8080 to your host port 8080. This will be necessary if you want to use the iobio services.
-The --storage-opt size=NG option defines the maximum size of the container, setting it to N gigabytes. This number would depend on you plans. If you want to perform annotation, the databases used by DNAscan (clinvar,CADD,etc) are about 350G. We recomend N = 500 if you want to install the whole pipeline (including annotation). To this number you should add what needed for your analysis, e.g. if you are planning to download data, the size of you data to analyse etc. A workaround to this is to use the mirrowed host folder as outdir for your analysis. This folder does not have such size limit. 
+The --storage-opt size=Ngigas option defines the maximum size of the container, setting it to N gigabytes. This number would depend on you plans. If you want to perform annotation, the databases used by DNAscan (clinvar,CADD,etc) are about 350G. We recomend N = 500 if you want to install the whole pipeline (including annotation). To this number you should add what needed for your analysis, e.g. if you are planning to download data, the size of you data to analyse etc. A workaround to this is to use the mirrowed host folder as outdir for your analysis and as annovar folder. This folder does not have such size limit. 
 
 IMPORTANT: to detach from the container without stopping it use Ctrl+p, Ctrl+q
 IMPORTANT: when running DNAscan inside a docker container, if you want to use the iobio services (and for example upload your results into the gene.iobio platform), these would not be visible by your browser unless they are in the folder which is mirrowed on the host system. Considering the previous command to run an ubuntu image, the easiest way to do this would be using the folder where you imported the data inside the container (/container/path/where/you/want/your/data) as out dir when running DNAsca. In this way the DNAscan results can be found in /path/to/your/data_folder on the host system.
 
-Then install git and download this repository and run the install_dependencies.sh script:
+Then install git, download this repository and run the install_dependencies.sh script:
 
 ```bash
 
@@ -80,7 +80,7 @@ git clone https://github.com/snewhouse/DNA-NGS_scan.git
 cd DNA-NGS_scan
 
 #if you are not interested in performing annotation, please # the annovar lines in the install_dependencies.sh script. This would avoid the download of about 350G of databsses
-bash scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory 
+bash scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory path/to/annovar/directory /path/to/GATK3.8/download
 
 source ~/.bashrc
 
@@ -113,6 +113,7 @@ Its basic use requires the following options:
   -format FORMAT        options are bam, sam, fastq, vcf [string] 
   -reference REFERENCE  options are hg19, hg38 [string]
   -in INPUT_FILE        input file [string]
+  -in2 INPUT_FILE       second input file (for paired end reads in fastq format only) [string]
   -out OUT              path to the output folder. It has to end in /" e.g. /home/user/local/test_folder/
 
  ```
@@ -143,7 +144,7 @@ Also, one of the three analysis modes can be chosen with the -mode option:
 -mode  MODE            options are fast, normal, intensive [string] (default = "fast")
 
 ```
-Fast mode uses Hisat2 and Freebayes to quickly align and call variants. It is ideal if you are focusing your analysis on single nucleotyde variants. Normal mode performs an alignment refinement using BWA on selected reads. This step improves the alignment of soft-clipped reads and reads containing small indels. It is suggested if your focus is on structural variants. Intensive mode adds to the pipeline a further indel calling using GATK Haplotype Caller which improves the performance on small indels. If your analysis focus on the discovery of non human material (e.g. viruses or bacteria) in your sequencing data, fast mode is recomended for known microbes discovery while normal mode improves the discovery or divergent microbes. A detailed description of the 3 modes can be found in the [DNAscan paper](link).  
+Fast mode uses Hisat2 and Freebayes to quickly align and call variants. It is ideal if you are focusing your analysis on single nucleotyde variants. Normal mode performs an alignment refinement using BWA on selected reads. This step improves the alignment of soft-clipped reads and reads containing small indels. It is suggested if your focus is on structural variants. Intensive mode adds to the pipeline a further indel calling step using GATK Haplotype Caller which improves the performance on small indels. If your analysis focuses on the discovery of non human material (e.g. viruses or bacteria) in your sequencing data, please note that that the selceted mode does not affect this step. A detailed description of the 3 modes can be found in the [DNAscan paper](link).  
 
 Finally, a set of optional arguments can be used to customise the analysis:
 
@@ -162,7 +163,7 @@ Finally, a set of optional arguments can be used to customise the analysis:
 Let's assume we have human paired end whole exome sequening data in two fastq files and want to perform snvs/indels calling vs hg19, annotation and explore the results using the iobio services. The DNAscan command line would be:
 
  ```bash
-python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2  data2.fq.gz -reference hg19 -alignment -variantcalling -annotation -iobio -out /path/to/outdir -mode fast
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -annotation -iobio -out /path/to/outdir -mode fast
 ```
 Using the sequencing data provided in the data folder:
 
@@ -179,13 +180,13 @@ DNAscan output tree:
 
 ```bash
 
-./$out_dir-| # this is the folder given to DNAsca using the -out flag. Will contain the aligned sequecing data ($sample_name.bam) as well as some temporanery files
+./$out_dir-| # this is the folder given to DNAsca using the -out flag. It will contain the aligned sequecing data ($sample_name.bam) as well as some temporanery files
            |
-           |-results # will contain the output of the analyses. E.g. $sample_name_sorted.vcf.gz , $sample_name_SV.vcf.gz, virus_results.txt, etc  
+           |-results # This will contain the output of the analyses. E.g. $sample_name_sorted.vcf.gz , $sample_name_SV.vcf.gz, virus_results.txt, etc  
            |
            |-reports # If any report flags is used, this folder will contain the reports. E.g. $sample_name_vcfstats.txt if the -calls_report flag is used
            |
-           |-logs #logs files are generated in this folder
+           |-logs # Logs files are generated in this folder
            
            
 ### How to download the reference genome
@@ -224,7 +225,7 @@ samtools faidx hg19.fa
 
 #### Virus
 
-Copy and paste in your command line the following commands to download the whole NCBI database of complete viral genome
+Copy and paste in your command line the following commands to download the whole NCBI database of complete viral genomes
 
 ```bash 
 mkdir /path/to/wherever/virus_db
@@ -249,7 +250,7 @@ rm viral.1.1.genomic.fna viral.2.1.genomic.fna
 
 #### Bacteria
 
-Copy and paste in your command line the following commands to download the whole NCBI database of complete bacterial genome (this might take a long time)
+Copy and paste in your command line the following commands to download the whole NCBI database of complete bacterial genomes (this might take a long time)
 
 ```bash 
 mkdir /path/to/wherever/bacteria_db
@@ -265,7 +266,7 @@ for i in $(ls | grep -e genomic.fna -e bacteria); do cat $i >> bacteria_db.fa ; 
 
 #### Fungi
 
-Copy and paste in your command line the following commands to download the whole NCBI database of complete bacterial genome (this might take a long time)
+Copy and paste in your command line the following commands to download the whole NCBI database of complete fungi genomes 
 
 ```bash 
 mkdir /path/to/wherever/fungi_db
@@ -311,36 +312,35 @@ E.g. If the reference genome is the file hg19.fa, located in /home/dataset/ and 
 #### List of dependencies
 
 Fast mode pipeline (ideal if focusing on SNVs):
-* Samtools 1.3
-* HISAT2 2.1.0
-* Freebayes 1.0.2
-* Python 3.5
-* Vcftools 0.1.13 
-* Bedtools2 2.25
+* Samtools >= 1.3
+* HISAT2 >= 2.1.0
+* Freebayes >= 1.0.2
+* Python >= 3
+* Vcftools >= 0.1.13 
+* Bedtools2 >= 2.25
 * Manta 1.2.0 (optional, needed only if interested in structural variants)
-* ExpansionHunter 2.0.9 (optional, needed only if interested in known motif expansions)
-* Bcftools 1.5 (optional, needed only if interested in performing custome variant filtering)
-* Annovar "Version: $Date: 2016-02-01 00:11:18 -0800 (Mon, 1 Feb 2016)" (optional, needed only if interested in performing variant annotation)
+* ExpansionHunter >= 2.0.9 (optional, needed only if interested in known motif expansions)
+* Bcftools >= 1.3 (optional, needed only if interested in performing custome variant filtering)
+* Annovar "Version >= $Date: 2016-02-01 00:11:18 -0800 (Mon, 1 Feb 2016)" (optional, needed only if interested in performing variant annotation)
 
 Normal mode pipeline (better performance on indels and SVs):
 * BWA 0.7.15 
 
 Intensive mode pipeline (top performance on indels):
-* Genome Analysis Toolkit 3.5 
+* Genome Analysis Toolkit 3.8 
 
 Tools needed for generating graphical reports 
-* RTG Tools 3.6.2 
-* Multiqc 1.2 
+* RTG Tools >= 3.6.2 
+* Multiqc >= 1.2 
 
 Tools needed to allow an on-the-fly result interpretation 
-* Gene.IoBio platform 2.1 
+* Gene.IoBio platform >= 2.1 
 * Vcf.IoBio platform 
 * Bam.IoBio platform
 
 Tools needed for a container based deplyment 
-* Docker 1.7.1
-* Docker-compose 1.4.2
-* Singularity 2.2 
+* Docker >= 1.7.1
+* Singularity >= 2.2 
 
 #### How to install dependencies
 
