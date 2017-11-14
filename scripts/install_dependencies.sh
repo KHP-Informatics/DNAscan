@@ -1,13 +1,15 @@
 #!/bin/bash
 
-#Usage: bash install_dependencies.sh $path_to_setup_dir $path_to_DNASCAN_dir
-#Example: bash install_dependencies.sh /home/local/ /home/DNA-NGS_scan /home/annovar
+#Usage: bash install_dependencies.sh $path_to_setup_dir $path_to_DNASCAN_dir $path_to_ANNOVAR $path_to_gatk_download
+#Example: bash install_dependencies.sh /home/local/ /home/DNA-NGS_scan /home/annovar /home/gatk_download_dir
 
 INSTALL_DIR=$1
 
 DNASCAN_DIR=$2
 
 ANNOVAR_DIR=$3
+
+GATK_DOWNLOAD_DIR=$4
 
 apt-get install -y update
 
@@ -81,6 +83,7 @@ conda install -y fastqc
 
 conda install -y expansionhunter
 
+gatk-register $GATK_DOWNLOAD_DIR/GenomeAnalysisTK-3.8.tar.bz2 
 
 cd $DNASCAN_DIR
 
