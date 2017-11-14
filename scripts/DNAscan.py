@@ -876,6 +876,8 @@ if variantcalling:
                         "%svcftools  --vcf %sfreebayes.vcf --minGQ 20 --minDP 2 --exclude-bed %smpileup_positions.bed  --recode --recode-INFO-all --out %sSNPs_only" %
                         (path_vcftools, out, out, out))
 
+                    os.system( "%sSNPs_only.log" %(out))
+			
                     os.system(
                         "bgzip  %sSNPs_only.recode.vcf ; bgzip %sindels_only.recode.vcf " %
                         (out, out))
@@ -926,8 +928,8 @@ if variantcalling:
                 if not debug:
 
                     os.system(
-                        "rm %sfreebayes* %sSNPs_only.log %stemp* %smerged.vcf" %
-                        (out, out, out, out))
+                        "rm %sfreebayes*  %stemp* %smerged.vcf" %
+                        (out, out, out))
 
                 os.system("touch  %slogs/VC_freebayes.log" % (out))
 
