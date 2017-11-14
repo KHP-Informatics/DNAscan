@@ -819,11 +819,7 @@ if variantcalling:
                     "%svcftools  --vcf %sgatk_indels_sorted_merged.vcf --minGQ 20 --minDP 2  --recode --recode-INFO-all --out %sindels_only" %
                     (path_vcftools, out, out))
 
-                if not debug:
-
-                    os.system(
-                        "rm %sgatk_indels* %smpileup_positions* %sindels_only.log" %
-                        (out, out, out))
+                
 
                 os.system("touch  %slogs/VC_gatk.log" % (out))
 
@@ -902,7 +898,6 @@ if variantcalling:
                     
                     variant_results_file = "%s%s_sorted.vcf.gz" %(out, sample_name)
 
-                    
 
                     os.system(
                             "%stabix -p vcf %s%s_sorted.vcf.gz" %
@@ -910,7 +905,7 @@ if variantcalling:
                     
                     if not debug:
 
-                            os.system("rm %s%s.vcf* " % (out, sample_name))
+                            os.system("rm %s%s.vcf* %sgatk_indels* %smpileup_positions* %sindels_only.log" % (out, sample_name, out, out, out))
 
                 else:
 
