@@ -1,9 +1,9 @@
 If you are reading this file you have already installed all DNAscan dependencies except GATK 3.8 and Annovar.
 These two software require registration to be used. Please register and download Annovar at http://www.openbioinformatics.org/annovar/annovar_download_form.php and GATK 3.8 at https://software.broadinstitute.org/gatk/download/ .
 
-After succefully registering and downloading the two software you can either change the appropiate paths in paths.py and download the needed Annovar databases (see below) or run the following command:
+After succefully registering and downloading the two softwares you can either change the appropiate paths in paths.py, follow the installation instructions on the software websites and download the needed Annovar databases (see below) or run the following command:
 
-bash /path/to/DNAscan/scripts/install_annovar_and_gatk.sh /path/to/annovar/ /path/to/gatk.bz2/dir/  
+bash /path/to/DNAscan/scripts/install_annovar_and_gatk.sh $path_to_setup_dir $path_to_DNASCAN_dir $path_to_ANNOVAR_download $path_to_gatk.bz2_download 
 
 To download the Annovar databases use the following commands replacing the appropiate paths:
 
