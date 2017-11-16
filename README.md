@@ -170,7 +170,7 @@ Using the sequencing data provided in the data folder:
  ```bash
  cd /path/to/DNAscan_main_dir
  
-python3 scripts/DNAscan.py -format fastq -in data/test_data.1.fq.gz -in2 data/test_data.2.fq.gz -reference hg19 -alignment-variantcalling -annotation -iobio - out outdir/ -mode fast -BED
+python3 scripts/DNAscan.py -format fastq -in data/test_data.1.fq.gz -in2 data/test_data.2.fq.gz -reference hg19 -alignment -variantcalling -annotation -iobio -out outdir/ -mode fast -BED
 ```
 IMPORTANT: All paths in DNAscan end with "/"
 
