@@ -1,0 +1,13 @@
+############################################################
+# This is a docker image of the DNAscan pipeline           #
+#							   #
+# GATK and Annovar were not installed when this image was  #
+# built due to licencing issues. In practical terms this   #
+# this means that the annotation step and intensive mode   #
+# are not available. If you wish to be able to perform     #
+# those please follow the instructions in                  #
+# /home/DNA-NGS_scan/GATK_Annovar_readme.txt               #
+#                                                          #
+# For instructions about how to use DNAscan please read    #
+# /home/DNA-NGS_scan/README.md                             #
+############################################################
