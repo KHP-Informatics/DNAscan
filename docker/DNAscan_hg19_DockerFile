@@ -11,7 +11,7 @@ RUN apt-get install -y git
 RUN cd /home/
 RUN git clone https://github.com/snewhouse/DNA-NGS_scan.git
 RUN cd DNA-NGS_scan
-RUN bash scripts/install_dependencies_docker.sh /home/DNA-NGS_scan/local/ /home/DNA-NGS_scan/ 
+RUN bash scripts/install_dependencies_hg19_docker.sh /home/DNA-NGS_scan/local/ /home/DNA-NGS_scan/ 
 RUN source ~/.bashrc
 
 EXPOSE 8080
