@@ -19,3 +19,5 @@ $ANNOVAR_DIR/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar clinv
 
 $ANNOVAR_DIR/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp147 $DNAscan_INSTALL_DIR/humandb/
 
+IMPORTANT: if you are using Docker to deploy DNAscan, after downloading Annovar and GATK you have to mirror their folders inside the Docker container. You can do this either by using the "docker cp" or the -v flag to mount the volume when starting the container. For more detailed instructions about how to do this please read the $DNAscan_INSTALL_DIR/README.md file.
+
