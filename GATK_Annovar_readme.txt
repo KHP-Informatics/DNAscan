@@ -3,7 +3,7 @@ These two software require registration to be used. Please register and download
 
 After succefully registering and downloading the two softwares you can either change the appropiate paths in paths.py, follow the installation instructions on the software websites and download the needed Annovar databases (see below) or run the following command:
 
-bash /path/to/DNAscan/scripts/install_annovar_and_gatk.sh $path_to_setup_dir $path_to_DNASCAN_dir $path_to_ANNOVAR_download $path_to_gatk.bz2_download 
+bash /path/to/DNAscan/scripts/install_annovar_and_gatk.sh $path_to_setup_dir $path_to_DNASCAN_dir $path_to_ANNOVAR $path_to_gatk.bz2_download 
 
 To download the Annovar databases use the following commands replacing the appropiate paths:
 
