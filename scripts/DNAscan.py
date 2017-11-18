@@ -128,6 +128,8 @@ RG_SM = paths.RG_SM
 
 path_scripts = paths.path_scripts
 
+path_samblaster = paths.path_samblaster
+
 
 # 3. Define options variables from command line
 
