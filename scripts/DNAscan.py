@@ -433,7 +433,11 @@ else:
 
 # 7. Alignment
 # Performs alignment if input sequencing data is in fastq format
-
+if rm_dup:
+	
+	samblaster_cmq ="%ssamblaster |" %(path_samblaster)
+	
+	
 if alignment:
 
     if format == "fastq" and "alignment.log" not in os.listdir(out + "logs"):
@@ -447,12 +451,13 @@ if alignment:
             if mode == "fast":
 
                 os.system(
-                    "%shisat2 --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %ssamtools view -Sb -  | %ssamtools sort -@ %s -T %stemp.sorted -o %ssorted.bam ; %ssamtools index %ssorted.bam" %
+                    "%shisat2 --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %s %ssamtools view -Sb -  | %ssamtools sort -@ %s -T %stemp.sorted -o %ssorted.bam ; %ssamtools index %ssorted.bam" %
                     (path_hisat,
                      num_cpu,
                      path_hisat_index,
                      input_file,
                      input_file2,
+		     samblaster_cmq,
                      path_samtools,
                      path_samtools,
 		     num_cpu,
@@ -494,13 +499,14 @@ if alignment:
                     rg_option_bwa = ""
 
                 os.system(
-                    "%shisat2 %s  --no-softclip --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %ssamtools view -Sb -  | %ssamtools sort -@ %s -T %s -o %ssorted.bam ; %ssamtools index %ssorted.bam" %
+                    "%shisat2 %s  --no-softclip --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %s %ssamtools view -Sb -  | %ssamtools sort -@ %s -T %s -o %ssorted.bam ; %ssamtools index %ssorted.bam" %
                     (path_hisat,
                      rg_option_hisat2,
                      num_cpu,
                      path_hisat_index,
                      input_file,
                      input_file2,
+		     samblaster_cmq,
                      path_samtools,
                      path_samtools,
 		     num_cpu,
@@ -514,12 +520,13 @@ if alignment:
                     (path_samtools, num_cpu, out, out))
 
                 os.system(
-                    "%sbwa mem %s -t %s %s %sunaligned_reads.fq | %ssamtools view -Sb -  | %ssamtools sort -@ %s -T %s -o %ssorted_bwa.bam ; %ssamtools index %ssorted_bwa.bam " %
+                    "%sbwa mem %s -t %s %s %sunaligned_reads.fq | %s %ssamtools view -Sb -  | %ssamtools sort -@ %s -T %s -o %ssorted_bwa.bam ; %ssamtools index %ssorted_bwa.bam " %
                     (path_bwa,
                      rg_option_bwa,
                      num_cpu,
                      path_bwa_index,
                      out,
+		     samblaster_cmq,
                      path_samtools,
                      path_samtools,
 		     num_cpu,
@@ -559,11 +566,12 @@ if alignment:
             if mode == "fast":
 
                 os.system(
-                    "%shisat2 --no-spliced-alignment--remove-chrname -p %s -x %s -U %s | %ssamtools view -Sb -  | %ssamtools sort -T %stemp.sorted -o %ssorted.bam ; %ssamtools index %ssorted.bam" %
+                    "%shisat2 --no-spliced-alignment--remove-chrname -p %s -x %s -U %s | %s %ssamtools view -Sb -  | %ssamtools sort -T %stemp.sorted -o %ssorted.bam ; %ssamtools index %ssorted.bam" %
                     (path_hisat,
                      num_cpu,
                      path_hisat_index,
                      input_file,
+		     samblaster_cmq,
                      path_samtools,
                      path_samtools,
                      out,
@@ -602,12 +610,13 @@ if alignment:
                     rg_option = ""
 
                 os.system(
-                    "%shisat2  --no-softclip --no-spliced-alignment -p %s -x %s -U %s | %ssamtools view -Sb -  | %ssamtools sort -T %s -o %ssorted.bam ; %ssamtools index %ssorted.bam" %
+                    "%shisat2  --no-softclip --no-spliced-alignment -p %s -x %s -U %s | %s %ssamtools view -Sb -  | %ssamtools sort -T %s -o %ssorted.bam ; %ssamtools index %ssorted.bam" %
                     (path_hisat,
                      rg_option_hisat2,
                      num_cpu,
                      path_hisat_index,
                      input_file,
+		     samblaster_cmq,
                      path_samtools,
                      path_samtools,
                      out,
@@ -620,12 +629,13 @@ if alignment:
                     (path_samtools, num_cpu, out, out))
 
                 os.system(
-                    "%sbwa mem %s -t %s %s %sunaligned_reads.fq| %ssamtools view -Sb -  | %ssamtools sort -T %s -o %ssorted_bwa.bam ; %ssamtools index %ssorted_bwa.bam " %
+                    "%sbwa mem %s -t %s %s %sunaligned_reads.fq| %s %ssamtools view -Sb -  | %ssamtools sort -T %s -o %ssorted_bwa.bam ; %ssamtools index %ssorted_bwa.bam " %
                     (path_bwa,
                      rg_option_bwa,
                      num_cpu,
                      path_bwa_index,
                      out,
+		     samblaster_cmq,
                      path_samtools,
                      path_samtools,
                      out,
@@ -674,34 +684,7 @@ if alignment:
 
                 bam_file = "%ssorted.bam" % (out)
 
-# 8. Remove duplicates
 
-if rm_dup:
-
-    if "rm_dup.log" in os.listdir(out + "logs"):
-
-        print("WARNING: The presence of rm_dup.log in logs is telling you that the duplicate removal was already peformed, please remove rm_dup.log if you wish to perform this stage anyway\n")
-
-    else:
-
-        if paired == 0:
-
-            single_end_option = "-S"
-
-        else:
-
-            single_end = ""
-
-        os.system("%ssamtools rmdup %s %s %ssorted_merged_rmdup.bam" %
-                  (path_samtools, single_end_option, bam_file, out))
-
-        bam_file = "%ssorted_merged_rmdup.bam" % (out)
-
-        if not debug:
-
-            os.system("rm %ssorted_merged.bam" % (out))
-
-        s.system("touch  %slogs/rm_dup.log" % (out))
 
 # 9. Convert input sam file into bam
 
