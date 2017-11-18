@@ -36,6 +36,7 @@ path_expansionHunter = ""
 
 path_expansionHunter_jsons = ""
 
+path_samblaster = ""
 
 #this is the port used to reach the local deployment of the iobio serveces. E.g. if port = "8080" the iobio serveces will be available at http://localhost:8080 
 port_num = "8080"
