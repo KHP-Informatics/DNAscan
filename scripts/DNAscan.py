@@ -459,7 +459,7 @@ if alignment:
             if mode == "fast":
 
                 os.system(
-                    "%shisat2 --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s  -o %ssorted.bam  /dev/stdin ; %ssamtools index %ssorted.bam" %
+                    "%shisat2 --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s  -o %ssorted.bam  /dev/stdin ; %ssamtools index -@ %s %ssorted.bam" %
                     (path_hisat,
                      num_cpu,
                      path_hisat_index,
@@ -471,6 +471,7 @@ if alignment:
 		     num_cpu,
                      out,
                      path_samtools,
+		     num_cpu,
                      out))
 
                 bam_file = "%ssorted.bam" % (out)
@@ -506,7 +507,7 @@ if alignment:
                     rg_option_bwa = ""
 
                 os.system(
-                    "%shisat2 %s  --no-softclip --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s  -o %ssorted.bam /dev/stdin; %ssamtools index %ssorted.bam" %
+                    "%shisat2 %s  --no-softclip --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s  -o %ssorted.bam /dev/stdin; %ssamtools index -@ %s %ssorted.bam" %
                     (path_hisat,
                      rg_option_hisat2,
                      num_cpu,
@@ -519,6 +520,7 @@ if alignment:
 		     num_cpu,
                      out,
                      path_samtools,
+		     num_cpu,
                      out))
 
                 os.system(
@@ -526,7 +528,7 @@ if alignment:
                     (path_samtools, num_cpu, out, out))
 
                 os.system(
-                    "%sbwa mem %s -t %s %s %sunaligned_reads.fq | %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted_bwa.bam  /dev/stdin ; %ssamtools index %ssorted_bwa.bam " %
+                    "%sbwa mem %s -t %s %s %sunaligned_reads.fq | %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted_bwa.bam  /dev/stdin ; %ssamtools index -@ %s %ssorted_bwa.bam " %
                     (path_bwa,
                      rg_option_bwa,
                      num_cpu,
@@ -538,6 +540,7 @@ if alignment:
 		     num_cpu,
                      out,
                      path_samtools,
+		     num_cpu,
                      out))
 
                 os.system(
@@ -555,8 +558,8 @@ if alignment:
                         (out, out, out, out))
 
                 os.system(
-                    "%ssamtools index %ssorted_merged.bam" %
-                    (path_samtools, out))
+                    "%ssamtools index -@ %s %ssorted_merged.bam" %
+                    (path_samtools, num_cpu, out))
 
                 bam_file = "%ssorted_merged.bam" % (out)
 
@@ -571,7 +574,7 @@ if alignment:
             if mode == "fast":
 
                 os.system(
-                    "%shisat2 --no-spliced-alignment -p %s -x %s -U %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted.bam /dev/stdin ; %ssamtools index %ssorted.bam" %
+                    "%shisat2 --no-spliced-alignment -p %s -x %s -U %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted.bam /dev/stdin ; %ssamtools index -@ %s %ssorted.bam" %
                     (path_hisat,
                      num_cpu,
                      path_hisat_index,
@@ -582,6 +585,7 @@ if alignment:
                      num_cpu,
                      out,
                      path_samtools,
+		     num_cpu,
                      out))
 
                 bam_file = "%ssorted.bam" % (out)
@@ -615,7 +619,7 @@ if alignment:
                     rg_option = ""
 
                 os.system(
-                    "%shisat2  --no-softclip --no-spliced-alignment -p %s -x %s -U %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted.bam /dev/stdin; %ssamtools index %ssorted.bam" %
+                    "%shisat2  --no-softclip --no-spliced-alignment -p %s -x %s -U %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted.bam /dev/stdin; %ssamtools index -@ %s %ssorted.bam" %
                     (path_hisat,
                      rg_option_hisat2,
                      num_cpu,
@@ -627,6 +631,7 @@ if alignment:
                      num_cpu,
                      out,
                      path_samtools,
+		     num_cpu,
                      out))
 
                 os.system(
@@ -634,7 +639,7 @@ if alignment:
                     (path_samtools, num_cpu, out, out))
 
                 os.system(
-                    "%sbwa mem %s -t %s %s %sunaligned_reads.fq| %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted_bwa.bam /dev/stdin; %ssamtools index %ssorted_bwa.bam " %
+                    "%sbwa mem %s -t %s %s %sunaligned_reads.fq| %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted_bwa.bam /dev/stdin; %ssamtools index -@ %s %ssorted_bwa.bam " %
                     (path_bwa,
                      rg_option_bwa,
                      num_cpu,
@@ -646,6 +651,7 @@ if alignment:
                      num_cpu,
                      out,
                      path_samtools,
+		     num_cpu,
                      out))
 
                 os.system(
@@ -657,8 +663,8 @@ if alignment:
                     (path_samtools, num_cpu, out, out, out, out))
 
                 os.system(
-                    "%ssamtools index %ssorted_merged.bam " %
-                    (path_samtools, out))
+                    "%ssamtools index -@ %s %ssorted_merged.bam " %
+                    (path_samtools, num_cpu, out))
 
                 if not debug:
 
@@ -1134,8 +1140,8 @@ if virus or bacteria or custom_microbes:
                 (path_hisat, num_cpu, path_virus_index, out, path_samtools, path_samtools, out, out))
 
             os.system(
-                "%ssamtools index %soutput_virus.bam; %ssamtools idxstats %soutput_virus.bam > %svirus_stats.txt" %
-                (path_samtools, out, path_samtools, out, out))
+                "%ssamtools index -@ %s %soutput_virus.bam; %ssamtools idxstats %soutput_virus.bam > %svirus_stats.txt" %
+                (path_samtools, num_cpu, out, path_samtools, out, out))
 
             # 15.2.2 Generates virus report
 
@@ -1192,8 +1198,8 @@ if virus or bacteria or custom_microbes:
                 (path_hisat, num_cpu, path_bacteria_index, out, path_samtools, path_samtools, out, out))
 
             os.system(
-                "%ssamtools index %soutput_bacteria.bam; %ssamtools idxstats %soutput_bacteria.bam > %sbacteria_stats.txt" %
-                (path_samtools, out, path_samtools, out, out))
+                "%ssamtools index -@ %s %soutput_bacteria.bam; %ssamtools idxstats %soutput_bacteria.bam > %sbacteria_stats.txt" %
+                (path_samtools, num_cpu, out, path_samtools, out, out))
 
             # 15.2.4 Generates bacteria report
 
@@ -1260,8 +1266,8 @@ if virus or bacteria or custom_microbes:
                  out))
 
             os.system(
-                "%ssamtools index %soutput_custom_microbes.bam; %ssamtools idxstats %soutput_custom_microbes.bam > %scustom_microbes_stats.txt" %
-                (path_samtools, out, path_samtools, out, out))
+                "%ssamtools index -@ %s %soutput_custom_microbes.bam; %ssamtools idxstats %soutput_custom_microbes.bam > %scustom_microbes_stats.txt" %
+                (path_samtools, num_cpu, out, path_samtools, out, out))
 
             # 15.2.6 Generates user-selected microbes report
 
