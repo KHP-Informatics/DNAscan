@@ -65,6 +65,10 @@ conda install -y fastqc
 
 conda install -y expansionhunter
 
+conda install -y sambamba
+
+conda install -y samblaster
+
 cd $DNASCAN_DIR
 
 mkdir hg38
