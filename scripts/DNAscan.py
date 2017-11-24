@@ -439,7 +439,11 @@ else:
 # Performs alignment if input sequencing data is in fastq format
 if rm_dup:
 	
-	samblaster_cmq ="%ssamblaster |" %(path_samblaster)
+	samblaster_cmq = "%ssamblaster |" %(path_samblaster)
+	
+else:
+	
+	samblaster_cmq= ""
 	
 	
 if alignment:
