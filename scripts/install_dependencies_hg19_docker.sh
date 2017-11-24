@@ -47,6 +47,10 @@ conda install -y freebayes
 
 conda install -y bedtools
 
+conda install -y sambamba
+
+conda install -y samblaster
+
 conda install -y vcftools
 
 conda install -y bcftools
