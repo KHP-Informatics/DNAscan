@@ -83,6 +83,8 @@ conda install -y fastqc
 
 conda install -y expansionhunter
 
+conda install -y sambamba
+
 gatk-register $GATK_DOWNLOAD_DIR/GenomeAnalysisTK-3.8.tar.bz2 
 
 cd $DNASCAN_DIR
