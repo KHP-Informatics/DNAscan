@@ -26,6 +26,8 @@ path_multiqc = ""
 
 path_fastqc = ""
 
+path_sambamba = ""
+
 path_freebayes = ""
 
 path_annovar = ""
