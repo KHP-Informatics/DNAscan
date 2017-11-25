@@ -11,7 +11,7 @@
 	* [Output](#output)
 	* [How to download the reference genome](#how-to-download-the-reference-genome)
 	* [How to download the NCBI microbes DBs](#how-to-download-the-ncbi-microbes-dbs)
-	* [How to index the reference genome (or a microbes DB)](#howito-index-the-reference-genome-or-a-microbes-db)
+	* [How to index the reference genome or a microbes DB](#howito-index-the-reference-genome-or-a-microbes-db)
 	* [Dependencies](#dependencies)
 	* [Docker and Singularity](docker-and-singularity)
 3. [Core Contributors](#core-contributors)
