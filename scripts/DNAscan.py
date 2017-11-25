@@ -13,14 +13,14 @@
 # 4. Parse options from command line
 # 5. Create working dir tree
 # 6. Bed splitting
-# 7. Alignment
-#   7.1 Aligns paired end reads
-#       7.1.1 Fast mode alignment
-#       7.1.2 Normal and intesive mode alignment
-#   7.2 Aligns single end reads
-#       7.2.1 Fast mode alignment
-#       7.2.2 Normal and intesive mode alignment
-# 8. Remove duplicates
+# 7. Remove duplicates
+# 8. Alignment 
+#   8.1 Aligns paired end reads
+#       8.1.1 Fast mode alignment
+#       8.1.2 Normal and intesive mode alignment
+#   8.2 Aligns single end reads
+#       8.2.1 Fast mode alignment
+#       8.2.2 Normal and intesive mode alignment
 # 9. If input file is a sam file, it converts it into bam
 # 10. Variant (snv and indel) calling
 #   10.1 GATK hc indel calling (only performed in intensive mode)
@@ -435,8 +435,8 @@ else:
 
     BED = True
 
-# 7. Alignment
-# Performs alignment if input sequencing data is in fastq format
+# 7. Remove duplicates command line.  
+# The output from HISAT2 and BWA is piped into $samblaster_cmq during the alignment 
 if rm_dup:
 	
 	samblaster_cmq = "%ssamblaster |" %(path_samblaster)
@@ -444,17 +444,20 @@ if rm_dup:
 else:
 	
 	samblaster_cmq= ""
+# 8. Alignment
+# Performs alignment if input sequencing data is in fastq format
+
 	
 	
 if alignment:
 
     if format == "fastq" and "alignment.log" not in os.listdir(out + "logs"):
 
-        # 7.1 Aligns paired end reads
+        # 8.1 Aligns paired end reads
 
         if paired == "1":
 
-            # 7.1.1 Fast mode uses HISAT2 only to align all reads
+            # 8.1.1 Fast mode uses HISAT2 only to align all reads
 
             if mode == "fast":
 
@@ -478,7 +481,7 @@ if alignment:
 
                 os.system("touch  %slogs/alignment.log" % (out))
 
-            # 7.1.2 Normal and intensive modes use HISAT2 to align all reads,
+            # 8.1.2 Normal and intensive modes use HISAT2 to align all reads,
             # then soft-clipped and unaligned reads are realigned with BWA mem
 
             if mode == "normal" or mode == "intensive":
@@ -565,11 +568,11 @@ if alignment:
 
                 os.system("touch  %slogs/alignment.log" % (out))
 
-        # 7.2 Aligns single end reads
+        # 8.2 Aligns single end reads
 
         if paired == "0":
 
-            # 7.2.1 Fast mode uses HISAT2 only to align all reads
+            # 8.2.1 Fast mode uses HISAT2 only to align all reads
 
             if mode == "fast":
 
@@ -592,7 +595,7 @@ if alignment:
 
                 os.system("touch  %salignment.log" % (out))
 
-            # 7.2.2 Normal and intensive modes use HISAT2 to align all reads,
+            # 8.2.2 Normal and intensive modes use HISAT2 to align all reads,
             # then soft-clipped and unaligned reads are realigned with BWA mem
 
             if mode == "normal" or mode == "intensive":
