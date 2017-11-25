@@ -4,7 +4,8 @@
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Documentation](#documentation)
+2. [Citation](#citation)
+3. [Documentation](#documentation)
 	* [Minimum requierements](#minimum-requierements)
 	* [Obtaining](#obtaining)
 	* [Usage](#usage)
@@ -14,9 +15,9 @@
 	* [How to index the reference genome or a microbes DB](#how-to-index-the-reference-genome-or-a-microbes-db)
 	* [Dependencies](#dependencies)
 	* [Docker and Singularity](docker-and-singularity)
-3. [Core Contributors](#core-contributors)
-4. [Contributing](#contributing)
-5. [Licence](#licence)
+4. [Core Contributors](#core-contributors)
+5. [Contributing](#contributing)
+6. [Licence](#licence)
 
 
 ## Introduction
