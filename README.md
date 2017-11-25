@@ -20,7 +20,7 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 ### Minimum requierements
 
 - Ubuntu >= 14.04
-- RAM: at least 4.2 Gb for the fast mode. 8 Gb for the other modes. 
+- RAM: if processing WGS data, at least 14 Gb for the fast mode. 16 Gb for the other modes. 
 - Space required by the installation: 
   - By the dependencies and DNAscan: we reccomend at least 10Gb of free space for the whole DNAscan deplyment, including the dependencies. 
   - 8Gb for the reference human genome and the hisat2 index. An extra 5.5Gb for the bwa index are required if you want to use         the normal or intensive modes   
@@ -318,6 +318,8 @@ Fast mode pipeline (ideal if focusing on SNVs):
 * Python >= 3
 * Vcftools >= 0.1.13 
 * Bedtools2 >= 2.25
+* Samblaster >= 0.1.24
+* Sambamba >= 0.6.6
 * Manta 1.2.0 (optional, needed only if interested in structural variants)
 * ExpansionHunter >= 2.0.9 (optional, needed only if interested in known motif expansions)
 * Bcftools >= 1.3 (optional, needed only if interested in performing custome variant filtering)
