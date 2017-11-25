@@ -4,17 +4,20 @@
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Installation](#installation)
-3. [Reference genome and annotations](#reference-genome-and-annotations)
-4. [Usage](#usage)
-	* [align](#speedseq-align)
-	* [var](#speedseq-var)
-	* [somatic](#speedseq-somatic)
-	* [sv](#speedseq-sv)
-	* [realign](#speedseq-realign)
-5. [Example workflows](#example-workflows)
-6. [SpeedSeq AMI (Amazon Machine Image)](#speedseq-ami)
-7. [Troubleshooting](#troubleshooting)
+2. [Documentation](#documentation)
+	*[Minimum requierements](#minimum-requierements)
+	*[Obtaining](#obtaining)
+	*[Usage](#usage)
+	*[Output](#output)
+	*[How to download the reference genome](#how-to-download-the-reference-genome)
+	*[How to download the NCBI microbes DBs](#how-to-download-the-ncbi-microbes-dbs)
+	*[How to index the reference genome (or a microbes DB)](#howito-index-the-reference-genome-or-a-microbes-db)
+	*[Dependencies](#dependencies)
+	*[Docker and Singularity](docker-and-singularity)
+3. [Core Contributors](#core-contributors)
+4. [Contributing](#contributing)
+5. [Licence](#licence)
+
 
 ## Introduction
 
@@ -201,7 +204,8 @@ DNAscan output tree:
            |-reports # If any report flags is used, this folder will contain the reports. E.g. $sample_name_vcfstats.txt if the -calls_report flag is used
            |
            |-logs # Logs files are generated in this folder
-           
+ 
+```          
            
 ### How to download the reference genome
 
@@ -294,7 +298,7 @@ for i in $(ls | grep -e genomic.fna.gz -e fungi); do gzip -d $i ; done
 for i in $(ls | grep -e genomic.fna -e fungi); do cat $i >> fungi_db.fa ; rm $i ; done  
 ```
 
-### How to index the reference genome (or a microbes DB)
+### How to index the reference genome or a microbes DB
 
 #### HISAT2
 ```bash
@@ -456,7 +460,7 @@ annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd humandb/
 
 ```
 
-### Docker/Singularity 
+### Docker and Singularity 
 
 **Docker** is an open-source project that automates the deployment of applications inside software containers. Using containers to deploy our system and creating our analysis environment would allow us to make our work independent by the machine we work on. This would improve the reproducibility of our science, the portability and reliability of our deployments and avoid any machine specific issues. For this reason working using containers isn't just recommended but also makes things easier. Since docker is widely used and maintained we recommend it as container technology to use if possible. Unfortunately Docker does require sudo privileges to run its containers making its use difficult on HPC facilities.
 
