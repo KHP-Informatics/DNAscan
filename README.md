@@ -495,8 +495,6 @@ $ ./docker2singularity.sh  [-m \"/mount_point1 /mount_point2\"] docker_image_nam
 
 [LINK](http://singularity.lbl.gov/install-mac)
 
-- test <br />
-  python run_analysis.py -format input_file_fomat -reference hg19 -in input_file -out out_dir -SV -BED<br />
 
 ## Core Contributors
 - [Dr Alfredo Iacoangeli](alfredo.iacoangeli@kcl.ac.uk), UK
