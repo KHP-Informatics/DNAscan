@@ -1574,10 +1574,10 @@ if iobio:
     os.system(
         "cd %s ; nohup python3 -m http.server %s  >/dev/null 2>&1 &" %
         (path_iobio, port_num))
-
+    print("\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\n" %(port_num, port_num))
     os.system("touch  %slogs/iobio.log" % (out))
 	
-    print("\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file (../%sresults/%s_sorted.vcf.gz):\n\n" %(port_num, port_num, out, sample_name), end='', flush=True)
+    print("\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file (../%sresults/%s_sorted.vcf.gz) as well as its index file (.tbi):\n\n" %(out, sample_name), end='', flush=True)
     
     if "annovar.log" in os.listdir(out + "logs"):
     	
@@ -1605,7 +1605,38 @@ if iobio:
         for i in a.keys() :
     	
             print('%s,' %(i.split(',')[0]), end='', flush=True)
-        print(' \n\n')     
+        print(' \n\n')   
+	
+	    if "SV.log" in os.listdir(out + "logs"):
+		
+                print("\n\nIf you want to explore your structural variant calling results please copy and paste the following URL into your browser and upload the vcf file (../%sresults/%s_annotated_SV.vcf.gz) as well as its index file (.tbi):\n\n" %( out, sample_name), end='', flush=True)
+		
+		print("http://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num) , end='', flush=True)
+
+		
+                a = {}
+	
+                os.system(
+                    "zcat %sresults/%s_annotated_SV.vcf.gz > %stemp.vcf" %
+        
+                    (out, sample_name, out))
+
+                file = open('%stemp.vcf' % (out), 'r')
+
+                file_lines = file.readlines()
+	
+                for i in file_lines:
+
+                    check = re.search(r'(^chr)|(^[0-9,X,Y,M]+\t)', i, flags=0)
+
+                    if check:
+
+                        a[i.split('Gene.refGene=')[1].split(';')[0]] = []
+	
+                for i in a.keys() :
+    	
+                    print('%s,' %(i.split(',')[0]), end='', flush=True)
+                print(' \n\n')   
     
     else:
 		
