@@ -1077,7 +1077,7 @@ if annotation:
 	
 	
         os.system(
-            "%stable_annovar.pl  --thread %s --vcfinput %s %s -buildver %s -remove -protocol refGene,dbnsfp30a,clinvar_20170130,avsnp147,cadd -operation g,f,f,f,f -nastring . --outfile %s/annovar.vcf" %
+            "%stable_annovar.pl  --thread %s --vcfinput %s %s -buildver %s -remove -protocol refGene,clinvar_20170130 -operation g,f -nastring . --outfile %s/annovar.vcf" %
             (path_annovar,
              num_cpu,
              variant_results_file,
@@ -1103,7 +1103,7 @@ if annotation:
         if "SV.log" in os.listdir(out + "logs"):
 		
             os.system(
-                "%stable_annovar.pl  --thread %s --vcfinput %s/results/%s_SV.vcf.gz %s -buildver %s -remove -protocol refGene,dbnsfp30a,clinvar_20170130,avsnp147,cadd -operation g,f,f,f,f -nastring . --outfile %s/annovarSV.vcf" %
+                "%stable_annovar.pl  --thread %s --vcfinput %s/results/%s_SV.vcf.gz %s -buildver %s -remove -protocol refGene,clinvar_20170130 -operation g,f -nastring . --outfile %s/annovarSV.vcf" %
                 (path_annovar,
                  num_cpu,
                  out,
