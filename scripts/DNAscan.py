@@ -1607,7 +1607,7 @@ if iobio:
             print('%s,' %(i.split(',')[0]), end='', flush=True)
         print(' \n\n')   
 	
-	if "SV.log" in os.listdir(out + "logs"):
+        if "SV.log" in os.listdir(out + "logs"):
 		
                 print("\n\nIf you want to explore your structural variant calling results please copy and paste the following URL into your browser and upload the vcf file (../%sresults/%s_annotated_SV.vcf.gz) as well as its index file (.tbi):\n\n" %( out, sample_name), end='', flush=True)
 		
