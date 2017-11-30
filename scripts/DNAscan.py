@@ -1099,6 +1099,33 @@ if annotation:
              path_tabix,
              out,
              sample_name))
+	
+        if "SV.log" in os.listdir(out + "logs"):
+		
+            os.system(
+                "%stable_annovar.pl  --thread %s --vcfinput %s/results/%s_SV.vcf.gz %s -buildver %s -remove -protocol refGene,dbnsfp30a,clinvar_20170130,avsnp147,cadd -operation g,f,f,f,f -nastring . --outfile %s/annovarSV.vcf" %
+                (path_annovar,
+                 num_cpu,
+                 out,
+                 sample_name,
+                 path_annovar_db,
+                 reference,
+                 out))
+
+            os.system(
+                "rm %sannovarSV.vcf.hg19_multianno.txt %sannovarSV.vcf.avinput" %
+                (out, out))
+        
+            os.system(
+                "mv %s/annovarSV.vcf.hg19_multianno.vcf %sresults/%s_annotated_SV.vcf ; bgzip %sresults/%s_annotated_SV.vcf ; %stabix -fp vcf %sresults/%s_annotated_SV.vcf.gz" %
+                (out,
+                 out,
+                 sample_name,
+                 out,
+                 sample_name,
+                 path_tabix,
+                 out,
+                 sample_name))
         
         os.system("mv %s* %sresults/" %(variant_results_file, out))	
 	
