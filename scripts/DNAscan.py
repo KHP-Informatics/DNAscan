@@ -1611,7 +1611,7 @@ if iobio:
 		
                 print("\n\nIf you want to explore your structural variant calling results please copy and paste the following URL into your browser and upload the vcf file (../%sresults/%s_annotated_SV.vcf.gz) as well as its index file (.tbi):\n\n" %( out, sample_name), end='', flush=True)
 		
-		print("http://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num) , end='', flush=True)
+                print("http://localhost:%s/gene.iobio/?species=Human&rel0=proband&rel1=mother&rel2=father&genes=" %(port_num) , end='', flush=True)
 
 		
                 a = {}
