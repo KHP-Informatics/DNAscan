@@ -17,6 +17,8 @@ apt-get install -y vim
 
 apt-get install -y python3
 
+apt-get install -y ttf-dejavu
+
 apt-get install -y wget bzip2
 
 mkdir $INSTALL_DIR
