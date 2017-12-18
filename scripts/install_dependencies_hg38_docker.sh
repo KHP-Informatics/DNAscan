@@ -15,6 +15,8 @@ apt-get install -y python3
 
 apt-get install -y wget bzip2
 
+apt-get install -y ttf-dejavu
+
 mkdir $INSTALL_DIR
 
 mkdir $INSTALL_DIR/humandb
