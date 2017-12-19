@@ -14,6 +14,8 @@ RG_PU = "unit1"
 
 RG_SM = "20"
 
+dnascan_dir = ""
+
 path_iobio = "iobio/"
 
 path_hisat = ""
