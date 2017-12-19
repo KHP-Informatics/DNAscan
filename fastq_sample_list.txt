@@ -1,0 +1,8 @@
+sample1_1.fq.gz	sample1_2.fq.gz
+sample2_1.fq.gz	sample2_2.fq.gz
+.	.
+.	.
+.	.
+.	.
+.	.
+sampleN_1.fq.gz	sampleN_2.fq.gz
