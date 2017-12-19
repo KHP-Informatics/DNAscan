@@ -141,7 +141,7 @@ Its basic use requires the following options:
   -filter_string FILTER_STRING  bcftools filter string, eg GQ>20 & DP>10 (Default = "")
   -iobio                if this flag is set iobio services will be started at the end of the analysis (Default = "False")
   -alignment            if this flag is set the alignment stage will be performed (Default = "False")
-  -expansion            if this flag is set DNAscan will look for the expansions described in the jason folder described in paths.py  (Default = "False") 
+  -expansion            if this flag is set DNAscan will look for the expansions described in the jason folder described in paths.py  (Default = "False"). It requires a path to a folder containing the json repeat-specification files to be specified in paths.py
   -SV                   if this flag is set the structural variant calling stage will be performed (Default = "False") 
   -virus                if this flag is set DNAscan will perform viral scanning (Default = "False")  
   -bacteria             if this flag is set DNAscan will perform bacteria scanning (Default = "False") 
@@ -191,6 +191,15 @@ Using the sequencing data provided in the data folder:
 python3 scripts/DNAscan.py -format fastq -in data/test_data.1.fq.gz -in2 data/test_data.2.fq.gz -reference hg19 -alignment -variantcalling -annotation -iobio -out outdir/ -mode fast -BED
 ```
 IMPORTANT: All paths in DNAscan end with "/"
+
+#### Looking for repeat expansions
+
+Let's assume we have human paired end whole exome sequening data in two fastq files and want to perform snvs/indels calling vs hg19 and scan for some specific repeat expansions. The DNAscan command line would be:
+
+ ```bash
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -expansion -out /path/to/outdir -mode fast
+```
+Note that the json repeat-specification files to be specified in paths.py. For a guide about how to create a json repeat-specification file see the this [LINK](https://github.com/Illumina/ExpansionHunter/wiki/Inputs) to the ExpantionHunter instructions
 
 ### Output
 
