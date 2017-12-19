@@ -199,7 +199,19 @@ Let's assume we have human paired end whole exome sequening data in two fastq fi
  ```bash
 python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -expansion -out /path/to/outdir -mode fast
 ```
-Note that the json repeat-specification files to be specified in paths.py. For a guide about how to create a json repeat-specification file see the this [LINK](https://github.com/Illumina/ExpansionHunter/wiki/Inputs) to the ExpantionHunter instructions. Two examples of such files. for the C9orf72 repeat and ataxin2 repeat are in DNA-NGS_scan/repeats folder  
+Note that the json repeat-specification files to be specified in paths.py. For a guide about how to create a json repeat-specification file see the this [LINK](https://github.com/Illumina/ExpansionHunter/wiki/Inputs) to the ExpantionHunter instructions. Two examples of such files. for the C9orf72 repeat and ataxin2 repeat are in DNA-NGS_scan/repeats folder.
+
+#### Running DNAscan on a list of BAMs/FASTQs
+
+Let's assume we have human paired end whole exome sequening data in two fastq files per sample and want to perform snvs/indels calling vs hg19. In this case we would use the analyse_list_of_samples.py script to run DNAscan:
+
+ ```bash
+ cd /path/to/DNAscan_main_dir
+ 
+python3 scripts/analyse_list_of_samples.py -option_string "-format fastq -reference hg19 -alignment -variantcalling -mode fast" -out_dir /path/to/where/you/want/the/analysis/to/take/place/ -sample_list extras/fastq_sample_list.txt -format fastq -paired 1 
+```
+The analyse_list_of_samples.py takes as input a file containing the input file of one sample per line (tab separated in case of 2 paired end reads fastq files per sample), the option you want to pass to DNAscan between quotation marks, the input file format and whether or not (1 or 0) the data is paired end. 2 sample list of input files are in DNA-NGS_scan/extras
+
 
 ### Output
 
