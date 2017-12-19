@@ -199,7 +199,7 @@ Let's assume we have human paired end whole exome sequening data in two fastq fi
  ```bash
 python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -expansion -out /path/to/outdir -mode fast
 ```
-Note that the json repeat-specification files to be specified in paths.py. For a guide about how to create a json repeat-specification file see the this [LINK](https://github.com/Illumina/ExpansionHunter/wiki/Inputs) to the ExpantionHunter instructions
+Note that the json repeat-specification files to be specified in paths.py. For a guide about how to create a json repeat-specification file see the this [LINK](https://github.com/Illumina/ExpansionHunter/wiki/Inputs) to the ExpantionHunter instructions. Two examples of such files. for the C9orf72 repeat and ataxin2 repeat are in DNA-NGS_scan/repeats folder  
 
 ### Output
 
