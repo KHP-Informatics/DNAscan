@@ -167,8 +167,8 @@ parser.add_argument(
     '-filter_string',
     action="store",
     dest="filter_string",
-    default="GQ>30 & QUAL/AO > 10",
-    help='bcftools filter string, eg GQ>20 & DP>10 (Default = "GQ>30 & QUAL/AO > 10")')
+    default="",
+    help='bcftools filter string, eg GQ>20 & DP>10 (Default = "")')
 
 parser.add_argument(
     '-paired',
@@ -819,7 +819,7 @@ if variantcalling:
                     (path_bedtools, out, out))
 
                 os.system(
-                    "%svcftools  --vcf %sgatk_indels_sorted_merged.vcf --minGQ 20 --minDP 2  --recode --recode-INFO-all --out %sindels_only" %
+                    "%svcftools  --vcf %sgatk_indels_sorted_merged.vcf --minGQ 30 --minDP 2  --recode --recode-INFO-all --out %sindels_only" %
                     (path_vcftools, out, out))
 
                 
@@ -872,7 +872,7 @@ if variantcalling:
                     
                     
                     os.system(
-                        "%svcftools  --vcf %sfreebayes.vcf --minGQ 20 --minDP 2 --exclude-bed %smpileup_positions.bed  --recode --recode-INFO-all --out %sSNPs_only" %
+                        "%svcftools  --vcf %sfreebayes.vcf --minGQ 30 --minDP 2 --exclude-bed %smpileup_positions.bed  --recode --recode-INFO-all --out %sSNPs_only" %
                         (path_vcftools, out, out, out))
 
                     os.system( "%sSNPs_only.log" %(out))
