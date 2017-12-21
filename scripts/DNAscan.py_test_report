@@ -167,8 +167,8 @@ parser.add_argument(
     '-filter_string',
     action="store",
     dest="filter_string",
-    default="",
-    help='bcftools filter string, eg GQ>20 & DP>10 (Default = "")')
+    default="GQ>30 & QUAL/AO > 10",
+    help='bcftools filter string, eg GQ>20 & DP>10 (Default = "GQ>30 & QUAL/AO > 10")')
 
 parser.add_argument(
     '-paired',
