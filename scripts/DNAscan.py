@@ -300,7 +300,7 @@ parser.add_argument(
     action="store_true",
     dest="rm_dup",
     help='if this flag is set DNAscan will remove duplicates from the sample bam file (Default = "False")',
-    default=False)
+    default=True)
 
 parser.add_argument(
     '-debug',
