@@ -29,6 +29,8 @@ ${path_to_java}java -jar  ${path_to_picard_jar}picard.jar MarkDuplicates INPUT=s
 
 ${path_to_samtools}samtools index dedup_reads.bam
 
+#${path_to_freebayes}freebayes-parallel <(${path_to_freebayes}fasta_generate_regions.py ${reference_file}.fai 100000) $num_cpu -f $reference_file dedup_reads.bam > var.vcf
+
 ${path_to_freebayes}freebayes -f $reference_file dedup_reads.bam > var.vcf
 
 bgzip var.vcf
