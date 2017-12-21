@@ -3,7 +3,7 @@
 #							   #
 # GATK and Annovar were not installed when this image was  #
 # built due to licencing issues. In practical terms this   #
-# this means that the annotation step and intensive mode   #
+# means that the annotation step and intensive mode        #
 # are not available. If you wish to be able to perform     #
 # those please follow the instructions in                  #
 # /home/DNA-NGS_scan/GATK_Annovar_readme.txt               #
