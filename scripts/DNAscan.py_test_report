@@ -940,7 +940,7 @@ if filter_string:
     
     
     os.system(
-        "%sbcftools filter -i \'%s\' %s | bgzip -c > %s%s_sorted_filtered.vcf.gz ; %tabix -fp vcf %s%s_sorted_filtered.vcf.gz" (
+        "%sbcftools filter -i \'%s\' %s | bgzip -c > %s%s_sorted_filtered.vcf.gz ; %tabix -fp vcf %s%s_sorted_filtered.vcf.gz; mv %s%s_sorted_filtered.vcf.gz %sresults " (
             path_bcftools,
             filter_string,
             variant_results_file,
@@ -948,52 +948,14 @@ if filter_string:
             sample_name,
             path_tabix,
             sample_name,
-            out))
+            out,
+	    out,
+	    sample_name,
+	    out))
             
-    variant_results_file = "%s%s_sorted_filtered.vcf.gz" %(out, sample_name)
-''''
+    variant_results_file = "%sresults/%s_sorted_filtered.vcf.gz" %(out, sample_name)
 
-    if mode == "intensive":
 
-        os.system(
-            "%sbcftools filter -i \'%s\' %sSNPs_only.recode.vcf.gz | bgzip -c > %stemp1.vcf.gz ; mv %stemp1.vcf.gz %sSNPs_only.recode.vcf.gz ; %tabix -fp vcf %sSNPs_only.recode.vcf.gz" (
-                path_bcftools,
-                filter_string,
-                out,
-                out,
-                out,
-                out,
-                path_tabix,
-                out))
-
-        os.system(
-            "%sbcftools filter -i \'%s\' %sindels_only.recode.vcf.gz | bgzip -c > %stemp2.vcf.gz ; mv %stemp2.vcf.gz %sindels_only.recode.vcf.gz ; %tabix -fp vcf %sindels_only.recode.vcf.gz" (
-                path_bcftools,
-                filter_string,
-                out,
-                out,
-                out,
-                out,
-                path_tabix,
-                out))
-
-    else:
-
-        os.system(
-            "%sbcftools filter -i \'%s\' %s%s_sorted.vcf.gz| bgzip -c > %stemp1.vcf.gz ; mv %stemp1.vcf.gz %s%s_sorted.vcf.gz ; %tabix -fp vcf %s%s_sorted.vcf.gz" (
-                path_bcftools,
-                filter_string,
-                out,
-                sample_name,
-                out,
-                out,
-                sample_name,
-                out,
-                path_tabix,
-                out,
-                sample_name))
-
-'''
 # 12. Performs known expansions search with ExpansionHunter
 # Known expansions have to be described in a json file placed in the json
 # folder (paths.py).
