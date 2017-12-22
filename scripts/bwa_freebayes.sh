@@ -25,9 +25,9 @@ path_to_bcftools=${11}
 
 ${path_to_bwa}bwa mem -M  -t $num_cpu $reference_file  $input1 $input2 | ${path_to_samtools}samtools view  -@ $num_cpu -Shb - | ${path_to_samtools}samtools sort -@ $num_cpu -o sorted_reads.bam -
 
-${path_to_java}java -jar  ${path_to_picard_jar}picard.jar MarkDuplicates INPUT=sorted_reads.bam OUTPUT=dedup_reads.bam METRICS_FILE=metrics.txt
+${path_to_java}java  -XX:ParallelGCThreads=${num_cpu} -jar  ${path_to_picard_jar}picard.jar MarkDuplicates INPUT=sorted_reads.bam OUTPUT=dedup_reads.bam METRICS_FILE=metrics.txt
 
-${path_to_samtools}samtools index dedup_reads.bam
+${path_to_samtools}samtools index -@ $num_cpu dedup_reads.bam
 
 #${path_to_freebayes}freebayes-parallel <(${path_to_freebayes}fasta_generate_regions.py ${reference_file}.fai 100000) $num_cpu -f $reference_file dedup_reads.bam > var.vcf
 
