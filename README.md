@@ -93,7 +93,7 @@ apt-get update
 
 apt-get install git
 
-https://github.com/KHP-Informatics/DNA-NGS_scan.git
+git clone https://github.com/KHP-Informatics/DNA-NGS_scan.git
 
 cd DNA-NGS_scan
 
