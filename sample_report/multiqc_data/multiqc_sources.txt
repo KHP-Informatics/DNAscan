@@ -1,0 +1,6 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	NA12878.ga2.exome.1	/mnt/8TB/data/test_dnascan/test_fast/reports/NA12878.ga2.exome.1.fq_pairs_R1_sorted.fastq.gz_pairs_R1_fastqc.zip
+FastQC	all_sections	NA12878.ga2.exome.2	/mnt/8TB/data/test_dnascan/test_fast/reports/NA12878.ga2.exome.2.fq_pairs_R2_sorted.fastq.gz_pairs_R2_fastqc.zip
+Samtools	flagstat	sample_flagstat	/mnt/8TB/data/test_dnascan/test_fast/reports/sample_flagstat.txt
+Samtools	stats	sample_stats	/mnt/8TB/data/test_dnascan/test_fast/reports/sample_stats.txt
+Bcftools	stats	sample_sorted	/mnt/8TB/data/test_dnascan/test_fast/reports/sample_vcfstats.txt

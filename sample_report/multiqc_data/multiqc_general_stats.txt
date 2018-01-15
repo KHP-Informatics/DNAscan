@@ -1,0 +1,6 @@
+Sample	FastQC_percent_duplicates	FastQC_percent_gc	FastQC_avg_sequence_length	FastQC_total_sequences	FastQC_percent_fails	Samtools Flagstat_mapped_passed	Bcftools Stats_number_of_records	Bcftools Stats_number_of_MNPs	Bcftools Stats_number_of_indels	Bcftools Stats_tstv	Bcftools Stats_number_of_SNPs	Samtools Stats_error_rate	Samtools Stats_non_primary_alignments	Samtools Stats_raw_total_sequences	Samtools Stats_reads_mapped_percent	Samtools Stats_reads_mapped
+NA12878.ga2.exome.1	41.9862904288	48.0	80.9922223085	80761753.0	9.09090909091											
+NA12878.ga2.exome.2	41.2692292389	48.0	80.9922223085	80761753.0	9.09090909091											
+sample_flagstat						176163118										
+sample_sorted							60888.0	937.0	2417.0	1.66	57618.0					
+sample_stats												0.00234053	20189084.0	161523506.0	96.5642944873	155974034.0
