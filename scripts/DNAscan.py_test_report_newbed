@@ -1569,7 +1569,7 @@ if results_report:
 
                     
 
-                    replaced = re.sub('[a-z,A-Z,0-9,\.,\_.\-]+=', '', infos)
+                    replaced = re.sub('[a-z,A-Z,0-9,\.,\_,\-,:,>,<]+=', '', infos)
 
                     out_file_all.write(
                         '%s\t%s\t%s\t%s\t%s\t%s\n' %
