@@ -122,6 +122,8 @@ path_bwa_index = paths.path_bwa_index
 
 path_rtg = paths.path_rtg
 
+dnascan_dir = paths.dnascan_dir
+
 path_sambamba = paths.path_sambamba
 
 path_bcftools = paths.path_bcftools
@@ -302,12 +304,21 @@ parser.add_argument(
     dest="rm_dup",
     help='if this flag is set DNAscan will remove duplicates from the sample bam file (Default = "False")',
     default=False)
+    
+
 
 parser.add_argument(
     '-debug',
     action="store_true",
     dest="debug",
     help='if this flag is set DNAscan will not delete intermediete and temporary files (Default = "False")',
+    default=False)
+    
+parser.add_argument(
+    '-exome',
+    action="store_true",
+    dest="exome",
+    help='if this flag is set DNAscan will only look for variants in the whole exome (Default = "False")',
     default=False)
 
 requiredNamed = parser.add_argument_group('required named arguments')
@@ -347,6 +358,8 @@ requiredNamed.add_argument(
 args = parser.parse_args()
 
 mode = args.mode
+
+exome = args.exome
 
 format = args.format
 
@@ -503,18 +516,54 @@ if BED:
 else:
 
     # If bed file is not provided, it generates one starting from the
-    # reference genome index. The pipeline uses a bed file to split the
+    # reference genome index or the default exome bed. The pipeline uses a bed file to split the
     # analyses in several subprocesses
+    
+    
+    if exome :
+        
+	os.system("zcat %sdb/exome_%s.bed.gz > %stmp/exome_%s.bed" %(dnascan_dir, reference))
+	
+        path_bed = "%stmp/exome_%s.bed" %(dnascan_dir, reference)
+	
+        if path_bed :
 
-    os.system(
-        "cat %s.fai | awk '{print $1\"\t0\t\"$2}' > %sreference.bed" %
-        (path_reference, out))
+        # splitting the analysis region into subsents of equal length to
+        # distribute the work across the available threads.
 
-    path_bed = "%sreference.bed" % (out)
+        os.system("awk \'{i=$2; while (i < $3) {print $1\"\t\"i\"\t\"i+1 ;  i++}}\' %s > %stmp/tmp.bed" %(path_bed, out))
 
-    os.system(
-        "%sbedtools makewindows -n %s -i winnum -b %s | awk \'{print $1\"\t\"$2\"\t\"$3 >> \"%stemp\"$4\".bed\"}\'" %
-        (path_bedtools, num_cpu, path_bed, out))
+        os.system("split -d -l `wc -l %stmp/tmp.bed | awk '{if ($1/%s > int($1/%s)) print int($1/%s)+1; else print int($1/%s)}'` %stmp/tmp.bed %stmp/" %(out, num_cpu, num_cpu,num_cpu,num_cpu, out, out ))
+
+        os.system("rm %stmp/tmp.bed" %( out)) 
+
+        i = 0
+
+        zero = "0"
+
+        while i < int(num_cpu) :
+
+            if i > 9 :
+
+                zero = "" 
+
+            os.system("%sbedtools merge -i %stmp/%s%s > %stemp%s.bed" %(path_bedtools, out,zero,str(i),out, str(int(i)+1)))
+
+            os.system("rm %stmp/%s%s" %(out,zero,str(i)))
+
+            i+=1
+    
+    else:
+    
+        os.system(
+            "cat %s.fai | awk '{print $1\"\t0\t\"$2}' > %sreference.bed" %
+            (path_reference, out))
+
+        path_bed = "%sreference.bed" % (out)
+
+        os.system(
+            "%sbedtools makewindows -n %s -i winnum -b %s | awk \'{print $1\"\t\"$2\"\t\"$3 >> \"%stemp\"$4\".bed\"}\'" %
+            (path_bedtools, num_cpu, path_bed, out))
 
     BED = True
 
