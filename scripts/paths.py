@@ -18,8 +18,6 @@ dnascan_dir = ""
 
 path_gene_list = ""
 
-dnascan_dir = ""
-
 path_iobio = "iobio/"
 
 path_hisat = ""
