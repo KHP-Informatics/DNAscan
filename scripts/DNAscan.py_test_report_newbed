@@ -1559,7 +1559,7 @@ if results_report:
 
                     if counter == 0 :
 
-                      replaced_1 = re.sub('=[a-z,A-Z,0-9,\.,\_.\-]+', '', infos)
+                      replaced_1 = re.sub('=[a-z,A-Z,0-9,\.,\_,\-,:,>,<]+', '', infos)
 
                       out_file_all.write(
                         'CHR\tPosition\tRef\tAlt\tGenotype\t%s\n' %
