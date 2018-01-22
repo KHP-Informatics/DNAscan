@@ -1227,8 +1227,8 @@ if virus or bacteria or custom_microbes:
         # 15.1 Exctract non human reads
 
         os.system(
-            "%ssamtools view -hf 4 %s | %ssamtools bam2fq - | gzip -c - > %suniligned_reads.fastq.gz" %
-            (path_samtools, bam_file, path_samtools, out))
+            "%ssamtools view -@ %s -hf 4 %s | %ssamtools bam2fq -@ %s - | gzip -c - > %suniligned_reads.fastq.gz" %
+            (path_samtools,num_cpu, bam_file, path_samtools, num_cpu, out))
 
         # 15.2 Identifies present non-human microbes
 
