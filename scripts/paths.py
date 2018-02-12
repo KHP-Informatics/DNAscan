@@ -14,6 +14,8 @@ RG_PU = "unit1"
 
 RG_SM = "20"
 
+path_to_db = ""
+
 dnascan_dir = ""
 
 path_gene_list = ""
