@@ -11,6 +11,8 @@ ANNOVAR_DIR=$3
 
 GATK_DOWNLOAD_DIR=$4
 
+NUM_CPUS=$5
+
 apt-get install -y update
 
 apt-get install -y vim
@@ -89,8 +91,7 @@ conda install -y sambamba
 
 conda install -y samblaster
 
-
-gatk-register $GATK_DOWNLOAD_DIR/GenomeAnalysisTK-3.8.tar.bz2 
+gatk-register $GATK_DOWNLOAD_DIR 
 
 cd $DNASCAN_DIR
 
@@ -110,7 +111,7 @@ samtools faidx hg19.fa
 
 nohup bwa index hg19.fa &
 
-nohup hisat2-build hg19.fa hg19 &
+nohup hisat2-build -p $NUM_CPUS hg19.fa hg19 &
 
 apt-get update -qq
 
