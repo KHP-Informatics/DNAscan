@@ -97,8 +97,9 @@ git clone https://github.com/KHP-Informatics/DNA-NGS_scan.git
 
 cd DNA-NGS_scan
 
-#if you are not interested in performing annotation, please # the annovar lines in the install_dependencies.sh script. This would avoid the download of about 350G of databsses
-bash scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory path/to/annovar/directory /path/to/GATK3.8/download
+#By dafault install_dependencies.sh downloads the following Annovar databases: Exac, Refgene, Dbnsfp, Clinvar and Avsnp. If you wish to download the CADD database (about 350G) please uncomment the appropiete line. If you are not interested in performing annotation, please # the annovar lines in the install_dependencies.sh script. 
+
+bash scripts/install_dependencies.sh /path/to/set_up/directory/ /path/to/DNAscan/directory/ path/to/annovar/directory/ /path/to/GATK3.8/download.tar.bz2 $num_threads
 
 source ~/.bashrc
 
