@@ -1227,7 +1227,7 @@ if virus or bacteria or custom_microbes:
         # 15.1 Exctract non human reads
 
         os.system(
-            "%ssamtools view -@ %s -hf 4 %s | %ssamtools bam2fq -s %ssingleton_reads.fastq -@ %s - > %suniligned_reads.fastq ; cat %ssingleton_reads.fastq >> %suniligned_reads.fastq ; gzip  %suniligned_reads.fastq " %
+            "%ssamtools view -@ %s -hf 4 %s | %ssamtools bam2fq -s %ssingleton_reads.fastq -@ %s - > %sunaligned_reads.fastq ; cat %ssingleton_reads.fastq >> %sunaligned_reads.fastq ; gzip  %sunaligned_reads.fastq " %
             (path_samtools,num_cpu, bam_file, path_samtools,out, num_cpu,out,out,out,out))
 
         # 15.2 Identifies present non-human microbes
@@ -1237,7 +1237,7 @@ if virus or bacteria or custom_microbes:
             # 15.2.1 Identifies present viruses
 
             os.system(
-                "%shisat2 --no-spliced-alignment -p %s -x %s -U %suniligned_reads.fastq.gz | %ssamtools view -@ %s -hSb -  | %ssamtools sort -@ %s -T %stemp.file -o %soutput_virus.bam -" %
+                "%shisat2 --no-spliced-alignment -p %s -x %s -U %sunaligned_reads.fastq.gz | %ssamtools view -@ %s -hSb -  | %ssamtools sort -@ %s -T %stemp.file -o %soutput_virus.bam -" %
                 (path_hisat, num_cpu, path_virus_index, out, path_samtools,num_cpu, path_samtools,num_cpu, out, out))
 
             os.system(
@@ -1295,7 +1295,7 @@ if virus or bacteria or custom_microbes:
             # 15.2.3 Identifies present bacteria
 
             os.system(
-                "%shisat2 --no-spliced-alignment -p %s -x %s -U %suniligned_reads.fastq.gz | %ssamtools view -hSb -  | %ssamtools sort -T %stemp.file -o %soutput_bacteria.bam -" %
+                "%shisat2 --no-spliced-alignment -p %s -x %s -U %sunaligned_reads.fastq.gz | %ssamtools view -hSb -  | %ssamtools sort -T %stemp.file -o %soutput_bacteria.bam -" %
                 (path_hisat, num_cpu, path_bacteria_index, out, path_samtools, path_samtools, out, out))
 
             os.system(
@@ -1356,7 +1356,7 @@ if virus or bacteria or custom_microbes:
                 # 15.2.5 Identifies present user-selected microbes
 
             os.system(
-                "%shisat2 --no-spliced-alignment -p %s -x %s -U %suniligned_reads.fastq.gz | %ssamtools view -hSb -  | %ssamtools sort -T %stemp.file -o %soutput_custom_microbes.bam -" %
+                "%shisat2 --no-spliced-alignment -p %s -x %s -U %sunaligned_reads.fastq.gz | %ssamtools view -hSb -  | %ssamtools sort -T %stemp.file -o %soutput_custom_microbes.bam -" %
                 (path_hisat,
                  num_cpu,
                  path_custom_microbes_index,
