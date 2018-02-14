@@ -10,7 +10,7 @@
 ################################################################
 # Script structure:
 # 1. Import python modules
-# 2. Define paths viriables
+# 2. Define paths_configs viriables
 # 3. Define options from command line
 # 4. Parse options from command line
 # 5. Create working dir tree
@@ -58,91 +58,95 @@ import string
 import os
 import os.path
 import re
-import paths
+import paths_configs
 import subprocess
 
 from argparse import RawTextHelpFormatter
 
 
-# 2. Define paths variables from paths.py
+# 2. Define paths_configs variables from paths_configs.py
 
-path_iobio = paths.path_iobio
+path_iobio = paths_configs.path_iobio
 
-path_gene_list = paths.path_gene_list
+path_gene_list = paths_configs.path_gene_list
 
-port_num = paths.port_num
+port_num = paths_configs.port_num
 
-path_vcftools = paths.path_vcftools
+path_vcftools = paths_configs.path_vcftools
 
-path_gatk = paths.path_gatk
+path_gatk = paths_configs.path_gatk
 
-path_multiqc = paths.path_multiqc
+path_multiqc = paths_configs.path_multiqc
 
-path_java = paths.path_java
+path_java = paths_configs.path_java
 
-path_fastqc = paths.path_fastqc
+path_fastqc = paths_configs.path_fastqc
 
-path_hisat = paths.path_hisat
+path_hisat = paths_configs.path_hisat
 
-path_hisat_index = paths.path_hisat_index
+path_hisat_index = paths_configs.path_hisat_index
 
-path_samtools = paths.path_samtools
+path_samtools = paths_configs.path_samtools
 
-path_freebayes = paths.path_freebayes
+path_freebayes = paths_configs.path_freebayes
 
-path_annovar = paths.path_annovar
+path_annovar = paths_configs.path_annovar
 
-path_annovar_db = paths.path_annovar_db
+path_annovar_db = paths_configs.path_annovar_db
 
-num_cpu = paths.num_cpu
+annovar_protocols = paths_configs.annovar_protocols
 
-path_bed = paths.path_bed
+annovar_operations = paths_configs.annovar_operations
 
-path_to_db = paths.path_to_db
+num_cpu = paths_configs.num_cpu
 
-path_expansionHunter = paths.path_expansionHunter
+path_bed = paths_configs.path_bed
 
-path_reference = paths.path_reference
+path_to_db = paths_configs.path_to_db
 
-path_expansionHunter_jsons = paths.path_expansionHunter_jsons
+path_expansionHunter = paths_configs.path_expansionHunter
 
-path_manta = paths.path_manta
+path_reference = paths_configs.path_reference
 
-path_bedtools = paths.path_bedtools
+path_expansionHunter_jsons = paths_configs.path_expansionHunter_jsons
 
-path_tabix = paths.path_tabix
+path_manta = paths_configs.path_manta
 
-path_virus_index = paths.path_virus_index
+path_bedtools = paths_configs.path_bedtools
 
-path_bacteria_index = paths.path_virus_index
+path_tabix = paths_configs.path_tabix
 
-path_custom_microbes_index = paths.path_custom_microbes_index
+path_virus_index = paths_configs.path_virus_index
 
-path_bwa = paths.path_bwa
+path_bacteria_index = paths_configs.path_virus_index
 
-path_bwa_index = paths.path_bwa_index
+path_custom_microbes_index = paths_configs.path_custom_microbes_index
 
-path_rtg = paths.path_rtg
+path_bwa = paths_configs.path_bwa
 
-dnascan_dir = paths.dnascan_dir
+path_bwa_index = paths_configs.path_bwa_index
 
-path_sambamba = paths.path_sambamba
+path_rtg = paths_configs.path_rtg
 
-path_bcftools = paths.path_bcftools
+dnascan_dir = paths_configs.dnascan_dir
 
-RG_ID = paths.RG_ID
+path_sambamba = paths_configs.path_sambamba
 
-RG_LB = paths.RG_LB
+path_bcftools = paths_configs.path_bcftools
 
-RG_PL = paths.RG_PL
+RG_ID = paths_configs.RG_ID
 
-RG_PU = paths.RG_PU
+RG_LB = paths_configs.RG_LB
 
-RG_SM = paths.RG_SM
+RG_PL = paths_configs.RG_PL
 
-path_scripts = paths.path_scripts
+RG_PU = paths_configs.RG_PU
 
-path_samblaster = paths.path_samblaster
+RG_SM = paths_configs.RG_SM
+
+path_scripts = paths_configs.path_scripts
+
+path_samblaster = paths_configs.path_samblaster
 
 
 # 3. Define options variables from command line
@@ -150,7 +154,7 @@ path_samblaster = paths.path_samblaster
 parser = argparse.ArgumentParser(
     prog='python DNAscan.py',
     usage='%(prog)s [options] -format "string" -reference "string" -in "string" \n please use the --help flag to print further information\n ',
-    description='############DNAscan help Message############ \n\nDNAscan uses the file paths.py to locate the needed tools and files. Please make sure your paths.py file is properly filled \n\nUsage example: \n\npython DNAscan.py -format fastq -out /home/user/test/ -in sample_sorted_1.fq.gz -reference hg19 -alignment -variantcalling -results_report\n\nPlease check the following list of optional and required options\n\n################################################',
+    description='############DNAscan help Message############ \n\nDNAscan uses the file paths_configs.py to locate the needed tools and files. Please make sure your paths_configs.py file is properly filled \n\nUsage example: \n\npython DNAscan.py -format fastq -out /home/user/test/ -in sample_sorted_1.fq.gz -reference hg19 -alignment -variantcalling -results_report\n\nPlease check the following list of optional and required options\n\n################################################',
     formatter_class=RawTextHelpFormatter)
 
 parser.add_argument(
@@ -158,7 +162,7 @@ parser.add_argument(
     action="store",
     dest="RG",
     default=False,
-    help='if this flag is set the alignment stage will add the provided in paths.py read group (Default = "False")')
+    help='if this flag is set the alignment stage will add the provided in paths_configs.py read group (Default = "False")')
 
 
 parser.add_argument(
@@ -213,7 +217,7 @@ parser.add_argument(
     '-expansion',
     action="store_true",
     dest="expansion",
-    help='if this flag is set DNAscan will look for the expansions described in the jason folder described in paths.py  (Default = "False") ',
+    help='if this flag is set DNAscan will look for the expansions described in the jason folder described in paths_configs.py  (Default = "False") ',
     default=False)
 
 parser.add_argument(
@@ -248,7 +252,7 @@ parser.add_argument(
     '-custom_microbes',
     action="store_true",
     dest="custom_microbes",
-    help='if this flag is set DNAscan will perform a customized microbe scanning according to the provided microbe data base in paths.py (Default = "False")  ',
+    help='if this flag is set DNAscan will perform a customized microbe scanning according to the provided microbe data base in paths_configs.py (Default = "False")  ',
     default=False)
 
 parser.add_argument(
@@ -620,7 +624,7 @@ if alignment:
 
                 # Intensive mode uses GATK haplotype caller which does not
                 # support read group missing anymore. Default values for RG id,
-                # lb, pl, pu, and sm are defined in paths.py. Please change
+                # lb, pl, pu, and sm are defined in paths_configs.py. Please change
                 # them as needed.
 
                 if mode == "intensive":
@@ -734,7 +738,7 @@ if alignment:
 
                 # Intensive mode uses GATK haplotype caller which does not
                 # support read group missing anymore. Default values for RG id,
-                # lb, pl, pu, and sm are defined in paths.py. Please change
+                # lb, pl, pu, and sm are defined in paths_configs.py. Please change
                 # them as needed.
 
                 if mode == "intensive":
@@ -1084,7 +1088,7 @@ if filter_string:
 
 # 12. Performs known expansions search with ExpansionHunter
 # Known expansions have to be described in a json file placed in the json
-# folder (paths.py).
+# folder (paths_configs.py).
 
 if expansion:
 
@@ -1177,12 +1181,14 @@ if annotation:
 	
 	
         os.system(
-            "%stable_annovar.pl  --thread %s --vcfinput %s %s -buildver %s -remove -protocol refGene,dbnsfp30a,clinvar_20170130,avsnp147,cadd -operation g,f,f,f,f -nastring . --outfile %s/annovar.vcf" %
+            "%stable_annovar.pl  --thread %s --vcfinput %s %s -buildver %s -remove -protocol %s -operation %s -nastring . --outfile %s/annovar.vcf" %
             (path_annovar,
              num_cpu,
              variant_results_file,
              path_annovar_db,
              reference,
+	     annovar_protocols,
+	     annovar_operations,
              out))
 
         os.system(
@@ -1510,7 +1516,7 @@ if results_report:
 	
   if "annovar.log" not in os.listdir(out + "logs") or not path_gene_list :
 
-        print("WARNING: Either the annotation was not peformed or path_gene_list was not provided in paths.py, please perform annotation using the -annotation flag and specify the a gene list in paths.py if you wish to perform this stage \n")
+        print("WARNING: Either the annotation was not peformed or path_gene_list was not provided in paths_configs.py, please perform annotation using the -annotation flag and specify the a gene list in paths_configs.py if you wish to perform this stage \n")
            
   else:
 
