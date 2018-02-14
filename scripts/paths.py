@@ -40,6 +40,14 @@ path_annovar = ""
 
 path_annovar_db = ""
 
+#annovar_protocols and annovar_operations can be modified according to the wanted annovar databases. For instructions about
+#how to download the annovar databases and to modify annovar_protocols and annovar_operations please visit 
+#http://annovar.openbioinformatics.org/en/latest/ . 
+
+annovar_protocols = "refGene,dbnsfp30a,clinvar_20170130,avsnp147"
+
+annovar_operations = "g,f,f,f"
+
 path_expansionHunter = ""
 
 path_expansionHunter_jsons = ""
