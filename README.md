@@ -35,6 +35,10 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 ## Documentation
 
+```diff
++ TO BE NOTED: DNAscan is still under development. Any bug reports, suggestions, feedbacks would be greatly welcome. 
+```
+
 ### Minimum requierements
 
 - Ubuntu >= 14.04
@@ -42,12 +46,12 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 - Space required by the installation: 
   - By the dependencies and DNAscan: we reccomend at least 10Gb of free space for the whole DNAscan deplyment, including the dependencies. 
   - 8Gb for the reference human genome and the hisat2 index. An extra 5.5Gb for the bwa index are required if you want to use         the normal or intensive modes   
-  - An extra 400Gb would be required if you wish to perform the annotation stage. This uses annovar databases which need to be dowloaded, such as CADD, Clinvar, dbSNP, etc
+  - The annotation step makes use of Annovar and selected databases, the size of which can range from tens of megabytes to hundreds of gigabytes (e.g. CADD database). If the user wishes to perform the annotation step they must take this into account.
 - Scratch space for usage: If you are performing the alignment stage and your input data is in fastq.gz format we recommend at 3 times the size of your input data. E.g. your fastq.gz files are 100Gb, thus you would need 300Gb of free space. If you don't wish to performe the alignment a proportion data-to-analyse:free-space of 1:1 would be enough. E.g. Input data is a 50Gb bam file, you would need only 50Gb free space. 
 
 ### Obtaining
 
-**Version:** 1.0
+**Version:** 0.1
 
 Please make sure all dependencies are installed before running DNAscan. Instrutions about how to install all dependencies are available in the following chapter. However a bash script to set up all dependencies (Annovar and GATK need a manual registration and download step) is available in scripts.
 
