@@ -147,8 +147,8 @@ path_samblaster = paths.path_samblaster
 
 parser = argparse.ArgumentParser(
     prog='python DNAscan.py',
-    usage='%(prog)s [options] -format "string" -reference "string" -in "string"',
-    description='############DNAscan help Message############ \n\nDNAscan uses the file paths.py to locate the needed tools and files. Please make sure your paths.py file is properly filled \n\nUsage example: \n\npython rDNAscan.py -format fastq -out /home/user/test/ -in sample_sorted_1.fq.gz -reference hg19 -alignment -variantcalling -results_report\n\nPlease check the following list of optional and required options\n\n################################################',
+    usage='%(prog)s [options] -format "string" -reference "string" -in "string" \n please use the --help flag to print further information\n ',
+    description='############DNAscan help Message############ \n\nDNAscan uses the file paths.py to locate the needed tools and files. Please make sure your paths.py file is properly filled \n\nUsage example: \n\npython DNAscan.py -format fastq -out /home/user/test/ -in sample_sorted_1.fq.gz -reference hg19 -alignment -variantcalling -results_report\n\nPlease check the following list of optional and required options\n\n################################################',
     formatter_class=RawTextHelpFormatter)
 
 parser.add_argument(
