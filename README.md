@@ -1,6 +1,6 @@
-![alt text](https://github.com/snewhouse/DNA-NGS_scan/blob/master/DNAscan_logo.001.jpeg)
+![alt text](https://github.com/KHP-Informatics/DNAscan/blob/master/DNAscan_logo.001.jpeg)
 
-# DNA-NGS-scan
+# DNAscan
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -24,7 +24,7 @@
 
 DNAscan is a fast and efficient bioinformatics pipeline that allows for the analysis of DNA Next Generation sequencing data, requiring very little computational effort and memory usage. DNAscan can analyse raw whole genome NGS data in ~8 hours, using as little as 8 cpus and 16 Gbs of RAM while guaranteeing a very high performance. We do this by exploiting state-of-the-art bioinformatics tools. DNAscan can screen your DNA NGS data for single nucleotide variants, small indels, structural variants, repeat expansions, viral (or any other organism’s) genetic material. Its results are annotated using a wide range of databases including ClinVar, EXAC, dbSNP and CADD and uploaded onto the gene.iobio platform for an on-the-fly analysis/interpretation.
 
-![alt text](https://github.com/snewhouse/DNA-NGS_scan/raw/master/DNA_scan_paper-5.jp2)
+![alt text](https://github.com/KHP-Informatics/DNAscan/raw/master/DNA_scan_paper-5.jp2)
 
 Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and optionally variant files. The pipeline firstly perform an alignment step (details in the left panel), followed by a customizable data analysis protocol (details in the right panel). Finally, results are annotated and a user friendly report is generated. Right panel: detailed description of the post alignment analysis pipeline (intensive mode). Aligned reads are used by the variant calling pipeline (Freebayes + GATK HC + Bcftools), both aligned and unaligned reads are used by Manta and ExpensionHunter (for which known repeat description files have to be provided)  to look for structural variants. The unaligned reads are mapped to a database of known viral genomes (NCBI database) to screen for the presence of their genetic material in the input sequencing data. Left panel: Alignment stage description. Raw reads are aligned with HISAT2. Resulting soft/hard-clipped reads and unaligned reads are realigned with BWA mem and then merged with the others using samtools.
 
@@ -54,10 +54,10 @@ Please make sure all dependencies are installed before running DNAscan. Instruti
 To obtain DNAscan please use git to download the most recent development tree:
 
 ```bash
-git clone https://github.com/KHP-Informatics/DNA-NGS_scan.git
+git clone https://github.com/KHP-Informatics/DNAscan.git
 ```
 
-Once you have downloaded DNAscan, you can set up all needed dependencies running the install_dependencies.sh script available in DNA-NGS_scan/scripts. Before running install_dependencies.sh please download and uncompress Annovar by registering at the following [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php) and download GATK 3.8 at the following [link](https://software.broadinstitute.org/gatk/download/). Install_dependencies.sh will install all software dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. 
+Once you have downloaded DNAscan, you can set up all needed dependencies running the install_dependencies.sh script available in DNAscan/scripts. Before running install_dependencies.sh please download and uncompress Annovar by registering at the following [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php) and download GATK 3.8 at the following [link](https://software.broadinstitute.org/gatk/download/). Install_dependencies.sh will install all software dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. 
 
 ```bash
 
@@ -93,9 +93,9 @@ apt-get update
 
 apt-get install git
 
-git clone https://github.com/KHP-Informatics/DNA-NGS_scan.git
+git clone https://github.com/KHP-Informatics/DNAscan.git
 
-cd DNA-NGS_scan
+cd DNAscan
 
 #By dafault install_dependencies.sh downloads the following Annovar databases: Exac, Refgene, Dbnsfp, Clinvar and Avsnp. If you wish to download the CADD database (about 350G) please uncomment the appropiete line. If you are not interested in performing annotation, please # the annovar lines in the install_dependencies.sh script. 
 
@@ -200,7 +200,7 @@ Let's assume we have human paired end whole exome sequening data in two fastq fi
  ```bash
 python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -expansion -out /path/to/outdir -mode fast
 ```
-Note that the json repeat-specification files to be specified in paths.py. For a guide about how to create a json repeat-specification file see the this [LINK](https://github.com/Illumina/ExpansionHunter/wiki/Inputs) to the ExpantionHunter instructions. Two examples of such files. for the C9orf72 repeat and ataxin2 repeat are in DNA-NGS_scan/repeats folder.
+Note that the json repeat-specification files to be specified in paths.py. For a guide about how to create a json repeat-specification file see the this [LINK](https://github.com/Illumina/ExpansionHunter/wiki/Inputs) to the ExpantionHunter instructions. Two examples of such files. for the C9orf72 repeat and ataxin2 repeat are in DNAscan/repeats folder.
 
 #### Running DNAscan on a list of BAMs/FASTQs
 
@@ -211,7 +211,7 @@ Let's assume we have human paired end whole exome sequening data in two fastq fi
  
 python3 scripts/analyse_list_of_samples.py -option_string "-format fastq -reference hg19 -alignment -variantcalling -mode fast" -out_dir /path/to/where/you/want/the/analysis/to/take/place/ -sample_list extras/fastq_sample_list.txt -format fastq -paired 1 
 ```
-The analyse_list_of_samples.py takes as input a file containing the input file of one sample per line (tab separated in case of 2 paired end reads fastq files per sample), the option you want to pass to DNAscan between quotation marks, the input file format and whether or not (1 or 0) the data is paired end. 2 sample list of input files are in DNA-NGS_scan/extras
+The analyse_list_of_samples.py takes as input a file containing the input file of one sample per line (tab separated in case of 2 paired end reads fastq files per sample), the option you want to pass to DNAscan between quotation marks, the input file format and whether or not (1 or 0) the data is paired end. 2 sample list of input files are in DNAscan/extras
 
 
 ### Output
