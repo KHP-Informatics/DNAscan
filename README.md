@@ -16,7 +16,7 @@
 	* [How to download the NCBI microbes DBs](#how-to-download-the-ncbi-microbes-dbs)
 	* [How to index the reference genome or a microbes DB](#how-to-index-the-reference-genome-or-a-microbes-db)
 	* [Dependencies](#dependencies)
-	* [Docker and Singularity](docker-and-singularity)
+	* [Docker and Singularity](#docker-and-singularity)
 4. [Core Contributors](#core-contributors)
 5. [Contributing](#contributing)
 6. [Licence](#licence)
@@ -355,7 +355,7 @@ E.g. If the reference genome is the file hg19.fa, located in /home/dataset/ and 
 #### List of dependencies
 
 Fast mode pipeline (ideal if focusing on SNVs):
-* Samtools >= 1.3
+* Samtools >= 1.5
 * HISAT2 >= 2.1.0
 * Freebayes >= 1.0.2
 * Python >= 3
@@ -365,7 +365,7 @@ Fast mode pipeline (ideal if focusing on SNVs):
 * Sambamba >= 0.6.6
 * Manta 1.2.0 (optional, needed only if interested in structural variants)
 * ExpansionHunter >= 2.0.9 (optional, needed only if interested in known motif expansions)
-* Bcftools >= 1.3 (optional, needed only if interested in performing custome variant filtering)
+* Bcftools >= 1.3 (optional, needed only if interested in performing custome variant filtering and calls report)
 * Annovar "Version >= $Date: 2016-02-01 00:11:18 -0800 (Mon, 1 Feb 2016)" (optional, needed only if interested in performing variant annotation)
 
 Normal mode pipeline (better performance on indels and SVs):
