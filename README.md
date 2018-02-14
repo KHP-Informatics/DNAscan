@@ -53,6 +53,8 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 Please make sure all dependencies are installed before running DNAscan. Instrutions about how to install all dependencies are available in the following chapter. However a bash script to set up all dependencies (Annovar and GATK need a manual registration and download step) is available in scripts.
 
+#### Local Deployment
+
 To obtain DNAscan please use git to download the most recent development tree:
 
 ```bash
@@ -69,9 +71,42 @@ source ~/.bashrc
 
 ```
 
-You can easily set up your running deployment of DNAscan using docker. For instructutions about how to install docker see following sections.
+#### Obtain with Docker
 
 IMPORTANT: if you want to use the intensive mode or the annotation step of DNAscan you need to register and download both Annovar and GATK 3.8. Remember to mirrow into the container the folder where you have deployed these using the -v flag of copying them inside the container using the docker cp command as descripbed below
+The easiest way to get started with DNAscan is to use its Docker image:
+
+```bash
+sudo docker run  -v /path/to/your/data_folder:/container/path/where/you/want/your/data [-p 8080:8080] --storage-opt size=50G  -it compbio/dnascan /bin/bash
+```
+Please set the needed container size taking into account the "Minimum requierements".
+
+The -v option adds your data folder (assuming you have some data to run DNAscan on), -p mirrows the container port 8080 to your host port 8080. This will be necessary if you want to use the iobio services.
+The --storage-opt size=Ngigas option defines the maximum size of the container, setting it to N gigabytes. This number would depend on you plans. If you want to perform annotation, the databases used by DNAscan (clinvar,CADD,etc) are about 350G. We recomend N = 500 if you want to install the whole pipeline (including annotation). To this number you should add what needed for your analysis, e.g. if you are planning to download data, the size of you data to analyse etc. A workaround to this is to use the mirrowed host folder as outdir for your analysis and as annovar folder. This folder does not have such size limit. 
+
+IMPORTANT: to detach from the container without stopping it use Ctrl+p, Ctrl+q
+IMPORTANT: when running DNAscan inside a docker container, if you want to use the iobio services (and for example upload your results into the gene.iobio platform), these would not be visible by your browser unless they are in the folder which is mirrowed on the host system. Considering the previous command to run an ubuntu image, the easiest way to do this would be using the folder where you imported the data inside the container (/container/path/where/you/want/your/data) as out dir when running DNAsca. In this way the DNAscan results can be found in /path/to/your/data_folder on the host system.
+
+If you want to add data to the container while this is already running you can use the docker cp command. First detach from the container without stopping it using Ctrl+p, Ctrl+q, then cp your data inside the container:
+
+```bash
+docker cp [OPTIONS] /path/to/your/data CONTAINER_ID:/container/path/where/you/want/your/data
+```
+and execute a bash shell inside your container:
+
+```bash
+docker exec -it CONTAINER_ID /bin/bash
+```
+The container ID can be found using the ps command:
+
+```bash
+docker ps 
+```
+
+
+#### Building a Docker cointainer from scratch
+
+You can easily set up your running deployment of DNAscan using docker. For instructutions about how to install docker see following.
 
 After installing docker run an Ubuntu image:
 
@@ -81,11 +116,6 @@ After installing docker run an Ubuntu image:
 docker run -v /path/to/your/data_folder:/container/path/where/you/want/your/data [-p 8080:8080] -it [--storage-opt size=500G] ubuntu /bin/bash 
 
 ```
-The -v option adds your data folder (assuming you have some data to run DNAscan on), -p mirrows the container port 8080 to your host port 8080. This will be necessary if you want to use the iobio services.
-The --storage-opt size=Ngigas option defines the maximum size of the container, setting it to N gigabytes. This number would depend on you plans. If you want to perform annotation, the databases used by DNAscan (clinvar,CADD,etc) are about 350G. We recomend N = 500 if you want to install the whole pipeline (including annotation). To this number you should add what needed for your analysis, e.g. if you are planning to download data, the size of you data to analyse etc. A workaround to this is to use the mirrowed host folder as outdir for your analysis and as annovar folder. This folder does not have such size limit. 
-
-IMPORTANT: to detach from the container without stopping it use Ctrl+p, Ctrl+q
-IMPORTANT: when running DNAscan inside a docker container, if you want to use the iobio services (and for example upload your results into the gene.iobio platform), these would not be visible by your browser unless they are in the folder which is mirrowed on the host system. Considering the previous command to run an ubuntu image, the easiest way to do this would be using the folder where you imported the data inside the container (/container/path/where/you/want/your/data) as out dir when running DNAsca. In this way the DNAscan results can be found in /path/to/your/data_folder on the host system.
 
 Then install git, download this repository and run the install_dependencies.sh script:
 
@@ -105,21 +135,6 @@ bash scripts/install_dependencies.sh /path/to/set_up/directory/ /path/to/DNAscan
 
 source ~/.bashrc
 
-```
-If you want to add data to the container while this is already running you can use the docker cp command. First detach from the container without stopping it using Ctrl+p, Ctrl+q, then cp your data inside the container:
-
-```bash
-docker cp [OPTIONS] /path/to/your/data CONTAINER_ID:/container/path/where/you/want/your/data
-```
-and execute a bash shell inside your container:
-
-```bash
-docker exec -it CONTAINER_ID /bin/bash
-```
-The container ID can be found using the ps command:
-
-```bash
-docker ps 
 ```
 
 ### Usage
@@ -464,7 +479,7 @@ After you have downloaded Annovar:
 ```bash
 tar xvfz annovar.latest.tar.gz
 ```
-Now let's download the data bases needed for the DNAscan annotation step (assuming you want to work with hg19):
+Now let's download some data bases for the DNAscan annotation step (assuming you want to work with hg19):
 
 ```bash
 cd annovar
@@ -482,6 +497,15 @@ annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp147 humandb/
 annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd humandb/
 
 annotate_variation.pl -buildver hg19 -downdb -webfrom annovar cadd humandb/
+
+```
+
+Finally, we have to update paths_and_configs.py appropriately. Details about how to download and use the Annovar databases can be found [here](http://annovar.openbioinformatics.org/en/latest/). For the above databases:
+
+```bash
+annovar_protocols = "refGene,dbnsfp30a,clinvar_20170130,avsnp147,cadd"
+
+annovar_operations = "g,f,f,f,f"
 
 ```
 
