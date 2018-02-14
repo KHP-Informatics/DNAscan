@@ -962,7 +962,7 @@ if variantcalling:
 
                 while counter < int(num_cpu) + 1:
 
-                    command = path_freebayes + "freebayes" + " -t " + out + "temp" + \
+                    command = path_freebayes + "freebayes" + " --genotype-qualities " + " -t " + out + "temp" + \
                         str(counter) + ".bed" + " -f " + path_reference + " -b " + bam_file + " > " + out + "/freebayes" + str(counter) + ".vcf"
 
                     proc_freebayes = subprocess.Popen(command, shell=True)
@@ -1010,7 +1010,7 @@ if variantcalling:
                         (path_tabix, out, path_tabix, out))
                         
                     os.system(
-                        "%sjava -jar %sGenomeAnalysisTK.jar -T CombineVariants -R %s --variant %sSNPs_only.recode.vcf.gz --variant %sindels_only.recode.vcf.gz -o  %s%s.vcf --genotypemergeoption UNSORTED" %
+                        "%sjava -jar %sGenomeAnalysisTK.jar -T CombineVariants  -minimalVCF -R %s --variant %sSNPs_only.recode.vcf.gz --variant %sindels_only.recode.vcf.gz -o  %s%s.vcf --genotypemergeoption UNSORTED" %
                         (path_java,
                          path_gatk,
                          path_reference,
