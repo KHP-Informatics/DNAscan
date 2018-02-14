@@ -1436,11 +1436,11 @@ if alignment_report:
     else:
 
         os.system(
-            "%ssamtools flagstat %s > %sreports/%s_flagstat.txt" %
-            (path_samtools, bam_file, out, sample_name))
+            "%ssamtools flagstat -@ %s %s > %sreports/%s_flagstat.txt" %
+            (path_samtools, num_cpu, bam_file, out, sample_name))
 
-        os.system("%ssamtools stats  %s > %sreports/%s_stats.txt" %
-                  (path_samtools, bam_file, out, sample_name))
+        os.system("%ssamtools stats -@ %s  %s > %sreports/%s_stats.txt" %
+                  (path_samtools, num_cpu, bam_file, out, sample_name))
 
         os.system("touch  %slogs/alignment_report.log" % (out))
 
