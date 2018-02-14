@@ -1,7 +1,9 @@
 ![alt text](https://github.com/KHP-Informatics/DNAscan/blob/master/DNAscan_logo.001.jpeg)
 
 # DNAscan
-
+```diff
+-TO BE NOTED: DNAscan is still under development. Any bug reports, suggestions, feedbacks would be greatly welcome. 
+```
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Citation](#citation)
@@ -34,11 +36,6 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 [Alfredo Iacoangeli et al. DNAscan: a fast, computationally and memory efficient bioinformatics pipeline for analysis of DNA next-generation-sequencing data. Biorxive, 2017](https://docs.google.com/document/d/1a_ueKKppMb1AwInsW4UL2XtmtBuztbbRbhSguTieYg4/edit?usp=sharing)
 
 ## Documentation
-
-```diff
-
--TO BE NOTED: DNAscan is still under development. Any bug reports, suggestions, feedbacks would be greatly welcome. 
-```
 
 ### Minimum requierements
 
