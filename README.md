@@ -61,7 +61,7 @@ Once you have downloaded DNAscan, you can set up all needed dependencies running
 
 ```bash
 
-bash /path/to/DNAscan/scripts/install_dependencies.sh /path/to/set_up/directory /path/to/DNAscan/directory /path/to/annovar/directory /path/to/GATK3.8/download
+bash scripts/install_dependencies.sh /path/to/set_up/directory/ /path/to/DNAscan/directory/ /path/to/annovar/directory/ /path/to/GATK3.8/download.tar.bz2 $num_threads
 
 source ~/.bashrc
 
@@ -99,7 +99,7 @@ cd DNAscan
 
 #By dafault install_dependencies.sh downloads the following Annovar databases: Exac, Refgene, Dbnsfp, Clinvar and Avsnp. If you wish to download the CADD database (about 350G) please uncomment the appropiete line. If you are not interested in performing annotation, please # the annovar lines in the install_dependencies.sh script. 
 
-bash scripts/install_dependencies.sh /path/to/set_up/directory/ /path/to/DNAscan/directory/ path/to/annovar/directory/ /path/to/GATK3.8/download.tar.bz2 $num_threads
+bash scripts/install_dependencies.sh /path/to/set_up/directory/ /path/to/DNAscan/directory/ /path/to/annovar/directory/ /path/to/GATK3.8/download.tar.bz2 $num_threads
 
 source ~/.bashrc
 
