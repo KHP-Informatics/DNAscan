@@ -36,7 +36,8 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 ## Documentation
 
 ```diff
-+ TO BE NOTED: DNAscan is still under development. Any bug reports, suggestions, feedbacks would be greatly welcome. 
+
+TO BE NOTED: DNAscan is still under development. Any bug reports, suggestions, feedbacks would be greatly welcome. 
 ```
 
 ### Minimum requierements
