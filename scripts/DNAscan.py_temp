@@ -306,10 +306,10 @@ parser.add_argument(
 
 parser.add_argument(
     '-rm_dup',
-    action="store_true",
+    action="store",
     dest="rm_dup",
-    help='if this flag is set DNAscan will remove duplicates from the sample bam file (Default = "False")',
-    default=False)
+    help='do you want to mark duplicates while aligning the reads to the reference genome? Options are True or False [string] (Default = "True")',
+    default="True")
     
 
 
@@ -574,7 +574,7 @@ else:
 
 # 7. Remove duplicates command line.  
 # The output from HISAT2 and BWA is piped into $samblaster_cmq during the alignment 
-if rm_dup:
+if rm_dup == "True":
 	
 	samblaster_cmq = "%ssamblaster |" %(path_samblaster)
 	
