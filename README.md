@@ -223,12 +223,32 @@ Note that the json repeat-specification files to be specified in paths.py. For a
 
 ##### Whole exome
 
-DNAscan has an option to restrict the analysis to the whole exome. You just need to add the -exome flag to the command line:
+You can restrict the analysis to the whole exome only. You just need to add the -exome flag to the command line:
 
- ```diff
-python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -out /path/to/outdir -mode fast +-exome
+ ```bash
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -out /path/to/outdir -exome
 ```
 
+##### Any genome regions
+
+You can restrict the analysis to any specific region of the genome by providing DNAscan with a bed file. In this case you need to use the -BED flag when running the pipeline and specify the path to the bed file in paths_and_configs.py
+
+ ```bash
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -out /path/to/outdir -BED
+```
+##### List of genes
+
+You can restrict the analysis to a list of genes. In this case you only need to generate a list of genes (see example in DNAscan/data) and specify the path to it in paths_and_configs.py. No flags need to be used in this case and DNAscan will read (non-case-sensitive) the list and restrict the analsyis tot he appropriate genome regions. 
+
+ ```bash
+cat list_of_genes.txt
+
+fus
+PFN1
+SARM1
+SCFD1
+sod1
+```
 
 
 
