@@ -33,7 +33,7 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 ## Citation
 
-[Alfredo Iacoangeli et al. DNAscan: a fast, computationally and memory efficient bioinformatics pipeline for analysis of DNA next-generation-sequencing data. biorXiv, 2018](https://www.biorxiv.org/content/biorxiv/early/2018/02/18/267195.full.pdf)
+[Alfredo Iacoangeli et al. DNAscan: a fast, computationally and memory efficient bioinformatics pipeline for analysis of DNA next-generation-sequencing data. bioRxiv, 2018](https://www.biorxiv.org/content/biorxiv/early/2018/02/18/267195.full.pdf)
 
 ## Documentation
 
