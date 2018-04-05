@@ -6,8 +6,8 @@
 # means that the annotation step and intensive mode        #
 # are not available. If you wish to be able to perform     #
 # those please follow the instructions in                  #
-# /home/DNA-NGS_scan/GATK_Annovar_readme.txt               #
+# /DNAscan/GATK_Annovar_readme.txt               #
 #                                                          #
 # For instructions about how to use DNAscan please read    #
-# /home/DNA-NGS_scan/README.md                             #
+# /DNAscan/README.md                             #
 ############################################################
