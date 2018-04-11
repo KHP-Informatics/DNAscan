@@ -162,7 +162,7 @@ parser.add_argument(
     action="store",
     dest="RG",
     default=False,
-    help='if this flag is set the alignment stage will add the provided in paths_configs.py read group (Default = "False")')
+    help='if this flag is set the alignment stage will use the read group provided in paths_configs.py (Default = "False")')
 
 
 parser.add_argument(
@@ -178,7 +178,7 @@ parser.add_argument(
     action="store",
     dest="filter_string",
     default="",
-    help='bcftools filter string, eg GQ>20 & DP>10 (Default = "")')
+    help='bcftools filter string, eg "GQ>20 & DP>10" (Default = "")')
 
 parser.add_argument(
     '-paired',
@@ -197,13 +197,13 @@ parser.add_argument(
     '-in2',
     action="store",
     dest="input_file2",
-    help='input file 2, for paired end reads only (usually fastq file)')
+    help='input file 2, for paired end reads only (fastq file)')
 
 parser.add_argument(
     '-iobio',
     action="store_true",
     dest="iobio",
-    help='if this flag is set iobio services will be started at the end of the analysis (Default = "False")',
+    help='if this flag is set the iobio services will be started at the end of the analysis (Default = "False")',
     default=False)
 
 parser.add_argument(
@@ -217,7 +217,7 @@ parser.add_argument(
     '-expansion',
     action="store_true",
     dest="expansion",
-    help='if this flag is set DNAscan will look for the expansions described in the jason folder described in paths_configs.py  (Default = "False") ',
+    help='if this flag is set DNAscan will look for the expansions described in the jason folder in paths_configs.py  (Default = "False") ',
     default=False)
 
 parser.add_argument(
@@ -294,7 +294,7 @@ parser.add_argument(
     '-calls_report',
     action="store_true",
     dest="calls_report",
-    help='if this flag is set DNAscan generate a report describing the found snvs and indels (Default = "False")',
+    help='if this flag is set DNAscan generate a report describing the found snvs and small indels (Default = "False")',
     default=False)
 
 parser.add_argument(
@@ -349,7 +349,7 @@ requiredNamed.add_argument(
     required=True,
     action="store",
     dest="reference",
-    help='options are hg19, hg38 [string]')
+    help='options are hg19 and hg38, the path to the reference fasta file must be specified in paths_configs.py [string]')
 
 requiredNamed.add_argument(
     '-in',
