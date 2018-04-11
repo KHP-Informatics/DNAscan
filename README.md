@@ -199,7 +199,7 @@ Finally, a set of optional arguments can be used to customise the analysis:
 Let's assume we have human paired end whole exome sequening data in two fastq files and want to perform snvs/indels calling vs hg19, annotation and explore the results using the iobio services. The DNAscan command line would be:
 
  ```bash
-python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -annotation -iobio -out /path/to/outdir -mode fast
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -annotation -iobio -out /path/to/outdir/ -mode fast
 ```
 Using the sequencing data provided in the data folder:
 
@@ -215,7 +215,7 @@ IMPORTANT: All paths in DNAscan end with "/"
 Let's assume we have human paired end whole exome sequening data in two fastq files and want to perform snvs/indels calling vs hg19 and scan for some specific repeat expansions. The DNAscan command line would be:
 
  ```bash
-python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -expansion -out /path/to/outdir -mode fast
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -expansion -out /path/to/outdir/ -mode fast
 ```
 Note that the json repeat-specification files to be specified in paths.py. For a guide about how to create a json repeat-specification file see the this [LINK](https://github.com/Illumina/ExpansionHunter/wiki/Inputs) to the ExpantionHunter instructions. Two examples of such files. for the C9orf72 repeat and ataxin2 repeat are in DNAscan/repeats folder.
 
@@ -226,7 +226,7 @@ Note that the json repeat-specification files to be specified in paths.py. For a
 You can restrict the analysis to the whole exome only. You just need to add the -exome flag to the command line:
 
  ```bash
-python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -out /path/to/outdir -exome
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -out /path/to/outdir/ -exome
 ```
 
 ##### Any genome regions
@@ -234,7 +234,7 @@ python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 d
 You can restrict the analysis to any specific region of the genome by providing DNAscan with a bed file. In this case you need to use the -BED flag when running the pipeline and specify the path to the bed file in paths_and_configs.py
 
  ```bash
-python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -out /path/to/outdir -BED
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -out /path/to/outdir/ -BED
 ```
 ##### List of genes
 
