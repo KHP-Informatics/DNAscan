@@ -72,7 +72,7 @@ path_bed = "data/test_data.bed"
 #path_bed="/users/k1513213/brc_scratch/indels_project/gene_list_positions_sorted_no_overlap.bed"
 
 
-#hg19 can be downloaded from 
+#hg19 can be downloaded from http://hgdownload.cse.ucsc.edu/goldenPath/hg19/
 path_reference = ""
 
 #hg19 index can be downloaded from ftp://ftp.ccb.jhu.edu/pub/data/hisat_indexes/hg19_hisat.tar.gz
