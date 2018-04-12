@@ -2,7 +2,7 @@
 
 # DNAscan
 ```diff
-+TO BE NOTED: We are always working to improve DNAscan so any bug reports, suggestions, feedbacks would be greatly welcome. 
++TO BE NOTED: We are always working to improve DNAscan so any bug reports, suggestions, feedbacks would be highly welcome. 
 ```
 ## Table of Contents
 1. [Introduction](#introduction)
