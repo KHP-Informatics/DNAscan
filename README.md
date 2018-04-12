@@ -8,7 +8,7 @@
 1. [Introduction](#introduction)
 2. [Citation](#citation)
 3. [Documentation](#documentation)
-	* [Minimum requierements](#minimum-requierements)
+	* [Minimum requirements](#minimum-requirements)
 	* [Obtaining](#obtaining)
 	* [Usage](#usage)
 	* [Output](#output)
@@ -28,7 +28,7 @@ DNAscan is a fast and efficient bioinformatics pipeline that allows for the anal
 
 ![alt text](https://github.com/KHP-Informatics/DNAscan/raw/master/DNA_scan_paper-5.jp2)
 
-Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and optionally variant files. The pipeline firstly perform an alignment step (details in the left panel), followed by a customizable data analysis protocol (details in the right panel). Finally, results are annotated and a user friendly report is generated. Right panel: detailed description of the post alignment analysis pipeline (intensive mode). Aligned reads are used by the variant calling pipeline (Freebayes + GATK HC + Bcftools), both aligned and unaligned reads are used by Manta and ExpensionHunter (for which known repeat description files have to be provided)  to look for structural variants. The unaligned reads are mapped to a database of known viral genomes (NCBI database) to screen for the presence of their genetic material in the input sequencing data. Left panel: Alignment stage description. Raw reads are aligned with HISAT2. Resulting soft/hard-clipped reads and unaligned reads are realigned with BWA mem and then merged with the others using samtools.
+Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and optionally variant files. The pipeline firstly performs an alignment step (details in the left panel), followed by a customizable data analysis protocol (details in the right panel). Finally, results are annotated and a user friendly report is generated. Right panel: detailed description of the post alignment analysis pipeline (intensive mode). Aligned reads are used by the variant calling pipeline (Freebayes + GATK HC + Bcftools), both aligned and unaligned reads are used by Manta and ExpensionHunter (for which known repeat description files have to be provided)  to look for structural variants. The unaligned reads are mapped to a database of known viral genomes (NCBI database) to screen for the presence of their genetic material in the input sequencing data. Left panel: Alignment stage description. Raw reads are aligned with HISAT2. Resulting soft/hard-clipped reads and unaligned reads are realigned with BWA mem and then merged with the others using samtools.
 
 
 ## Citation
@@ -37,21 +37,21 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 
 ## Documentation
 
-### Minimum requierements
+### Minimum requirements
 
-- Ubuntu >= 14.04
+- Ubuntu >= 14.04.
 - RAM: if processing WGS data, at least 14 Gb for the fast mode. 16 Gb for the other modes. 
 - Space required by the installation: 
-  - By the dependencies and DNAscan: we recommend at least 10Gb of free space for the whole DNAscan deplyment, including the dependencies. 
-  - 8Gb for the reference human genome and the hisat2 index. An extra 5.5Gb for the bwa index are required if you want to use         the normal or intensive modes   
+  - By the dependencies and DNAscan: we recommend at least 10Gb of free space for the whole DNAscan deployment, including the dependencies. 
+  - 8Gb for the reference human genome and the hisat2 index. An extra 5.5Gb for the bwa index are required if you want to use         the normal or intensive modes.   
   - The annotation step makes use of Annovar and selected databases, the size of which can range from tens of megabytes to hundreds of gigabytes (e.g. CADD database). If the user wishes to perform the annotation step they must take this into account.
-- Scratch space for usage: If you are performing the alignment stage and your input data is in fastq.gz format we recommend at 3 times the size of your input data. E.g. your fastq.gz files are 100Gb, thus you would need 300Gb of free space. If you don't wish to performe the alignment a proportion data-to-analyse:free-space of 1:1 would be enough. E.g. Input data is a 50Gb bam file, you would need only 50Gb free space. 
+- Scratch space for usage: If you are performing the alignment stage and your input data is in fastq.gz format we recommend using at least 3 times the size of your input data. E.g. your fastq.gz files are 100Gb, thus you would need 300Gb of free space. If you don't wish to perform the alignment, a proportion of data-to-analyse:free-space of 1:1 would be enough. E.g. Input data is a 50Gb bam file, you would need only 50Gb of free space. 
 
 ### Obtaining
 
 **Version:** 0.1
 
-Please make sure all dependencies are installed before running DNAscan. Instrutions about how to install all dependencies are available in the following chapter. However a bash script to set up all dependencies (Annovar and GATK need a manual registration and download step) is available in scripts.
+Please make sure all dependencies are installed before running DNAscan. Instructions on how to install all dependencies are available in the following chapter. However a bash script to set up all dependencies (Annovar and GATK need a manual registration and download step) is available in scripts.
 
 #### Local Deployment
 
@@ -61,7 +61,7 @@ To obtain DNAscan please use git to download the most recent development tree:
 git clone https://github.com/KHP-Informatics/DNAscan.git
 ```
 
-Once you have downloaded DNAscan, you can set up all needed dependencies running the install_dependencies.sh script available in DNAscan/scripts. Before running install_dependencies.sh please download and uncompress Annovar by registering at the following [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php) and download GATK 3.8 at the following [link](https://software.broadinstitute.org/gatk/download/). Install_dependencies.sh will install all software dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs runs in background and will finish after the scripts ends) as well as update paths.py. 
+Once you have downloaded DNAscan, you can set up all needed dependencies running the install_dependencies.sh script available in DNAscan/scripts. Before running install_dependencies.sh please download and uncompress Annovar by registering at the following [link](http://www.openbioinformatics.org/annovar/annovar_download_form.php) and download GATK 3.8 at the following [link](https://software.broadinstitute.org/gatk/download/). Install_dependencies.sh will install all software dependencies as well as hg19 reference genome and its hisat2 and bwa indexes (these jobs run in the background and will finish after the script ends) as well as update paths.py. 
 
 ```bash
 
@@ -73,13 +73,13 @@ source ~/.bashrc
 
 #### Obtain with Docker
 
-IMPORTANT: if you want to use the intensive mode or the annotation step of DNAscan you need to register and download both Annovar and GATK 3.8. Remember to mirrow into the container the folder where you have deployed these using the -v flag of copying them inside the container using the docker cp command as descripbed below
+IMPORTANT: if you want to use the intensive mode or the annotation step of DNAscan you need to register and download both Annovar and GATK 3.8. Remember to mirror into the container the folder where you have deployed these using the -v flag or copy them inside the container using the docker cp command as described below.
 The easiest way to get started with DNAscan is to use its Docker image:
 
 ```bash
 sudo docker run  -v /path/to/your/data_folder:/container/path/where/you/want/your/data [-p 8080:8080] --storage-opt size=50G  -it compbio/dnascan /bin/bash
 ```
-Please set the needed container size taking into account the "Minimum requierements".
+Please set the needed container size taking into account the "Minimum requirements".
 
 The -v option adds your data folder (assuming you have some data to run DNAscan on), -p mirrows the container port 8080 to your host port 8080. This will be necessary if you want to use the iobio services.
 The --storage-opt size=Ngigas option defines the maximum size of the container, setting it to N gigabytes. This number would depend on you plans. If you want to perform annotation, the databases used by DNAscan (clinvar,CADD,etc) are about 350G. We recomend N = 500 if you want to install the whole pipeline (including annotation). To this number you should add what needed for your analysis, e.g. if you are planning to download data, the size of you data to analyse etc. A workaround to this is to use the mirrowed host folder as outdir for your analysis and as annovar folder. This folder does not have such size limit. 
