@@ -24,7 +24,7 @@
 
 ## Introduction
 
-DNAscan is a fast and efficient bioinformatics pipeline that allows for the analysis of DNA Next Generation sequencing data, requiring very little computational effort and memory usage. DNAscan can analyse raw whole genome NGS data in ~8 hours, using as little as 8 cpus and 16 Gbs of RAM while guaranteeing a very high performance. We do this by exploiting state-of-the-art bioinformatics tools. DNAscan can screen your DNA NGS data for single nucleotide variants, small indels, structural variants, repeat expansions, viral (or any other organism’s) genetic material. Its results are annotated using a wide range of databases including ClinVar, EXAC, dbSNP and CADD and uploaded onto the gene.iobio platform for an on-the-fly analysis/interpretation.
+DNAscan is a fast and efficient bioinformatics pipeline that allows for the analysis of DNA Next Generation sequencing data, requiring very little computational effort and memory usage. DNAscan can analyse 40x whole genome NGS data in ~8 hours, using as little as 8 cpus and 16 Gbs of RAM while guaranteeing a very high performance. We do this by exploiting state-of-the-art bioinformatics tools. DNAscan can screen your DNA NGS data for single nucleotide variants, small indels, structural variants, repeat expansions, viral (or any other organism’s) genetic material. Its results are annotated using a wide range of databases including ClinVar, EXAC, dbSNP and CADD and uploaded onto the gene.iobio platform for an on-the-fly analysis/interpretation.
 
 ![alt text](https://github.com/KHP-Informatics/DNAscan/raw/master/DNA_scan_paper-5.jp2)
 
@@ -42,7 +42,7 @@ Figure 1. Central panel: Pipeline overview. DNAscan accepts sequencing data, and
 - Ubuntu >= 14.04
 - RAM: if processing WGS data, at least 14 Gb for the fast mode. 16 Gb for the other modes. 
 - Space required by the installation: 
-  - By the dependencies and DNAscan: we reccomend at least 10Gb of free space for the whole DNAscan deplyment, including the dependencies. 
+  - By the dependencies and DNAscan: we recommend at least 10Gb of free space for the whole DNAscan deplyment, including the dependencies. 
   - 8Gb for the reference human genome and the hisat2 index. An extra 5.5Gb for the bwa index are required if you want to use         the normal or intensive modes   
   - The annotation step makes use of Annovar and selected databases, the size of which can range from tens of megabytes to hundreds of gigabytes (e.g. CADD database). If the user wishes to perform the annotation step they must take this into account.
 - Scratch space for usage: If you are performing the alignment stage and your input data is in fastq.gz format we recommend at 3 times the size of your input data. E.g. your fastq.gz files are 100Gb, thus you would need 300Gb of free space. If you don't wish to performe the alignment a proportion data-to-analyse:free-space of 1:1 would be enough. E.g. Input data is a 50Gb bam file, you would need only 50Gb free space. 
