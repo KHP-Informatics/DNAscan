@@ -527,9 +527,9 @@ else:
     
     if exome :
         
-        os.system("zcat %sdb/exome_%s.bed.gz > %stmp/exome_%s.bed" %(dnascan_dir, reference))
+        os.system("zcat %sdb/exome_%s.bed.gz > %stmp/exome_%s.bed" %(dnascan_dir, reference, out, reference))
 	
-        path_bed = "%stmp/exome_%s.bed" %(dnascan_dir, reference)
+        path_bed = "%stmp/exome_%s.bed" %(out, reference)
 	
         if path_bed :
 
