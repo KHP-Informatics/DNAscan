@@ -428,7 +428,7 @@ os.system(
     (out, out, out, out, out))
 
 
-# 6. Bed splitting: splitting the analysis region into subsents of equal length to distribute the work across the available threads.
+# 6. Bed splitting: splitting the analysis region into subsets of equal length to distribute the work across the available threads.
 # To do this DNAscan uses a bed file.
 # If bed file is not provided, it generates one starting from the
 # reference genome index. The pipeline uses a bed file to split the
@@ -440,7 +440,7 @@ if BED:
 
     if path_bed :
 
-    # splitting the analysis region into subsents of equal length to
+    # splitting the analysis region into subsets of equal length to
     # distribute the work across the available threads.
 
         os.system("awk \'{i=$2; while (i < $3) {print $1\"\t\"i\"\t\"i+1 ;  i++}}\' %s > %stmp/tmp.bed" %(path_bed, out))
@@ -533,7 +533,7 @@ else:
 	
         if path_bed :
 
-        # splitting the analysis region into subsents of equal length to
+        # splitting the analysis region into subsets of equal length to
         # distribute the work across the available threads.
 
             os.system("awk \'{i=$2; while (i < $3) {print $1\"\t\"i\"\t\"i+1 ;  i++}}\' %s > %stmp/tmp.bed" %(path_bed, out))
