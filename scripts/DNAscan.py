@@ -435,7 +435,7 @@ os.system(
 # analyses in several subprocesses
 
 
-if BED:
+if BED or path_gene_list:
 
 
     if path_bed :
