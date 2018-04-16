@@ -1559,7 +1559,7 @@ if results_report:
 
                 check1 = re.search(r'(^chr)|(^[0-9,X,Y,M]+\t)', j, flags=0)
 
-                check = re.search("=%s;" % (i.strip()), j, flags=0)
+                check = re.search("=%s;" % (i.strip().upper()), j, flags=0)
 
                 if check and check1:
 
