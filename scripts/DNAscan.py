@@ -477,7 +477,7 @@ if BED:
 
                 print("\n\nWARNING: some genes provided in the gene list were not found, please check which ones in %sunmatched_genes.txt " %(out))  
 
-            os.system("zgrep -viwf %smatched_genes.txt %s  > %sunmatched_genes.txt" %(out, path_gene_list, out))
+            os.system("zgrep -iwf %s %s%s_gene_names.txt.gz | awk '{print $1}' > %smatched_genes_codes.txt" %(path_gene_list,path_to_db,reference,out))
 
             os.system("zgrep -wf %smatched_genes_codes.txt %s%s_gene_db.txt | awk '{i=1; while (i<= int($8)) {n=split($9,a,/,/);n=split($10,b,/,/); print $2\"\t\"a[i]\"\t\"b[i]; i+=1}}' > %scustom_tmp.bed " %(out, path_to_db, reference, out))
 
