@@ -1,8 +1,10 @@
-#!/home/aga/ENV/bin/python
+#!/usr/bin/env python3
 #DNAscan uses several tools and files. DNAscan paths to software binaries always endwith "/" while paths to files always end with the filename.
 #Instructions about how to get the needed files are commented below near the coresponding path line.
 
 import os.path
+
+#Configs 
 
 RG_ID = "4"
 
@@ -13,6 +15,14 @@ RG_PL = "illumina"
 RG_PU = "unit1"
 
 RG_SM = "20"
+
+#this is the port used to reach the local deployment of the iobio serveces. E.g. if port = "8080" the iobio serveces will be available at http://localhost:8080 
+port_num = "8080"
+
+num_cpu = "1"
+
+
+#Paths
 
 path_to_db = ""
 
@@ -54,9 +64,6 @@ path_expansionHunter_jsons = ""
 
 path_samblaster = ""
 
-#this is the port used to reach the local deployment of the iobio serveces. E.g. if port = "8080" the iobio serveces will be available at http://localhost:8080 
-port_num = "8080"
-
 path_java = ""
 
 path_vcftools = ""
@@ -65,12 +72,9 @@ path_scripts = "scripts/"
 
 path_gatk = ""
 
-num_cpu = "1"
-
 path_bed = "data/test_data.bed"
 
 #path_bed="/users/k1513213/brc_scratch/indels_project/gene_list_positions_sorted_no_overlap.bed"
-
 
 #hg19 can be downloaded from http://hgdownload.cse.ucsc.edu/goldenPath/hg19/
 path_reference = ""
