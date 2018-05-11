@@ -1207,8 +1207,10 @@ if annotation:
              out,
              sample_name))
         
-        os.system("mv %s* %sresults/" %(variant_results_file, out))	
+        os.system("mv %s %sresults/" %(variant_results_file, out))	
 	
+        os.system("mv %s.tbi %sresults/" %(variant_results_file, out))
+        
         variant_results_file = "%sresults/%s_annotated.vcf.gz" % (out, sample_name)
         
         os.system("touch  %slogs/annovar.log" % (out))
