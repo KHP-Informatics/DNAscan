@@ -421,6 +421,14 @@ RG = args.RG
 
 variant_results_file = ""
 
+if format == "vcf" :
+    
+    variant_results_file = input_file
+	
+    if not vcf :
+		
+        vcf = variant_results_file
+
 # 5. Create working dir tree
 
 os.system(
