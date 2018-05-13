@@ -1205,7 +1205,7 @@ if annotation:
             (out, out))
         
         os.system(
-            "mv %s/annovar.vcf.hg19_multianno.vcf %sresults/%s_annotated.vcf ; bgzip %sresults/%s_annotated.vcf ; %stabix -fp vcf %sresults/%s_annotated.vcf.gz" %
+            "mv %s/annovar.vcf.hg19_multianno.vcf %sresults/%s_annotated.vcf ; bgzip -f %sresults/%s_annotated.vcf ; %stabix -fp vcf %sresults/%s_annotated.vcf.gz" %
             (out,
              out,
              sample_name,
