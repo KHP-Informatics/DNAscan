@@ -379,7 +379,7 @@ input_file2 = args.input_file2
 
 expansion = args.expansion
 
-out = args.out
+out = args.out + '/'
 
 vcf = args.vcf
 
