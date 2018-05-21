@@ -450,6 +450,11 @@ if BED or path_gene_list:
 
     # splitting the analysis region into subsets of equal length to
     # distribute the work across the available threads.
+	
+	
+        if  path_gene_list:
+	
+             print("\n\nWARNING: Both a bed file and a list of genes were provided. DNAscan will ignore the list of genes.\n\n")
 
         os.system("awk \'{i=$2; while (i < $3) {print $1\"\t\"i\"\t\"i+1 ;  i++}}\' %s > %stmp/tmp.bed" %(path_bed, out))
 
