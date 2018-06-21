@@ -274,6 +274,19 @@ Usage example:
 python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alsgenescanner -out /path/to/outdir/ -mode fast
 ```
 
+RefGene, ClinVar and dbnsfp30a are nessary to run ALSgeneScanner.
+
+Please use the following commands to download the appropiate Annovar databases:
+
+```bash
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar dbnsfp30a /path/to/annovar/database/
+
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene /path/to/annovar/database/
+
+annotate_variation.pl -buildver hg19 -downdb -webfrom annovar clinvar_20170905 /path/to/annovar/database/
+```
+
+
 
 ### Output
 
