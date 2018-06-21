@@ -270,7 +270,9 @@ ALSgeneScanner is a pipeline designed for the analysis of NGS data of ALS patien
 
 Usage example:
 
+```bash
 python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alsgenescanner -out /path/to/outdir/ -mode fast
+```
 
 
 ### Output
