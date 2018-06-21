@@ -11,12 +11,13 @@
 	* [Minimum requirements](#minimum-requirements)
 	* [Obtaining](#obtaining)
 	* [Usage](#usage)
+	* [ALSgeneScanner](#alsgenescanner)
 	* [Output](#output)
 	* [How to download the reference genome](#how-to-download-the-reference-genome)
 	* [How to download the NCBI microbe DBs](#how-to-download-the-ncbi-microbe-dbs)
 	* [How to index the reference genome or a microbe DB](#how-to-index-the-reference-genome-or-a-microbe-db)
 	* [Dependencies](#dependencies)
-	* [Docker and Singularity](#docker-and-singularity)
+	* [Docker and Singularity](#docker-and-singularity)	
 4. [Core Contributors](#core-contributors)
 5. [Contributing](#contributing)
 6. [Licence](#licence)
@@ -262,6 +263,14 @@ Let's assume we have human paired end whole exome sequening data in two fastq fi
 python3 scripts/analyse_list_of_samples.py -option_string "-format fastq -reference hg19 -alignment -variantcalling -mode fast" -out_dir /path/to/where/you/want/the/analysis/to/take/place/ -sample_list extras/fastq_sample_list.txt -format fastq -paired 1 
 ```
 The analyse_list_of_samples.py takes as input a file containing the input file of one sample per line (tab separated in case of 2 paired end reads fastq files per sample), the option you want to pass to DNAscan between quotation marks, the input file format and whether or not (1 or 0) the data is paired-end reads. 2 sample lists of input files are in DNAscan/extras
+
+### ALSgeneScanner
+
+ALSgeneScanner is a pipeline designed for the analysis of NGS data of ALS patients. It perfoms alignment, variant calling, structural variant callin and repeat expansion calling as well as variant annotation using Annovar. It restricts the analysis to a subset of genes (150) which have been shown to be associated with ALS. It also prioritize variants according to the scientific evidence of such an gene association and the prediction of the effect of the variant. To run ALSgeneScanner the user has to use the appropiate flag as in the following axample. At present this can only be done using the reference genome hg19.
+
+Usage example:
+
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alsgenescanner -out /path/to/outdir/ -mode fast
 
 
 ### Output
