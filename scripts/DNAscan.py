@@ -1652,3 +1652,8 @@ if alsgenescanner:
         "cat %s/results/%s_alsgenescanner_all.txt | head -1 > %s/results/%s_alsgenescanner_manual_review.txt ; cat %s/results/%s_alsgenescanner_all.txt | grep -iwf %s/list_genes_manual_review.txt >> %s/results/%s_alsgenescanner_manual_review.txt"
         % (out, sample_name, out, sample_name, out, sample_name, path_to_db,
            out, sample_name))
+    os.system(
+        "cat %s/results/%s_alsgenescanner_all.txt | head -1 > %s/results/%s_alsgenescanner_all_ranked.txt ; cat %s/results/%s_alsgenescanner_all.txt | grep -i pathog | sort -t'  ' -k10nr >> %s/results/%s_alsgenescanner_all_ranked.txt ; cat %s/results/%s_alsgenescanner_all.txt | grep '^chr'  | grep -iv pathog | sort -t'  ' -k10nr >> %s/results/%s_alsgenescanner_all_ranked.txt  "
+        % (out, sample_name, out, sample_name, out, sample_name, out, sample_name, 
+           out, sample_name, out, sample_name))
+    
