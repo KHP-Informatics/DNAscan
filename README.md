@@ -266,7 +266,7 @@ The analyse_list_of_samples.py takes as input a file containing the input file o
 
 ### ALSgeneScanner
 
-ALSgeneScanner is a pipeline designed for the analysis of NGS data of ALS patients. It perfoms alignment, variant calling, structural variant callin and repeat expansion calling as well as variant annotation using Annovar. It restricts the analysis to a subset of genes (150) which have been shown to be associated with ALS. A complete list of the included genes is available as a [Google Spreadsheet](https://goo.gl/mngrMC). It also prioritize variants according to the scientific evidence of such an gene association and the prediction of the effect of the variant. To run ALSgeneScanner the user has to use the appropiate flag as in the following axample. At present this can only be done using the reference genome hg19.
+ALSgeneScanner is a pipeline designed for the analysis of NGS data of ALS patients. It perfoms alignment, variant calling, structural variant callin and repeat expansion calling as well as variant annotation using Annovar. It restricts the analysis to a subset of genes (150) which have been shown to be associated with ALS. A complete list of the included genes is available as a [Google Spreadsheet](https://goo.gl/mngrMC). It also prioritize variants according to the scientific evidence of the gene association and the effect prediction of the variant. To run ALSgeneScanner the user has to use the appropriate flag as in the following example. At present this can only be done using the reference genome hg19.
 
 Usage example:
 
