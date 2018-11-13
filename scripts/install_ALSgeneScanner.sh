@@ -3,10 +3,11 @@
 #Usage: bash install_dependencies.sh $path_to_setup_dir $path_to_DNASCAN_dir $path_to_ANNOVAR $path_to_gatk_download
 #Example: bash install_dependencies.sh /home/local/ /home/DNA-NGS_scan /home/annovar /home/gatk_download_dir
 
+apt-get install realpath
 
-DNASCAN_DIR=$1
+DNASCAN_DIR= "$(realpath $1)"
 
-ANNOVAR_DIR=$2
+ANNOVAR_DIR="$(realpath $2)"
 
 INSTALL_DIR=$DNASCAN_DIR/dependencies/
 
