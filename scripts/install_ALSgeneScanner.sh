@@ -8,9 +8,7 @@ DNASCAN_DIR=$1
 
 ANNOVAR_DIR=$2
 
-NUM_CPUS=$3
-
-INSTALL_DIR=$DNASCAN_DIR
+INSTALL_DIR=$DNASCAN_DIR/install_dir
 
 apt-get install -y update
 
