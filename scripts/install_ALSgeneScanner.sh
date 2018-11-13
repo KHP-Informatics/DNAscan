@@ -8,7 +8,7 @@ DNASCAN_DIR=$1
 
 ANNOVAR_DIR=$2
 
-INSTALL_DIR=$DNASCAN_DIR/install_dir
+INSTALL_DIR=$DNASCAN_DIR/dependencies/
 
 apt-get install -y update
 
