@@ -10,11 +10,7 @@ ANNOVAR_DIR=$2
 
 NUM_CPUS=$3
 
-ANNOVAR_DIR=$4
-
 INSTALL_DIR=$DNASCAN_DIR
-
-sudo
 
 apt-get install -y update
 
