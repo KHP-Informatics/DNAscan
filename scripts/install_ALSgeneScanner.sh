@@ -82,7 +82,6 @@ conda install -y sambamba
 
 conda install -y samblaster
 
-
 cd $DNASCAN_DIR
 
 mkdir hg19
@@ -145,16 +144,16 @@ git clone https://github.com/chmille4/bam.iobio.io.git
 
 cd ..
 
+chmod -R 666 $DNASCAN_DIR
+
 cd $DNASCAN_DIR
 
 sed "s|path_reference = \"\"|path_reference = \"$DNASCAN_DIR\/hg19\/hg19.fa\"|" scripts/paths_configs.py > scripts/paths_configs.py_temp
 
 sed "s|path_hisat_index = \"\"|path_hisat_index = \"$DNASCAN_DIR\/hg19\/genome\"|" scripts/paths_configs.py_temp > scripts/paths_configs.py
 
-sed "s|path_annovar = \"\"|path_annovar = \"$ANNOVAR_DIR\/\"|" scripts/paths_configs.py_temp > scripts/paths_configs.py
+sed "s|path_annovar = \"\"|path_annovar = \"$ANNOVAR_DIR\/\"|" scripts/paths_configs.py > scripts/paths_configs.py_temp
 
-sed "s|path_annovar_db = \"\"|path_annovar_db = \"$INSTALL_DIR\/humandb\/\"|" scripts/paths_configs.py > scripts/paths_configs.py_temp
+sed "s|path_annovar_db = \"\"|path_annovar_db = \"$INSTALL_DIR\/humandb\/\"|" scripts/paths_configs.py_temp > scripts/paths_configs.py
 
-sed "s|path_gatk = \"\"|path_gatk = \"$INSTALL_DIR\/Miniconda2\/opt\/gatk-3.8\/\"|" scripts/paths_configs.py_temp >  scripts/paths_configs.py
-
-
+rm scripts/paths_configs.py_temp
