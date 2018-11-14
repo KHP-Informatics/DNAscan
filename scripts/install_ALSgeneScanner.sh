@@ -5,7 +5,7 @@
 
 apt-get install realpath
 
-DNASCAN_DIR= "$(realpath $1)"
+DNASCAN_DIR="$(realpath $1)"
 
 ANNOVAR_DIR="$(realpath $2)"
 
