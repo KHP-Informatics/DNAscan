@@ -156,4 +156,8 @@ sed "s|path_annovar = \"\"|path_annovar = \"$ANNOVAR_DIR\/\"|" scripts/paths_con
 
 sed "s|path_annovar_db = \"\"|path_annovar_db = \"$INSTALL_DIR\/humandb\/\"|" scripts/paths_configs.py_temp > scripts/paths_configs.py
 
+sed "s|path_to_db = \"\"|path_to_db = \"$DNASCAN_DIR\/db\/\"|" scripts/paths_configs.py_temp > scripts/paths_configs.py
+
+sed "s|dnascan_dir = \"\"|path_annovar_db = \"$DNASCAN_DIR\/\"|" scripts/paths_configs.py_temp > scripts/paths_configs.py
+
 rm scripts/paths_configs.py_temp
