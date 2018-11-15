@@ -144,7 +144,7 @@ git clone https://github.com/chmille4/bam.iobio.io.git
 
 cd ..
 
-chmod -R 770 $DNASCAN_DIR
+chmod -R 775 $DNASCAN_DIR
 
 cd $DNASCAN_DIR
 
