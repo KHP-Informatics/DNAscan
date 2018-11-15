@@ -176,7 +176,6 @@ parser.add_argument(
 
 parser.add_argument(
     '-mode',
-    required=True,
     action="store",
     dest="mode",
     default="fast",
@@ -350,6 +349,23 @@ parser.add_argument(
     'if this flag is set DNAscan will only look for variants in the whole exome (Default = "False")',
     default=False)
 
+parser.add_argument(
+    '-format',
+    action="store",
+    dest="format",
+    default="fastq",
+    help='options are bam, sam, fastq, vcf [string] ')
+
+parser.add_argument(
+    '-reference',
+    action="store",
+    dest="reference",
+    default="hg19",
+    help=
+    'options are hg19 and hg38, the path to the reference fasta file must be specified in paths_configs.py [string]'
+)
+
+
 requiredNamed = parser.add_argument_group('required named arguments')
 
 requiredNamed.add_argument(
@@ -361,22 +377,6 @@ requiredNamed.add_argument(
     'path to the output folder. It has to end in /" e.g. /home/user/local/test_folder/'
 )
 
-requiredNamed.add_argument(
-    '-format',
-    required=True,
-    action="store",
-    dest="format",
-    default="fastq",
-    help='options are bam, sam, fastq, vcf [string] ')
-
-requiredNamed.add_argument(
-    '-reference',
-    required=True,
-    action="store",
-    dest="reference",
-    help=
-    'options are hg19 and hg38, the path to the reference fasta file must be specified in paths_configs.py [string]'
-)
 
 requiredNamed.add_argument(
     '-in',
