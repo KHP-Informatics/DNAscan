@@ -102,8 +102,7 @@ apt-get update -qq
 
 apt-get install -y -qq bzip2 gcc g++ make python zlib1g-dev
 
-wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/hg19.tar.gz
-
+wget  --no-passive --no-parent ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/hg19.tar.gz
 tar -xvzf hg19.tar.gz
 
 mv hg19/* .
