@@ -465,7 +465,7 @@ print(
 
 for arg in vars(args):
 
-        print(aerg,':    ', getattr(args,pippo))
+        print(arg,':    ', getattr(args,pippo))
 
 
 
