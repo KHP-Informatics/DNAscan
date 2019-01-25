@@ -211,6 +211,22 @@ python3 scripts/DNAscan.py -format fastq -in data/test_data.1.fq.gz -in2 data/te
 ```
 IMPORTANT: All paths in DNAscan end with "/"
 
+#### Applying filters to the called variants
+
+DNAscan uses bcftools to filter the variants. It only selects variants for which the expression provided is true. A few examples follow. Complete details about how to write an expression can be found in the bcftool manual [LINK](https://samtools.github.io/bcftools/bcftools.html#expressions).  
+
+Filtering calls for which genotype quality is > then 30:
+
+```bash
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -annotation -iobio -out /path/to/outdir/ -mode fast -filter "GQ>30"
+```
+Filtering calls for which genotype quality is > then 30 and depth >5:
+
+```bash
+python3 /path/to/DNAscan/scripts/DNAscan.py -format fastq -in data1.fq.gz -in2 data2.fq.gz -reference hg19 -alignment -variantcalling -annotation -iobio -out /path/to/outdir/ -mode fast -filter 'GQ>30 && DP>5'
+```
+
+
 #### Looking for repeat expansions
 
 Let's assume we have human paired end whole exome sequening data in two fastq files and want to perform snvs/indels calling vs hg19 and scan for some specific repeat expansions. The DNAscan command line would be:
