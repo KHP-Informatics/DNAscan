@@ -362,7 +362,7 @@ parser.add_argument(
     dest="reference",
     default="hg19",
     help=
-    'options are hg19 and hg38, the path to the reference fasta file must be specified in paths_configs.py [string]'
+    'options are hg19, hg38, grch37 and grch38 the path to the reference fasta file must be specified in paths_configs.py [string]'
 )
 
 
@@ -456,6 +456,22 @@ if format == "vcf":
     if not vcf:
 
         vcf = variant_results_file
+        
+# 4.1. Summarize options
+
+print(
+                "############DNAscan Options############ \n\n DNAscan is running an anlysis with the following specifics:\n"
+            )
+
+for arg in vars(args):
+
+        print(aerg,':    ', getattr(args,pippo))
+
+
+
+print("\n################################################")
+        
+        
 
 # 5. Create working dir tree
 
@@ -469,6 +485,22 @@ os.system(
 # reference genome index. The pipeline uses a bed file to split the
 # analyses in several subprocesses
 
+# Y. adapt DB to reference
+
+if reference == "grch37" or  reference == "grch38" :
+    
+    if reference == "grch37":
+        
+        ref_hg = "hg19"
+        
+    else:
+        
+        ref_hg = "hg38"
+    
+    os.system("zcat %s/exome_%s.bed.gz | sed 's/chr//g' | bgzip -c > %s/exome_%s.bed.gz" %(path_to_db,ref_hg,path_to_db,reference) )
+    os.system("zcat %s/%s_gene_db.txt.gz | sed 's/chr//g' | bgzip -c > %s/%s_gene_db.txt.gz" %(path_to_db,ref_hg,path_to_db,reference) )
+    os.system("cp %s/%s_gene_names.txt.gz  %s/%s_gene_names.txt.gz" %(path_to_db,ref_hg,path_to_db,reference) )
+    
 if alsgenescanner:
 
     alignment = True
@@ -492,7 +524,33 @@ if alsgenescanner:
     annovar_operations = "g,f,f"
 
     annovar_protocols = "refGene,dbnsfp30a,clinvar_20170905,"
+    
+# Y. adapt DB to reference
 
+if reference == "grch37" or  reference == "grch38" :
+    
+    
+    
+    if reference == "grch37":
+        
+        ref_hg = "hg19"
+        
+    else:
+        
+        ref_hg = "hg38"
+    
+    os.system("zcat %s/exome_%s.bed.gz | sed 's/chr//g' | bgzip -c > %s/exome_%s.bed.gz" %(path_to_db,ref_hg,path_to_db,reference) )
+    os.system("zcat %s/%s_gene_db.txt.gz | sed 's/chr//g' | bgzip -c > %s/%s_gene_db.txt.gz" %(path_to_db,ref_hg,path_to_db,reference) )
+    os.system("cp %s/%s_gene_names.txt.gz  %s/%s_gene_names.txt.gz" %(path_to_db,ref_hg,path_to_db,reference) )
+    
+    if annotation == True:
+        
+        print(
+                "\n\nWARNING: The annotation step can only be performed using hg19 and hg38. Unfortunately Annovar cannot be used with grch37 and grch38. DNAscan will not perform annotation.\n\n"
+            )
+        
+        annotation = False
+    
 if BED or path_gene_list:
 
     if path_bed:
