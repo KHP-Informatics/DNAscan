@@ -84,6 +84,8 @@ path_hisat = paths_configs.path_hisat
 
 path_hisat_index = paths_configs.path_hisat_index
 
+hisat_custom_options = paths_configs.hisat_custom_options
+
 path_samtools = paths_configs.path_samtools
 
 path_freebayes = paths_configs.path_freebayes
@@ -748,8 +750,8 @@ if alignment:
             if mode == "fast":
 
                 os.system(
-                    "%shisat2 --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %s %ssamtools view -@ %s -Sb -  | %ssambamba sort -t %s  --tmpdir=%stmp -o %ssorted.bam  /dev/stdin"
-                    % (path_hisat, num_cpu, path_hisat_index, input_file,
+                    "%shisat2 %s --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %s %ssamtools view -@ %s -Sb -  | %ssambamba sort -t %s  --tmpdir=%stmp -o %ssorted.bam  /dev/stdin"
+                    % (path_hisat,hisat_custom_options, num_cpu, path_hisat_index, input_file,
                        input_file2, samblaster_cmq, path_samtools, num_cpu,
                        path_sambamba, num_cpu, out, out))
 
@@ -786,8 +788,8 @@ if alignment:
                     rg_option_bwa = ""
 
                 os.system(
-                    "%shisat2 %s  --no-softclip --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %s %ssamtools view -@ %s -Sb -  | %ssambamba sort -t %s  -o %ssorted.bam /dev/stdin; %ssamtools index -@ %s %ssorted.bam"
-                    % (path_hisat, rg_option_hisat2, num_cpu, path_hisat_index,
+                    "%shisat2 %s %s  --no-softclip --no-spliced-alignment -p %s -x %s -1 %s -2 %s | %s %ssamtools view -@ %s -Sb -  | %ssambamba sort -t %s  -o %ssorted.bam /dev/stdin; %ssamtools index -@ %s %ssorted.bam"
+                    % (path_hisat, hisat_custom_options, rg_option_hisat2, num_cpu, path_hisat_index,
                        input_file, input_file2, samblaster_cmq, path_samtools,
                        num_cpu, path_sambamba, num_cpu, out, path_samtools,
                        num_cpu, out))
@@ -831,8 +833,8 @@ if alignment:
             if mode == "fast":
 
                 os.system(
-                    "%shisat2 --no-spliced-alignment -p %s -x %s -U %s | %s %ssamtools view -@ %s -Sb -  | %ssambamba sort -t %s -o %ssorted.bam /dev/stdin"
-                    % (path_hisat, num_cpu, path_hisat_index, input_file,
+                    "%shisat2 %s --no-spliced-alignment -p %s -x %s -U %s | %s %ssamtools view -@ %s -Sb -  | %ssambamba sort -t %s -o %ssorted.bam /dev/stdin"
+                    % (path_hisat, hisat_custom_options, num_cpu, path_hisat_index, input_file,
                        samblaster_cmq, path_samtools, num_cpu, path_sambamba,
                        num_cpu, out))
 
@@ -867,8 +869,8 @@ if alignment:
                     rg_option = ""
 
                 os.system(
-                    "%shisat2  --no-softclip --no-spliced-alignment -p %s -x %s -U %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted.bam /dev/stdin; %ssamtools index -@ %s %ssorted.bam"
-                    % (path_hisat, rg_option_hisat2, num_cpu, path_hisat_index,
+                    "%shisat2 %s --no-softclip --no-spliced-alignment -p %s -x %s -U %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted.bam /dev/stdin; %ssamtools index -@ %s %ssorted.bam"
+                    % (path_hisat, hisat_custom_options, rg_option_hisat2, num_cpu, path_hisat_index,
                        input_file, samblaster_cmq, path_samtools,
                        path_sambamba, num_cpu, out, path_samtools, num_cpu,
                        out))
