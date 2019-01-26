@@ -148,7 +148,7 @@ Its basic use requires the following options:
 ```bash
 
   -format FORMAT        options are bam, sam, fastq, vcf [string] 
-  -reference REFERENCE  options are hg19, hg38 [string]
+  -reference REFERENCE  options are hg19, hg38, grch37 and grch38 [string]
   -in INPUT_FILE        input file [string]
   -in2 INPUT_FILE       second input file (for paired end reads in fastq format only) [string]
   -out OUT              path to the output folder. It has to end in /" e.g. /home/user/local/test_folder/
@@ -321,6 +321,8 @@ DNAscan output tree:
 ```          
            
 ### How to download the reference genome
+
+DNAscan can be used with the following human genome reference builts: hg19, hg38, grch37, grch38. The used build can be specified when running DNAscan by using the option -reference (options are hg19, hg38, grch37 and grch38). However, DNAscan uses Annovar to annotate the variants and Annovar is only compatible with hg19 and hg38 at present. Therefore, if the user wants to use grch37 and grch38 the pipeline will skip the annotation step. We are currently working on this and it will be possible to run DNAscan on grch37 and grch38 without limitations. 
 
 #### hg38
 
