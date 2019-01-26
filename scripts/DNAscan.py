@@ -493,6 +493,9 @@ for arg in vars(args):
    
 options_log.close()
 
+print('\nOptions saved onto %s/logs/options.log' %(out)")
+      
+      
 # 6. Bed splitting: splitting the analysis region into subsets of equal length to distribute the work across the available threads.
 # To do this DNAscan uses a bed file.
 # If bed file is not provided, it generates one starting from the
