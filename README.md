@@ -198,7 +198,7 @@ Finally, a set of optional arguments can be used to customise the analysis:
 
 #### How to make the read mappers and variant callers use custom options
 
-The file paths_and_configs.py in DNAscan_installation_folder/scripts can be used for this purpose. In paths_and_configs.py there is a section where a strings of options can be passed to the read mappers (Hisat2 and BWA) and the variant callers (Freebayes and GATK HC):
+The file paths_and_configs.py in DNAscan_installation_folder/scripts can be used for this purpose. In paths_and_configs.py there is a section where a string of options can be passed to the read mappers (Hisat2 and BWA) and the variant callers (Freebayes and GATK HC):
 
  ```bash
  #custom tool options
