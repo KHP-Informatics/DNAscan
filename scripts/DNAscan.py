@@ -74,6 +74,8 @@ path_vcftools = paths_configs.path_vcftools
 
 path_gatk = paths_configs.path_gatk
 
+gatk_HC_custom_options = paths_configs.gatk_HC_custom_options
+
 path_multiqc = paths_configs.path_multiqc
 
 path_java = paths_configs.path_java
@@ -89,6 +91,8 @@ hisat_custom_options = paths_configs.hisat_custom_options
 path_samtools = paths_configs.path_samtools
 
 path_freebayes = paths_configs.path_freebayes
+
+freebayes_custom_options = paths_configs.freebayes_custom_options
 
 path_annovar = paths_configs.path_annovar
 
@@ -1024,8 +1028,8 @@ if variantcalling:
 
                 while counter < int(num_cpu) + 1:
 
-                    command = "%sjava -jar %sGenomeAnalysisTK.jar -R %s -T HaplotypeCaller -I %s -L %smpileup_positions%s.bed -o %sgatk_indels%s.vcf" % (
-                        path_java, path_gatk, path_reference, bam_file, out,
+                    command = "%sjava -jar %sGenomeAnalysisTK.jar %s -R %s -T HaplotypeCaller -I %s -L %smpileup_positions%s.bed -o %sgatk_indels%s.vcf" % (
+                        path_java, path_gatk, gatk_HC_custom_options, path_reference, bam_file, out,
                         str(counter), out, str(counter))
 
                     proc_gatk = subprocess.Popen(command, shell=True)
@@ -1064,7 +1068,7 @@ if variantcalling:
 
                 while counter < int(num_cpu) + 1:
 
-                    command = path_freebayes + "freebayes" + " --genotype-qualities " + " -t " + out + "temp" + \
+                    command = path_freebayes + "freebayes " + freebayes_custom_options + " --genotype-qualities " + " -t " + out + "temp" + \
                         str(counter) + ".bed" + " -f " + path_reference + " -b " + bam_file + " > " + out + "/freebayes" + str(counter) + ".vcf"
 
                     proc_freebayes = subprocess.Popen(command, shell=True)
