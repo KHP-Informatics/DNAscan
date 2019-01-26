@@ -489,7 +489,7 @@ for arg in vars(args):
 
         print(arg,':    ', getattr(args,arg))
         
-        options_log.write(arg + ':    ' + str(getattr(args,arg)))
+        options_log.write(arg + ':    ' + str(getattr(args,arg)) + "\n")
    
 options_log.close()
 
