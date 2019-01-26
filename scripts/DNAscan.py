@@ -471,11 +471,15 @@ print(
                 "############DNAscan Options############ \n\n DNAscan is running an anlysis with the following specifics:\n"
             )
 
+options_log = open('%s/logs/options.log' %(out), 'w')
+
 for arg in vars(args):
 
         print(arg,':    ', getattr(args,arg))
-
-
+        
+        options_log.write(arg,':    ', getattr(args,arg))
+   
+options_log.close()
 
 print("\n################################################")
         
