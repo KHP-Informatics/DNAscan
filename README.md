@@ -195,6 +195,39 @@ Finally, a set of optional arguments can be used to customise the analysis:
 -debug                if this flag is set DNAscan will not delete intermediete and temporary files (Default = "False")
 ```
 
+
+#### How to make the read mappers and variant callers use custom options
+
+The file paths_and_configs.py in DNAscan_installation_folder/scripts can be used for this purpose. In paths_and_configs.py there is a section where a strings of options can be passed to the read mappers (Hisat2 and BWA) and the variant callers (Freebayes and GATK HC):
+
+ ```bash
+ #custom tool options
+
+hisat_custom_options = ""
+
+bwa_custom_options = ""
+
+freebayes_custom_options = ""
+
+gatk_HC_custom_options = ""
+```
+
+For example, if we want the callers to discard reads with mapping quality < 15, we can modify as follows:
+
+
+```bash
+freebayes_custom_options = "--min-mapping-quality 15"
+
+gatk_HC_custom_options = "-mmq 15"
+```
+
+For a complete list of options that can be used with these tools please see the following links:
+
+[Hisat2](https://ccb.jhu.edu/software/hisat2/manual.shtml)
+[BWA](http://bio-bwa.sourceforge.net/bwa.shtml)
+[Freebayes](https://github.com/ekg/freebayes)
+[GATK HC](https://software.broadinstitute.org/gatk/documentation/tooldocs/current/?v=3)
+
 #### Usage example
 
 Let's assume we have human paired end whole exome sequening data in two fastq files and want to perform snvs/indels calling vs hg19, annotation and explore the results using the iobio services. The DNAscan command line would be:
