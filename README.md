@@ -322,7 +322,7 @@ DNAscan output tree:
            
 ### How to download the reference genome
 
-DNAscan can be used with the following human genome reference builts: hg19, hg38, grch37, grch38. The used build can be specified when running DNAscan by using the option -reference (options are hg19, hg38, grch37 and grch38). However, DNAscan uses Annovar to annotate the variants and Annovar is only compatible with hg19 and hg38 at present. Therefore, if the user wants to use grch37 and grch38 the pipeline will skip the annotation step. We are currently working on this and it will be possible to run DNAscan on grch37 and grch38 without limitations. 
+DNAscan can be used with the following human genome reference builds: hg19, hg38, grch37, grch38. The used build can be specified when running DNAscan by using the option -reference (options are hg19, hg38, grch37 and grch38). However, DNAscan uses Annovar to annotate the variants and Annovar is only compatible with hg19 and hg38 at present. Therefore, if the user wants to use grch37 and grch38 the pipeline will skip the annotation step. We are currently working on this and it will be possible to run DNAscan on grch37 and grch38 without limitations. 
 
 #### hg38
 
@@ -354,6 +354,22 @@ rm chr*
 
 samtools faidx hg19.fa
 ```
+#### grch37
+```bash 
+mkdir /path/to/wherever/grch37
+
+cd /path/to/wherever/grch37
+
+for i in {1,2,3,4,5,6,7,8,9}; do wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/ARCHIVE/BUILD.37.3/CHR_0$i/hs_ref_GRCh37.p5_chr$i.fa.gz; do zcat hs_ref_GRCh37.p5_chr$i.fa.gz >> grch37.fa ; rm hs_ref_GRCh37.p5_chr$i.fa.gz; done
+
+
+for i in {10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y,MY}; do wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/ARCHIVE/BUILD.37.3/CHR_$i/hs_ref_GRCh37.p5_chr$i.fa.gz; do zcat hs_ref_GRCh37.p5_chr$i.fa.gz >> grch37.fa ; rm hs_ref_GRCh37.p5_chr$i.fa.gz; done
+
+samtools faidx grch37.fa
+
+```
+
+
 ### How to download the NCBI microbe DBs
 
 #### Virus
