@@ -126,6 +126,8 @@ path_bwa = paths_configs.path_bwa
 
 path_bwa_index = paths_configs.path_bwa_index
 
+bwa_custom_options = paths_configs.bwa_custom_options
+
 path_rtg = paths_configs.path_rtg
 
 dnascan_dir = paths_configs.dnascan_dir
@@ -799,8 +801,8 @@ if alignment:
                     % (path_samtools, num_cpu, out, out))
 
                 os.system(
-                    "%sbwa mem %s -t %s %s %sunaligned_reads.fq | %s %ssamtools view -@ %s -Sb -  | %ssambamba sort -t %s -o %ssorted_bwa.bam  /dev/stdin ; %ssamtools index -@ %s %ssorted_bwa.bam "
-                    % (path_bwa, rg_option_bwa, num_cpu, path_bwa_index, out,
+                    "%sbwa mem %s %s -t %s %s %sunaligned_reads.fq | %s %ssamtools view -@ %s -Sb -  | %ssambamba sort -t %s -o %ssorted_bwa.bam  /dev/stdin ; %ssamtools index -@ %s %ssorted_bwa.bam "
+                    % (path_bwa, bwa_custom_options, rg_option_bwa, num_cpu, path_bwa_index, out,
                        samblaster_cmq, path_samtools, num_cpu, path_sambamba,
                        num_cpu, out, path_samtools, num_cpu, out))
 
@@ -880,8 +882,8 @@ if alignment:
                     % (path_samtools, num_cpu, out, out))
 
                 os.system(
-                    "%sbwa mem %s -t %s %s %sunaligned_reads.fq| %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted_bwa.bam /dev/stdin; %ssamtools index -@ %s %ssorted_bwa.bam "
-                    % (path_bwa, rg_option_bwa, num_cpu, path_bwa_index, out,
+                    "%sbwa mem %s %s -t %s %s %sunaligned_reads.fq| %s %ssamtools view -Sb -  | %ssambamba sort -t %s -o %ssorted_bwa.bam /dev/stdin; %ssamtools index -@ %s %ssorted_bwa.bam "
+                    % (path_bwa, bwa_custom_options, rg_option_bwa, num_cpu, path_bwa_index, out,
                        samblaster_cmq, path_samtools, path_sambamba, num_cpu,
                        out, path_samtools, num_cpu, out))
 
