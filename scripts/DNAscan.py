@@ -465,7 +465,19 @@ if format == "vcf":
 
         vcf = variant_results_file
         
-# 4.1. Summarize options
+
+print("\n################################################")
+        
+        
+
+# 5. Create working dir tree
+
+os.system(
+    "mkdir %s ; mkdir  %slogs ; mkdir  %sreports ; mkdir  %sresults ; mkdir %stmp"
+    % (out, out, out, out, out))
+
+
+5.1
 
 print(
                 "############DNAscan Options############ \n\n DNAscan is running an anlysis with the following specifics:\n"
@@ -480,16 +492,6 @@ for arg in vars(args):
         options_log.write(arg,':    ', getattr(args,arg))
    
 options_log.close()
-
-print("\n################################################")
-        
-        
-
-# 5. Create working dir tree
-
-os.system(
-    "mkdir %s ; mkdir  %slogs ; mkdir  %sreports ; mkdir  %sresults ; mkdir %stmp"
-    % (out, out, out, out, out))
 
 # 6. Bed splitting: splitting the analysis region into subsets of equal length to distribute the work across the available threads.
 # To do this DNAscan uses a bed file.
