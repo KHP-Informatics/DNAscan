@@ -107,3 +107,13 @@ path_bcftools = ""
 #hg19 index can be downloaded from XXX
 #the index can be created running "./$path_bwa/bwa index $path_reference"
 path_bwa_index = ""
+
+#custom tool options
+
+hisat_custom_options = ""
+
+bwa_custom_options = ""
+
+freebayes_custom_options = ""
+
+gatk_HC_custom_options = ""
