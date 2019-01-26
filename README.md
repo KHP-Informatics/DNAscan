@@ -360,15 +360,28 @@ mkdir /path/to/wherever/grch37
 
 cd /path/to/wherever/grch37
 
-for i in {1,2,3,4,5,6,7,8,9}; do wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/ARCHIVE/BUILD.37.3/CHR_0$i/hs_ref_GRCh37.p5_chr$i.fa.gz; do zcat hs_ref_GRCh37.p5_chr$i.fa.gz >> grch37.fa ; rm hs_ref_GRCh37.p5_chr$i.fa.gz; done
+for i in {1,2,3,4,5,6,7,8,9}; do wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/ARCHIVE/BUILD.37.3/CHR_0$i/hs_ref_GRCh37.p5_chr$i.fa.gz; zcat hs_ref_GRCh37.p5_chr$i.fa.gz >> grch37.fa ; rm hs_ref_GRCh37.p5_chr$i.fa.gz; done
 
 
-for i in {10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y,MY}; do wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/ARCHIVE/BUILD.37.3/CHR_$i/hs_ref_GRCh37.p5_chr$i.fa.gz; do zcat hs_ref_GRCh37.p5_chr$i.fa.gz >> grch37.fa ; rm hs_ref_GRCh37.p5_chr$i.fa.gz; done
+for i in {10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y,MT}; do wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/ARCHIVE/BUILD.37.3/CHR_$i/hs_ref_GRCh37.p5_chr$i.fa.gz; zcat hs_ref_GRCh37.p5_chr$i.fa.gz >> grch37.fa ; rm hs_ref_GRCh37.p5_chr$i.fa.gz; done
 
 samtools faidx grch37.fa
 
 ```
+#### grch38
+```bash 
+mkdir /path/to/wherever/grch38
 
+cd /path/to/wherever/grch38
+
+for i in {1,2,3,4,5,6,7,8,9}; do wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/CHR_0$i/hs_ref_GRCh38.p12_chr$i.fa.gz; zcat hs_ref_GRCh38.p12_chr$i.fa.gz >> grch38.fa ; rm hs_ref_GRCh38.p12_chr$i.fa.gz; done
+
+
+for i in {10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y,MT}; do wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/CHR_$i/hs_ref_GRCh38.p12_chr$i.fa.gz; zcat hs_ref_GRCh38.p12_chr$i.fa.gz >> grch38.fa ; rm hs_ref_GRCh38.p12_chr$i.fa.gz; done
+
+samtools faidx grch38.fa
+
+```
 
 ### How to download the NCBI microbe DBs
 
