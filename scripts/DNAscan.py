@@ -373,6 +373,15 @@ parser.add_argument(
     'options are hg19, hg38, grch37 and grch38 the path to the reference fasta file must be specified in paths_configs.py [string]'
 )
 
+parser.add_argument(
+    '-ref_file',
+    action="store",
+    dest="ref_file",
+    default= "",
+    help=
+    'path to the reference file in fasta format [string]'
+)
+
 
 requiredNamed = parser.add_argument_group('required named arguments')
 
@@ -454,6 +463,12 @@ filter_string = args.filter_string
 custom_microbes = args.custom_microbes
 
 RG = args.RG
+
+ref_file = args.ref_file 
+
+if ref_file:
+    
+    path_reference = ref_file
 
 variant_results_file = ""
 
