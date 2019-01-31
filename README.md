@@ -16,6 +16,7 @@
 	* [How to download the reference genome](#how-to-download-the-reference-genome)
 	* [How to download the NCBI microbe DBs](#how-to-download-the-ncbi-microbe-dbs)
 	* [How to index the reference genome or a microbe DB](#how-to-index-the-reference-genome-or-a-microbe-db)
+	* [Graphic user interface](#Graphic-user-interface)
 	* [Dependencies](#dependencies)
 	* [Docker and Singularity](#docker-and-singularity)	
 4. [Core Contributors](#core-contributors)
@@ -500,7 +501,7 @@ E.g. If the reference genome is the file hg19.fa, located in /home/dataset/ and 
 /home/bin/bwa index /home/dataset/hg19.fa
 ```
 
-
+### Graphic user interface
 
 ### Dependencies
 
