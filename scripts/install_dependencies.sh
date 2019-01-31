@@ -165,6 +165,13 @@ sed "s|path_annovar_db = \"\"|path_annovar_db = \"$INSTALL_DIR\/humandb\/\"|" sc
 
 sed "s|path_gatk = \"\"|path_gatk = \"$INSTALL_DIR\/Miniconda2\/opt\/gatk-3.8\/\"|" scripts/paths_configs.py_temp >  scripts/paths_configs.py
 
+cp scripts/DNAscan.py scripts/DNAscan
+
+chmod +x scripts/*
+
+export PATH=$DNASCAN_DIR/scripts/:$PATH
+
+echo export PATH=$DNASCAN_DIR/scripts/:$PATH >> ~/.bashrc
 
 echo "###########################################IMPORTANT######################################################"
 echo "Hisat2-build and bwa-index are still creating their indexes. Please wait untill they complete their task."
