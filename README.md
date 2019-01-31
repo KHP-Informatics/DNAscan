@@ -301,8 +301,6 @@ SCFD1
 sod1
 ```
 
-
-
 #### Running DNAscan on a list of BAMs/FASTQs
 
 Let's assume we have human paired end whole exome sequening data in two fastq files per sample and want to perform snvs/indels calling vs hg19. In this case we would use the analyse_list_of_samples.py script to run DNAscan:
@@ -335,7 +333,6 @@ annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene /path/to/a
 
 annotate_variation.pl -buildver hg19 -downdb -webfrom annovar clinvar_20170905 /path/to/annovar/database/
 ```
-
 
 
 ### Output
@@ -503,7 +500,7 @@ E.g. If the reference genome is the file hg19.fa, located in /home/dataset/ and 
 
 ### Graphic user interface
 
-We made a graphic user interface (GUI) for DNAscan to enable a wider audience to use it. The GUI source code is in DNAscanUGUI.zip. We used [UGUI](http://ugui.io/) to develop our GUI. To get it working please follow the simple few steps described below, however, detailed documentation and instruction about how to get it started can be found [here](http://ugui.io/tutorials/getting-started.html).  
+We made a graphic user interface (GUI) for DNAscan to enable a wider audience to use it. The GUI source code is in DNAscanUGUI.zip. We used [UGUI](http://ugui.io/) to develop our GUI. To get it working please follow a few simple steps described below, however, detailed documentation and instruction about how to get it started can be found [here](http://ugui.io/tutorials/getting-started.html). If you do not have Node.js installed please get it from [here](https://nwjs.io/).
 
 ```bash
 export PATH=/path/to/DNAscan/scripts/:$PATH
