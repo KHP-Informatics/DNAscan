@@ -382,6 +382,18 @@ parser.add_argument(
     'path to the reference file in fasta format [string]'
 )
 
+parser.add_argument(
+    '-dnascan_dir',
+    action="store",
+    dest="dnascan_main_dir",
+    default= "",
+    help=
+    'path to the DNAscan main dir [string]'
+)
+
+
+
+
 
 requiredNamed = parser.add_argument_group('required named arguments')
 
@@ -466,9 +478,15 @@ RG = args.RG
 
 ref_file = args.ref_file 
 
+dnascan_main_dir = args.dnascan_dir
+
 if ref_file:
     
     path_reference = ref_file
+    
+if dnascan_main_dir:
+    
+    dnascan_dir = dnascan_main_dir
 
 variant_results_file = ""
 
