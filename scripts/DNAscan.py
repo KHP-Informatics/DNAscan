@@ -1224,7 +1224,7 @@ if expansion:
     else:
 
         os.system(
-            "%sExpansionHunter --bam %s --ref-fasta %s --repeat-specs %s --vcf %s/EH_vcf --json %s/temp_EH.json --log %s/temp_EH.log"
+            "%sExpansionHunter --reads %s --ref-fasta %s --repeat-specs %s --vcf %s/EH_vcf --json %s/temp_EH.json --log %s/temp_EH.log"
             % (path_expansionHunter, bam_file, path_reference,
                path_expansionHunter_jsons, out, out, out))
 
