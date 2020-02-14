@@ -1229,7 +1229,7 @@ if expansion:
                path_expansionHunter_jsons, reference, out))
 
         os.system(
-            "mv %s/EH_vcf %s/results/%s_expansions.vcf ; bgzip %s/results/%s_expansions.vcf ; %stabix -p vcf %s/results/%s_expansions.vcf.gz"
+            "mv %s/temp_EH.vcf %s/results/%s_expansions.vcf ; bgzip %s/results/%s_expansions.vcf ; %stabix -p vcf %s/results/%s_expansions.vcf.gz"
             % (out, out, sample_name, out, sample_name, path_tabix, out,
                sample_name))
 
