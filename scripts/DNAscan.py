@@ -1224,9 +1224,9 @@ if expansion:
     else:
 
         os.system(
-            "%sExpansionHunter --reads %s --ref-fasta %s --repeat-specs %s --vcf %s/EH_vcf --json %s/temp_EH.json --log %s/temp_EH.log"
+            "%sExpansionHunter --reads %s --reference %s  --variant-catalog %s/variant_catalog_%s.json --output-prefix %s/temp_EH"
             % (path_expansionHunter, bam_file, path_reference,
-               path_expansionHunter_jsons, out, out, out))
+               path_expansionHunter_jsons, reference, out))
 
         os.system(
             "mv %s/EH_vcf %s/results/%s_expansions.vcf ; bgzip %s/results/%s_expansions.vcf ; %stabix -p vcf %s/results/%s_expansions.vcf.gz"
