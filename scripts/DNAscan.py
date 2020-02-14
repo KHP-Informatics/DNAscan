@@ -565,7 +565,7 @@ if alsgenescanner:
 
     BED = True
 
-    path_expansionHunter_jsons = '%s/%s/repeats/' % (path_to_db, reference)
+    path_expansionHunter_jsons = '%s/repeats/%s/' % (dnascan_dir, reference)
 
     path_bed = '%s/als_gene_scanner.bed' % (path_to_db)
 
