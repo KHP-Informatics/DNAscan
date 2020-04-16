@@ -45,11 +45,11 @@ $ANNOVAR_DIR/annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp
 
 cd $INSTALL_DIR
 
-wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
+wget https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh
 
 chmod +x Miniconda2-latest-Linux-x86_64.sh
 
-./Miniconda2-latest-Linux-x86_64.sh -b -p $INSTALL_DIR/Miniconda2/
+bash Miniconda2-latest-Linux-x86_64.sh -b -p $INSTALL_DIR/Miniconda2/
 
 export PATH=$INSTALL_DIR/Miniconda2/bin:$PATH
 
