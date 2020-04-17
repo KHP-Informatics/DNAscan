@@ -478,7 +478,7 @@ RG = args.RG
 
 ref_file = args.ref_file 
 
-dnascan_main_dir = args.dnascan_dir
+dnascan_main_dir = args.dnascan_main_dir
 
 if ref_file:
     
