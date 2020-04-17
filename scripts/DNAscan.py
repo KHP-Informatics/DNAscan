@@ -776,7 +776,7 @@ else:
 # The output from HISAT2 and BWA is piped into $samblaster_cmq during the alignment
 if rm_dup == "True":
 
-    samblaster_cmq = "%ssamblaster |" % (path_samblaster)
+    samblaster_cmq = "%ssamblaster --ignoreUnmated |" % (path_samblaster)
 
 else:
 
