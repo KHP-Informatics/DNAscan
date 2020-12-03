@@ -589,7 +589,7 @@ if alsgenescanner:
 
     annovar_operations = "g,f,f"
 
-    annovar_protocols = "refGene,dbnsfp30a,clinvar_20170905,"
+    annovar_protocols = "refGene,dbnsfp30a,clinvar_20200316"
     
 # Y. adapt DB to reference
 
@@ -852,7 +852,7 @@ if alignment:
                     rg_option_hisat2 = " --rg-id %s --rg LB:%s --rg PL:%s  --rg PU:%s --rg SM:%s " % (
                         RG_ID, RG_LB, RG_PL, RG_PU, RG_SM)
 
-                    rg_option_bwa = " -R '@RG\tID:%s\tLB:%s\tPL:%s\tRGPU:%s\tSM:%s' " % (
+                    rg_option_bwa = " -R '@RG\\tID:%s\\tLB:%s\\tPL:%s\\tPU:%s\\tSM:%s' " % (
                         RG_ID, RG_LB, RG_PL, RG_PU, RG_SM)
 
                 else:
@@ -946,12 +946,14 @@ if alignment:
                     rg_option_hisat2 = " --rg-id %s --rg LB:%s --rg PL:%s  --rg PU:%s --rg SM:%s " % (
                         RG_ID, RG_LB, RG_PL, RG_PU, RG_SM)
 
-                    rg_option_bwa = " -R '@RG\tID:%s\tLB:%s\tPL:%s\tRGPU:%s\tSM:%s' " % (
+                    rg_option_bwa = " -R '@RG\\tID:%s\\tLB:%s\\tPL:%s\\tPU:%s\\tSM:%s' " % (
                         RG_ID, RG_LB, RG_PL, RG_PU, RG_SM)
 
                 else:
 
-                    rg_option = ""
+                    rg_option_hisat2 = ""
+                    
+                    rg_option_bwa = ""
 
                 os.system(
                     "%shisat2 %s --no-softclip --no-spliced-alignment -p %s -x %s -U %s | %s %ssamtools view -Sb -  | %ssambamba sort -t %s --tmpdir=%s -o %ssorted.bam /dev/stdin; %ssamtools index -@ %s %ssorted.bam"
@@ -1047,7 +1049,7 @@ if variantcalling:
                 "WARNING: The presence of VC.log in logs is telling you that the variant calling was already peformed, please remove VC.log if you wish to perform this stage anyway\n"
             )
 
-            variant_results_file = "%sresults/%s_sorted.vcf.gz" % (out,
+            variant_results_file = "%s%s_sorted.vcf.gz" % (out,
                                                                    sample_name)
 
         else:
@@ -1107,7 +1109,7 @@ if variantcalling:
 
                 while counter < int(num_cpu) + 1:
 
-                    command = "%sjava -jar %sGenomeAnalysisTK.jar %s -R %s -T HaplotypeCaller -I %s -L %smpileup_positions%s.bed -o %sgatk_indels%s.vcf" % (
+                    command = "%sjava -jar %sgatk-package-4.1.9.0-local.jar %s HaplotypeCaller -R %s -I %s -L %smpileup_positions%s.bed -O %sgatk_indels%s.vcf" % (
                         path_java, path_gatk, gatk_HC_custom_options, path_reference, bam_file, out,
                         str(counter), out, str(counter))
 
@@ -1182,7 +1184,7 @@ if variantcalling:
                         "%svcftools  --vcf %sfreebayes.vcf --minGQ 30 --minDP 2 --exclude-bed %smpileup_positions.bed  --recode --recode-INFO-all --out %sSNPs_only"
                         % (path_vcftools, out, out, out))
 
-                    os.system("%sSNPs_only.log" % (out))
+                    os.system("touch %sSNPs_only.log" % (out))
 
                     os.system(
                         "bgzip  %sSNPs_only.recode.vcf ; bgzip %sindels_only.recode.vcf "
@@ -1193,7 +1195,7 @@ if variantcalling:
                         % (path_tabix, out, path_tabix, out))
 
                     os.system(
-                        "%sjava -jar %sGenomeAnalysisTK.jar -T CombineVariants  -minimalVCF -R %s --variant %sSNPs_only.recode.vcf.gz --variant %sindels_only.recode.vcf.gz -o  %s%s.vcf --genotypemergeoption UNSORTED"
+                        "%sjava -jar %sgatkpackage-4.1.9.0-local.jar MergeVcfs -R %s -I %sSNPs_only.recode.vcf.gz -I %sindels_only.recode.vcf.gz -O  %s%s.vcf "
                         % (path_java, path_gatk, path_reference, out, out, out,
                            sample_name))
 
@@ -1350,11 +1352,11 @@ if annotation:
                reference, annovar_protocols, annovar_operations, out))
         if not debug and not alsgenescanner:
             os.system(
-                "rm %sannovar.vcf.hg19_multianno.txt %sannovar.vcf.avinput" %
+                "rm %sannovar.vcf.hg38_multianno.txt %sannovar.vcf.avinput" %
                 (out, out))
 
         os.system(
-            "mv %s/annovar.vcf.hg19_multianno.vcf %sresults/%s_annotated.vcf ; bgzip -f %sresults/%s_annotated.vcf ; %stabix -fp vcf %sresults/%s_annotated.vcf.gz"
+            "mv %s/annovar.vcf.hg38_multianno.vcf %sresults/%s_annotated.vcf ; bgzip -f %sresults/%s_annotated.vcf ; %stabix -fp vcf %sresults/%s_annotated.vcf.gz"
             % (out, out, sample_name, out, sample_name, path_tabix, out,
                sample_name))
 
@@ -1371,9 +1373,9 @@ else:
 
     if variant_results_file:
 
-        os.system("mv %s* %sresults/" % (variant_results_file, out))
+        os.system("mv %s* %s" % (variant_results_file, out))
 
-        variant_results_file = "%sresults/%s_sorted.vcf.gz" % (out,
+        variant_results_file = "%s%s_sorted.vcf.gz" % (out,
                                                                sample_name)
 
 # 15. Microbes screening
@@ -1599,7 +1601,7 @@ if sequencing_report:
 
         if path_java != "":
 
-            java_option = "-j " + path_java + " "
+            java_option = "-j " + path_java + "java"
 
         else:
 
@@ -1742,7 +1744,7 @@ if iobio:
         os.system("touch  %slogs/iobio.log" % (out))
 
         print(
-            "\n\nIobio serces have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file (../%sresults/%s_sorted.vcf.gz):\n\n"
+            "\n\nIobio services have been started at http://localhost:%s\n\nCopy and paste http://localhost:%s to select the service (vcf, bam, gene) and upload your data into the selected service\n\nIf you want to explore your variant calling results please copy and paste the following URL into your browser and upload the vcf file (../%s%s_sorted.vcf.gz):\n\n"
             % (port_num, port_num, out, sample_name),
             end='',
             flush=True)
@@ -1783,7 +1785,7 @@ if iobio:
 if alsgenescanner:
 
     os.system(
-        "python3 %s/alsgenescanner.py %s/annovar.vcf.hg19_multianno.txt %s/results/%s_alsgenescanner_all.txt"
+        "python3 %s/alsgenescanner.py %s/annovar.vcf.hg38_multianno.txt %s/results/%s_alsgenescanner_all.txt"
         % (path_scripts, out, out, sample_name))
     os.system(
         "cat %s/results/%s_alsgenescanner_all.txt | head -1 > %s/results/%s_alsgenescanner_alsod.txt; cat %s/results/%s_alsgenescanner_all.txt | grep -iwf %s/list_genes_alsod.txt >> %s/results/%s_alsgenescanner_alsod.txt"
