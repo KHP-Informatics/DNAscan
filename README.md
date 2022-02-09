@@ -2,7 +2,7 @@
 
 # DNAscan
 ```diff
-+TO BE NOTED: We are always working to improve DNAscan so any bug reports, suggestions, feedbacks would be highly welcome. 
++TO BE NOTED: We are updateing DNAscan. The new version is available here https://github.com/hevmarriott/DNAscanv2
 ```
 ## Table of Contents
 1. [Introduction](#introduction)
